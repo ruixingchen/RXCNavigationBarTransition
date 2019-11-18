@@ -15,7 +15,7 @@ extension UINavigationController {
 
     @objc func rnbsw_pushViewController(_ viewController: UIViewController, animated: Bool) {
         rnblog("导航push \(viewController)")
-
+        self.rnb_saveNavigationBarStyleToTopViewController()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             self.rnbsw_pushViewController(viewController, animated: animated)
             return
@@ -24,19 +24,20 @@ extension UINavigationController {
         self.rnbsw_pushViewController(viewController, animated: animated)
 
         if let coordinator = viewController.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractive(coordinator: coordinator)
+            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
         }
     }
 
     @objc func rnbsw_popViewController(animated:Bool)->UIViewController? {
         rnblog("导航pop")
+        self.rnb_saveNavigationBarStyleToTopViewController()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             let vc = self.rnbsw_popViewController(animated: animated)
             return vc
         }
         let popVC = self.rnbsw_popViewController(animated: animated)
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractive(coordinator: coordinator)
+            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
         }else {
             assertionFailure("pop时无法获取coordinator")
         }
@@ -47,7 +48,7 @@ extension UINavigationController {
     @discardableResult
     @objc func rnbsw_popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
         rnblog("导航popTo \(viewController)")
-
+        self.rnb_saveNavigationBarStyleToTopViewController()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             return self.rnbsw_popToViewController(viewController, animated: animated)
         }
@@ -55,7 +56,7 @@ extension UINavigationController {
         let vcs = self.rnbsw_popToViewController(viewController, animated: animated)
 
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractive(coordinator: coordinator)
+            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
         }else {
             assertionFailure("popTo时无法获取coordinator")
         }
@@ -66,9 +67,7 @@ extension UINavigationController {
     @discardableResult
     @objc func rnbsw_popToRootViewController(animated: Bool) -> [UIViewController]? {
         rnblog("导航popToRoot")
-
-        //self.rnb_saveCurrentNavigationBarStyleToCurrentViewController()
-
+        self.rnb_saveNavigationBarStyleToTopViewController()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             return self.rnbsw_popToRootViewController(animated: animated)
         }
@@ -76,7 +75,7 @@ extension UINavigationController {
         let vcs:[UIViewController]? = self.rnbsw_popToRootViewController(animated: animated)
 
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractive(coordinator: coordinator)
+            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
         }else {
             assertionFailure("popToRoot时无法获取coordinator")
         }

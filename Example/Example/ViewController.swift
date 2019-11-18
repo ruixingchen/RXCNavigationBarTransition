@@ -60,6 +60,10 @@ class ViewController: UIViewController {
         self.scrollView.bounces = true
         self.scrollView.alwaysBounceVertical = true
         self.applyStyleToView(style: self.outSettedStyle)
+        self.applyStyleToNavigationBar(style: self.outSettedStyle)
+        if self.navigationController?.viewControllers.first != self {
+            self.navigationItem.leftBarButtonItem = nil
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +73,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.applyStyleToNavigationBar(style: self.outSettedStyle)
+        //self.applyStyleToNavigationBar(style: self.outSettedStyle)
     }
 
     func currentStyle() -> RNBNavigationBarStyle {
@@ -158,6 +162,10 @@ class ViewController: UIViewController {
         self.rnb_navigationBarTitleColor = style.titleColorSetting
         self.rnb_navigationBarShadowViewHidden = style.shadowViewHiddenSetting
         self.rnb_statusBarStyle = style.statusBarStyleSetting
+    }
+
+    @IBAction func didTapDone(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func alphaSliderAction(_ sender: Any?) {

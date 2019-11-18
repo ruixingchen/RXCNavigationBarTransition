@@ -20,6 +20,7 @@ extension UINavigationController {
             self.rnbsw__updateInteractiveTransition(percentComplete)
             return
         }
+
         self.rnbsw__updateInteractiveTransition(percentComplete)
 
         if let coordinator = self.transitionCoordinator {
@@ -27,10 +28,11 @@ extension UINavigationController {
             guard let toVC = coordinator.viewController(forKey: .to) else {return}
             let fromStyle = fromVC?.rnb_navigationBarStyleForTransition() ?? RNBNavigationBarStyle.notsetted()
             let toStyle = toVC.rnb_navigationBarStyleForTransition()
-            self.rnb_updateNavigationBarStyleOnInteractive(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete)
+            self.rnb_updateNavigationBarStyleInteractively(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete)
         }
     }
 
+    ///当前侧滑手势额外的Target是否已经添加
     internal var rnb_interactivePopGestureRecognizerTargetAdded:Bool {
         get {return objc_getAssociatedObject(self, &NavKey.rnb_interactivePopGestureRecognizerTargetAdded) as? Bool ?? false}
         set {objc_setAssociatedObject(self, &NavKey.rnb_interactivePopGestureRecognizerTargetAdded, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
@@ -62,6 +64,7 @@ extension UINavigationController {
         switch gesture.state {
         case .began:
             //保存当前的状态栏样式
+            self.rnb_saveNavigationBarStyleToTopViewController()
             guard let coordinator = self.transitionCoordinator else {return}
             guard let toVC = coordinator.viewController(forKey: .to)else {return}
             guard let fromVC = coordinator.viewController(forKey: .from) else {return}
@@ -70,13 +73,17 @@ extension UINavigationController {
                 //当交互状态发生变化的时候, 表示用户在侧滑过程中抬起了手指, 需要根据context的状态判断是继续前进还是返回原VC
                 //这里使用coordinator.animate不会生效, 自己用动画实现过渡
                 if context.isCancelled {
+                    rnblog("侧滑中断 - 取消")
                     //退回fromVC
                     UIView.animate(withDuration: coordinator.transitionDuration) {
+                        rnblog("侧滑中断 - 取消 - 动画执行")
                         self?.rnb_updateNavigationBarStyle(style: fromVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
                     }
                 }else {
                     //继续变换到toVC
+                    rnblog("侧滑中断 - 继续")
                     UIView.animate(withDuration: coordinator.transitionDuration) {
+                        rnblog("侧滑中断 - 继续 - 动画执行")
                         self?.rnb_updateNavigationBarStyle(style: toVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
                     }
                 }

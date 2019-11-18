@@ -25,6 +25,11 @@ extension UIViewController {
         return nav.viewControllers.last === self
     }
 
+    internal func rnb_isNavOnlyViewController()->Bool {
+        guard let nav = self.navigationController else {return false}
+        return nav.viewControllers.count == 1 && nav.viewControllers.first == self
+    }
+
     internal func isEmbededInNavigationController()->Bool {
         return self.navigationController != nil
     }
@@ -48,6 +53,10 @@ extension UIViewController {
         case didAppear
         case willDisappear
         case didDisappear
+
+        func willOrDidAppear()->Bool {
+            return self == .willAppear || self == .didAppear
+        }
     }
 
     ///生命周期状态, 只枚举了显示的过程, 由于一个controller可能会在消失后再次显示, 这里不枚举消失
@@ -153,6 +162,7 @@ extension UIViewController {
 
 }
 
+//MARK: - Public Interface
 extension UIViewController {
 
     public var rnb_navigationBarAlpha: RNBSetting<CGFloat> {
@@ -162,7 +172,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.alphaSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.alphaSetting = self.rnb_navigationBarStyle.alphaSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarAlpha(setting: self.rnb_navigationBarStyle.alphaSetting)
             }
         }
@@ -175,7 +185,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.backgroundAlphaSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.backgroundAlphaSetting = self.rnb_navigationBarStyle.backgroundAlphaSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear{
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarBackgroundAlpha(setting: self.rnb_navigationBarStyle.backgroundAlphaSetting)
             }
         }
@@ -188,7 +198,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.barTintColorSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.barTintColorSetting = self.rnb_navigationBarStyle.barTintColorSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarBarTintColor(setting: self.rnb_navigationBarStyle.barTintColorSetting)
             }
         }
@@ -201,7 +211,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.tintColorSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.tintColorSetting = self.rnb_navigationBarStyle.tintColorSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarTintColor(setting: self.rnb_navigationBarStyle.tintColorSetting)
             }
         }
@@ -214,7 +224,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.titleColorSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.titleColorSetting = self.rnb_navigationBarStyle.titleColorSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarTitleColor(setting: self.rnb_navigationBarStyle.titleColorSetting)
             }
         }
@@ -227,7 +237,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.shadowViewHiddenSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.shadowViewHiddenSetting = self.rnb_navigationBarStyle.shadowViewHiddenSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.rnbnav_setNavigationBarShadowViewHidden(setting: self.rnb_navigationBarStyle.shadowViewHiddenSetting)
             }
         }
@@ -240,7 +250,7 @@ extension UIViewController {
         set {
             self.rnb_navigationBarStyle.statusBarStyleSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.statusBarStyleSetting = self.rnb_navigationBarStyle.statusBarStyleSetting
-            if self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear {
+            if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
                 self.navigationController?.setNeedsStatusBarAppearanceUpdate()
             }else {
                 self.setNeedsStatusBarAppearanceUpdate()

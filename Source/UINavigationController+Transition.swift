@@ -70,6 +70,37 @@ extension UINavigationController {
 
 }
 
+extension UINavigationController {
+
+    ///按照当前导航栏的样式生成style对象
+    internal func rnb_currentNavigationBarStyle()->RNBNavigationBarStyle {
+        let style = RNBNavigationBarStyle()
+        let bar = self.navigationBar
+        style.alphaSetting = .setted(bar.alpha)
+        style.backgroundAlphaSetting = .setted(bar.rnb_barBackgroundView?.alpha ?? self.rnb_defaultNavigationBarBackgroundAlpha.value ?? RXCNavigationBarTransition.defaultBackgroundAlpha)
+        if let color = bar.barTintColor {
+            style.barTintColorSetting = .setted(color)
+        }else {
+            style.barTintColorSetting = .notset
+        }
+        style.tintColorSetting = .setted(bar.tintColor)
+        style.titleColorSetting = .setted(bar.rnb_titleLabel?.textColor ?? self.rnb_defaultNavigationBarTitleColor.value ?? RXCNavigationBarTransition.defaultTitleColor)
+        style.shadowViewHiddenSetting = .setted(bar.rnb_shadowView?.alpha ?? 1 == 0)
+        style.statusBarStyleSetting = .setted(UIApplication.shared.statusBarStyle)
+        return style
+    }
+
+    internal func rnb_saveNavigationBarStyleToTopViewController() {
+        rnblog("保存当前导航栏样式到topVC:\(self.topViewController?.title ?? "nil")")
+        guard let vc = self.topViewController else {
+            rnblog("ERROR - 未找到topViewController")
+            return
+        }
+        vc.rnb_navigationBarStyleSavedBeforeTransition = self.rnb_currentNavigationBarStyle()
+    }
+
+}
+
 //MARK: - 设置样式
 extension UINavigationController {
 
@@ -192,6 +223,7 @@ extension UINavigationController {
 
     ///通过样式来更新导航栏
     internal func rnb_updateNavigationBarStyle(style:RNBNavigationBarStyle, applyImmediatelly:Bool) {
+        rnblog("更新导航栏样式")
         self.rnbnav_setNavigationBarAlpha(setting: style.alphaSetting)
         self.rnbnav_setNavigationBarBackgroundAlpha(setting: style.backgroundAlphaSetting)
         self.rnbnav_setNavigationBarBarTintColor(setting: style.barTintColorSetting)
@@ -207,21 +239,24 @@ extension UINavigationController {
     }
 
     ///当没有交互变化的时候调用这个方法来更新导航栏的样式, 只需要关心toVC的样式即可, 无需关心fromVC
-    internal func rnb_updateNavigationBarAppearenceUninteractive(coordinator: UIViewControllerTransitionCoordinator) {
+    internal func rnb_updateNavigationBarAppearenceUninteractively(coordinator: UIViewControllerTransitionCoordinator) {
+        rnblog("非交互状态下更新导航栏样式")
         guard let toController = coordinator.viewController(forKey: .to) else {return}
         if coordinator.isAnimated {
             coordinator.animate(alongsideTransition: { (_) in
+                rnblog("非交互状态下更新导航栏样式动画执行")
                 let style = toController.rnb_navigationBarStyleSavedBeforeTransition ?? toController.rnb_navigationBarStyle
                 self.rnb_updateNavigationBarStyle(style: style, applyImmediatelly: true)
             }, completion: nil)
         }else {
+            rnblog("非交互状态非动画更新导航栏样式")
             let style = toController.rnb_navigationBarStyleSavedBeforeTransition ?? toController.rnb_navigationBarStyle
             self.rnb_updateNavigationBarStyle(style: style, applyImmediatelly: true)
         }
     }
 
     ///在交互状态下更新导航栏样式
-    internal func rnb_updateNavigationBarStyleOnInteractive(fromStyle:RNBNavigationBarStyle, toStyle:RNBNavigationBarStyle, progress:CGFloat) {
+    internal func rnb_updateNavigationBarStyleInteractively(fromStyle:RNBNavigationBarStyle, toStyle:RNBNavigationBarStyle, progress:CGFloat) {
         if true {
             if let fromAlpha = fromStyle.alphaSetting.value {
                 let toAlpha = RNBHelper.chooseSettedValue(setting: toStyle.alphaSetting, setting2: self.rnb_navigationBarDefaultStyle.alphaSetting, defaultValue: RXCNavigationBarTransition.defaultAlpha)
