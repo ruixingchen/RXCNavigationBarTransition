@@ -10,29 +10,51 @@ import UIKit
 
 extension UINavigationBar {
 
+    ///获取底部的分割线
     public var rnb_shadowView:UIView? {
-        for i in self.subviews {
-            for j in i.subviews {
-                let _frame = j.frame
-                if _frame.origin.x == 0 && _frame.origin.y == self.bounds.height && _frame.width == self.bounds.width && _frame.height < 1 {
-                    return j
-                }
-            }
+        guard let backgroundView = self.rnb_barBackgroundView else {
+            return nil
         }
-        return nil
+        let classs:AnyClass
+        if #available(iOS 13, *) {
+            guard let c = NSClassFromString("_UIBarBackgroundShadowView") else {
+                assertionFailure("iOS13下无法生成_UIBarBackgroundShadowView类")
+                return nil
+            }
+            classs = c
+        }else {
+            classs = UIImageView.self
+        }
+
+        let view = backgroundView.subviews.first { (i) -> Bool in
+            let _frame = i.frame
+            return i.isMember(of: classs) && _frame.origin.x == 0 && _frame.origin.y == backgroundView.bounds.height && _frame.width == backgroundView.bounds.width && _frame.height <= 1
+        }
+        assert(view != nil, "无法获取NavBar底部分割线")
+        return view
     }
 
     public var rnb_barBackgroundView:UIView? {
-        guard let classs = NSClassFromString("_UIBarBackground") else {return nil}
-        guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {return nil}
-        guard view.frame.origin.x == 0 && view.frame.origin.y + view.frame.size.height == self.bounds.height && view.frame.width == self.bounds.width else {return nil}
+        guard let classs = NSClassFromString("_UIBarBackground") else {
+            assertionFailure("无法获取到 _UIBarBackground 类")
+            return nil
+        }
+        guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {
+            assertionFailure("无法获取到subviews中是 _UIBarBackground 的view")
+            return nil
+        }
         return view
     }
 
     public var rnb_barContentView:UIView? {
-        guard let classs = NSClassFromString("_UINavigationBarContentView") else {return nil}
-        guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {return nil}
-        guard view.frame == self.bounds else {return nil}
+        guard let classs = NSClassFromString("_UINavigationBarContentView") else {
+            assertionFailure("无法获取到 _UINavigationBarContentView 类")
+            return nil
+        }
+        guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {
+            assertionFailure("无法获取到subviews中是 _UINavigationBarContentView 的view")
+            return nil
+        }
         return view
     }
 
@@ -44,36 +66,41 @@ extension UINavigationBar {
 
     public var rnb_barTintColorView:UIView? {
         //when translucent, the barTintColor is on a visualEffect view that alpha == 0.85
-        //when not translucent, it is on a UIImageView with size equal to barBackgroundView
+        //when not translucent, it is on a UIImageView which size equals to barBackgroundView
         //check visualEffectView first
         guard let _backgroundView = self.rnb_barBackgroundView else {return nil}
         if let effectView1 = _backgroundView.subviews.first(where: {$0.isMember(of: UIVisualEffectView.self) && $0.frame == _backgroundView.bounds}) {
             //have a visualEffectView
-            guard let view = effectView1.subviews.first(where: {$0.isMember(of: NSClassFromString("_UIVisualEffectSubview")!) && $0.alpha < 1 && $0.frame==effectView1.bounds}) else {return nil}
+            guard let view = effectView1.subviews.first(where: {$0.isMember(of: NSClassFromString("_UIVisualEffectSubview")!) && $0.alpha == 0.85 && $0.frame==effectView1.bounds}) else {return nil}
             return view
         }else if let colorAndImageView1 = _backgroundView.subviews.first(where: {$0.frame == _backgroundView.bounds && $0.isMember(of: UIImageView.self)}){
             return colorAndImageView1
         }
+        assertionFailure("无法获取到 barTintColorView")
         return nil
     }
 
+    ///获取title的View
     public var rnb_titleLabel:UILabel? {
         let label = self.rnb_barContentView?.subviews.first(where: {$0.isMember(of: UILabel.self)}) as? UILabel
         return label
     }
 
+    ///获取返回按钮的View
     public var rnb_backButton:UIView? {
         guard let _UIButtonBarButton = NSClassFromString("_UIButtonBarButton") else {return nil}
         let _button = self.rnb_barContentView?.subviews.first(where: {$0.isMember(of: _UIButtonBarButton)})
         return _button
     }
 
-    public var rnb_buttonBarStackViews:[UIView] {
+    ///获取显示按钮的所有stackView
+    internal var rnb_buttonBarStackViews:[UIView] {
         guard let _UIButtonBarStackView = NSClassFromString("_UIButtonBarStackView") else {return []}
         guard let stackViews = self.rnb_barContentView?.subviews.filter({$0.isMember(of: _UIButtonBarStackView)}) else {return []}
         return stackViews
     }
 
+    /*
     ///may not be the left stack in some specific situations
     public var rnb_leftButtonStackView:UIView? {
         let stackViews = self.rnb_buttonBarStackViews
@@ -99,6 +126,7 @@ extension UINavigationBar {
             return stackViews.first(where: {(self.bounds.width - ($0.frame.origin.x+$0.frame.width) < 16)})
         }
     }
+     */
 
     ///all buttons including backButton
     public var rnb_stackButtons:[UIView] {

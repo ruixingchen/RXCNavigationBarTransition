@@ -11,10 +11,11 @@ import UIKit
 public final class RNBNavigationBarStyle {
 
     public init() {
-        
+
     }
 
-    public static func notsetted()-> RNBNavigationBarStyle {
+    ///返回一个全部是notset的样式
+    public static func notset()-> RNBNavigationBarStyle {
         return RNBNavigationBarStyle()
     }
 

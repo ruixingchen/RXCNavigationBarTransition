@@ -70,6 +70,7 @@ extension UIViewController {
 //        case didAppear
 //    }
 
+    ///当前VC的可见性
     internal var rnb_visibility:RNBVisibility {
         get {
             var value:RNBVisibility! = objc_getAssociatedObject(self, &Key.rnb_visibility) as? RNBVisibility
@@ -84,12 +85,26 @@ extension UIViewController {
         }
     }
 
+    ///是否对当前VC启用(仅在当前VC作为一个NavController的子VC时)
+    public var rnb_enabled:RNBSetting<Bool> {
+        get {
+            if let value = objc_getAssociatedObject(self, &Key.rnb_enabled) as? RNBSetting<Bool> {
+                return value
+            }else {
+                return RNBSetting.notset
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, &Key.rnb_enabled, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
     ///用户设定的导航栏样式保存在这里
     internal var rnb_navigationBarStyle: RNBNavigationBarStyle {
         get {
             var style:RNBNavigationBarStyle! = objc_getAssociatedObject(self, &Key.rnb_navigationBarStyle) as? RNBNavigationBarStyle
             if style == nil {
-                style = RNBNavigationBarStyle.notsetted()
+                style = RNBNavigationBarStyle.notset()
                 self.rnb_navigationBarStyle = style
             }
             return style
@@ -109,11 +124,15 @@ extension UIViewController {
         }
     }
 
+    ///如果有保存的样式, 优先返回保存的样式, 否则返回用户设置的样式
     internal func rnb_navigationBarStyleForTransition()->RNBNavigationBarStyle {
         if let saved = self.rnb_navigationBarStyleSavedBeforeTransition {
             return saved
-        }else {
+        }else if RXCNavigationBarTransition.shouldWorkOnViewController(self) {
             return self.rnb_navigationBarStyle
+        }else {
+            //这个VC被禁用了, 直接返回未设置即可
+            return RNBNavigationBarStyle.notset()
         }
     }
 
@@ -123,7 +142,7 @@ extension UIViewController {
 
     @objc func rnbsw_viewWillAppear(_ animated: Bool) {
         self.rnb_visibility = .willAppear
-
+        rnblog("viewWillAppear: \(self.title ?? "no title") @ \(self.description)")
 //        let style = self.rnb_navigationBarStyleForTransition()
 //        self.navigationController?.updateNavigationBarStyle(style: style, animatable: false)
 
@@ -132,31 +151,28 @@ extension UIViewController {
 
     @objc func rnbsw_viewDidAppear(_ animated: Bool) {
         self.rnb_visibility = .didAppear
-
+        rnblog("viewDidAppear: \(self.title ?? "no title") @ \(self.description)")
         if let nav = self as? UINavigationController, nav.navigationController == nil {
-            ///如果是NavController, 给返回的交互手势额外添加一个target, 用来在滑动返回之前保存Bar的样式
-            if let g = nav.interactivePopGestureRecognizer, !nav.rnb_interactivePopGestureRecognizerTargetAdded {
-                nav.rnb_interactivePopGestureRecognizerTargetAdded = true
-                g.addTarget(nav, action: #selector(UINavigationController.onInteractivePopGestureRecognizer(sender:)))
+            ///如果是一个NavController, 给侧滑返回手势添加一个target来追踪他的状态
+            if RXCNavigationBarTransition.debugMode {
+                if let g = nav.interactivePopGestureRecognizer, !nav.rnb_interactivePopGestureRecognizerTargetAdded {
+                    nav.rnb_interactivePopGestureRecognizerTargetAdded = true
+                    g.addTarget(nav, action: #selector(UINavigationController.onInteractivePopGestureRecognizer(sender:)))
+                }
             }
         }
-
-//        let style = self.rnb_navigationBarStyleForTransition()
-//        self.navigationController?.updateNavigationBarStyle(style: style, animatable: nil)
-//        self.rnb_currentNavigationBarStyleSavedBeforeTransition = false
-
         self.rnbsw_viewDidAppear(animated)
     }
 
     @objc func rnbsw_viewWillDisappear(_ animated: Bool) {
         self.rnb_visibility = .willDisappear
-
+        rnblog("viewWillDisappear: \(self.title ?? "no title") @ \(self.description)")
         self.rnbsw_viewWillDisappear(animated)
     }
 
     @objc func rnbsw_viewDidDisappear(_ animated: Bool) {
         self.rnb_visibility = .didDisappear
-
+        rnblog("viewDidDisappear: \(self.title ?? "no title") @ \(self.description)")
         self.rnbsw_viewDidDisappear(animated)
     }
 
@@ -251,9 +267,7 @@ extension UIViewController {
             self.rnb_navigationBarStyle.statusBarStyleSetting = newValue
             self.rnb_navigationBarStyleSavedBeforeTransition?.statusBarStyleSetting = self.rnb_navigationBarStyle.statusBarStyleSetting
             if self.rnb_isNavOnlyViewController() || ( self.rnb_isNavLastViewController() && self.rnb_visibility == .didAppear) {
-                self.navigationController?.setNeedsStatusBarAppearanceUpdate()
-            }else {
-                self.setNeedsStatusBarAppearanceUpdate()
+                self.navigationController?.rnbnav_setStatusBarStyle()
             }
         }
     }

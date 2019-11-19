@@ -163,8 +163,8 @@ public extension RNBHelper {
 }
 
 internal func rnblog(_ closure:@autoclosure ()->Any, file:StaticString = #file,line:Int = #line,function:StaticString = #function) {
-    #if (debug || DEBUG)
-    let fileName = String(describing: file).components(separatedBy: "/").last ?? ""
-    print("\(fileName):\(line) - \(function) : \(closure())")
-    #endif
+    if RXCNavigationBarTransition.debugMode {
+        let fileName = String(describing: file).components(separatedBy: "/").last ?? ""
+        print("\(fileName):\(line) - \(function) : \(closure())")
+    }
 }

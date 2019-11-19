@@ -14,8 +14,9 @@ import UIKit
 extension UINavigationController {
 
     @objc func rnbsw_pushViewController(_ viewController: UIViewController, animated: Bool) {
+        ///PUSH的时候, 先保存样式到当前的TopVC, 之后开始PUSH, 动画生效的时候, VC已经执行完毕了willAppear
         rnblog("导航push \(viewController)")
-        self.rnb_saveNavigationBarStyleToTopViewController()
+        self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             self.rnbsw_pushViewController(viewController, animated: animated)
             return
@@ -30,14 +31,19 @@ extension UINavigationController {
 
     @objc func rnbsw_popViewController(animated:Bool)->UIViewController? {
         rnblog("导航pop")
-        self.rnb_saveNavigationBarStyleToTopViewController()
+        self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             let vc = self.rnbsw_popViewController(animated: animated)
             return vc
         }
         let popVC = self.rnbsw_popViewController(animated: animated)
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+            if coordinator.initiallyInteractive {
+                //手势滑动返回导致的pop调用, 无需处理导航栏样式
+            }else {
+                //非交互式的pop, 代码返回或者
+                self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+            }
         }else {
             assertionFailure("pop时无法获取coordinator")
         }
@@ -48,7 +54,7 @@ extension UINavigationController {
     @discardableResult
     @objc func rnbsw_popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
         rnblog("导航popTo \(viewController)")
-        self.rnb_saveNavigationBarStyleToTopViewController()
+        self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             return self.rnbsw_popToViewController(viewController, animated: animated)
         }
@@ -67,7 +73,7 @@ extension UINavigationController {
     @discardableResult
     @objc func rnbsw_popToRootViewController(animated: Bool) -> [UIViewController]? {
         rnblog("导航popToRoot")
-        self.rnb_saveNavigationBarStyleToTopViewController()
+        self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             return self.rnbsw_popToRootViewController(animated: animated)
         }

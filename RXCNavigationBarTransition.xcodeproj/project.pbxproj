@@ -16,9 +16,9 @@
 		802F26BB237409BF00963468 /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BA237409BF00963468 /* UIViewController+Transition.swift */; };
 		802F26BD23740A6100963468 /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BC23740A6100963468 /* UINavigationController+Transition.swift */; };
 		802F26BF23740E8200963468 /* RNBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BE23740E8200963468 /* RNBSetting.swift */; };
-		8058AD802374FB7100445753 /* UINavigationController+Transition_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD7F2374FB7100445753 /* UINavigationController+Transition_1.swift */; };
-		8058AD822374FBA300445753 /* UINavigationController+Transition_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD812374FBA300445753 /* UINavigationController+Transition_2.swift */; };
-		8058AD862375125C00445753 /* UINavigationController+Transition_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD852375125C00445753 /* UINavigationController+Transition_3.swift */; };
+		8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */; };
+		8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */; };
+		8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		802F26BA237409BF00963468 /* UIViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
 		802F26BC23740A6100963468 /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
 		802F26BE23740E8200963468 /* RNBSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBSetting.swift; sourceTree = "<group>"; };
-		8058AD7F2374FB7100445753 /* UINavigationController+Transition_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1.swift"; sourceTree = "<group>"; };
-		8058AD812374FBA300445753 /* UINavigationController+Transition_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2.swift"; sourceTree = "<group>"; };
-		8058AD852375125C00445753 /* UINavigationController+Transition_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3.swift"; sourceTree = "<group>"; };
+		8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
+		8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2_SWIPE.swift"; sourceTree = "<group>"; };
+		8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3_BACK_BUTTON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +86,9 @@
 				802F26A82373EF7700963468 /* UINavigationBar+Transition.swift */,
 				802F26BA237409BF00963468 /* UIViewController+Transition.swift */,
 				802F26BC23740A6100963468 /* UINavigationController+Transition.swift */,
-				8058AD7F2374FB7100445753 /* UINavigationController+Transition_1.swift */,
-				8058AD812374FBA300445753 /* UINavigationController+Transition_2.swift */,
-				8058AD852375125C00445753 /* UINavigationController+Transition_3.swift */,
+				8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */,
+				8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */,
+				8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -178,12 +178,12 @@
 				802F26A32373CB2D00963468 /* RXCNavigationBarTransition.swift in Sources */,
 				802F26BF23740E8200963468 /* RNBSetting.swift in Sources */,
 				802F26BB237409BF00963468 /* UIViewController+Transition.swift in Sources */,
-				8058AD822374FBA300445753 /* UINavigationController+Transition_2.swift in Sources */,
+				8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
 				802F26A72373E76C00963468 /* RNBNavigationBarStyle.swift in Sources */,
-				8058AD802374FB7100445753 /* UINavigationController+Transition_1.swift in Sources */,
+				8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
 				802F26AB2373EF9A00963468 /* UINavigationBar+Views.swift in Sources */,
 				802F26BD23740A6100963468 /* UINavigationController+Transition.swift in Sources */,
-				8058AD862375125C00445753 /* UINavigationController+Transition_3.swift in Sources */,
+				8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

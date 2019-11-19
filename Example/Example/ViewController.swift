@@ -204,7 +204,7 @@ class ViewController: UIViewController {
         let hue = CGFloat.random(in: 0...1)
         let saturation = CGFloat.random(in: 0...1)
         let brightness = CGFloat.random(in: 0...1)
-        let alpha = CGFloat.random(in: 0...1)
+        let alpha:CGFloat = 1.0//CGFloat.random(in: 0...1)
         let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         self.barTintPreviewView.backgroundColor = color
         self.barTintColorSlider.value = Float(hue)
@@ -213,7 +213,7 @@ class ViewController: UIViewController {
 
     @IBAction func tintColorAction(_ sender: Any?) {
         let hue = CGFloat(self.tintColorSlider.value)
-        let alpha = CGFloat(self.tintAlphaSlider.value)
+        let alpha:CGFloat = 1.0//CGFloat(self.tintAlphaSlider.value)
         let color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: alpha)
         self.tintPreviewView.backgroundColor = color
     }
@@ -227,7 +227,7 @@ class ViewController: UIViewController {
         let hue = CGFloat.random(in: 0...1)
         let saturation = CGFloat.random(in: 0...1)
         let brightness = CGFloat.random(in: 0...1)
-        let alpha = CGFloat.random(in: 0...1)
+        let alpha:CGFloat = 1.0//CGFloat.random(in: 0...1)
         let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         self.tintPreviewView.backgroundColor = color
         self.tintColorSlider.value = Float(hue)
@@ -250,7 +250,7 @@ class ViewController: UIViewController {
         let hue = CGFloat.random(in: 0...1)
         let saturation = CGFloat.random(in: 0...1)
         let brightness = CGFloat.random(in: 0...1)
-        let alpha = CGFloat.random(in: 0...1)
+        let alpha:CGFloat = 1.0//CGFloat.random(in: 0...1)
         let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         self.titlePreviewView.backgroundColor = color
         self.titleColorSlider.value = Float(hue)
@@ -265,8 +265,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func randomAll(_ sender: Any?) {
-        self.alphaRandomAction(nil)
-        self.backAlphaRandomAction(nil)
+        //self.alphaRandomAction(nil)
+        //self.backAlphaRandomAction(nil)
         self.barTintRandomAction(nil)
         self.tintRandomAction(nil)
         self.titleRandomAction(nil)
@@ -288,7 +288,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func navDefault(_ sender: Any) {
-        self.applyStyleToView(style: .notsetted())
+        self.applyStyleToView(style: .notset())
     }
 
     @IBAction func setAsNavDefault(_ sender: Any) {

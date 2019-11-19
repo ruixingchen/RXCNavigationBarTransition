@@ -16,14 +16,23 @@ class SimpleTestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rnb_navigationBarBarTintColor = RNBSetting.setted(UIColor.orange)
-//        self.rnb_navigationBarAlpha = RNBSetting.setted(1.0)
+        self.view.backgroundColor = UIColor.brown
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        self.rnb_navigationBarBarTintColor = RNBSetting.setted(UIColor.orange)
-//        self.rnb_navigationBarAlpha = RNBSetting.setted(1.0)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let shadowView = self.navigationController?.navigationBar.rnb_shadowView
+        shadowView?.subviews.first?.frame.size.height = 10
+        self.rnb_navigationBarShadowViewHidden = RNBSetting.setted(false)
+        self.navigationController?.navigationBar.rnb_shadowView?.addObserver(self, forKeyPath: "alpha", options: .new, context: nil)
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+
+        if keyPath == "alpha" {
+            print(change?[NSKeyValueChangeKey.newKey])
+        }
+
     }
 
     @IBAction func didTapButton(_ sender: Any) {
@@ -41,13 +50,15 @@ class SimpleTestViewController2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rnb_navigationBarBarTintColor = RNBSetting.setted(UIColor.blue)
+        self.view.backgroundColor = UIColor.orange
+        self.title = "title_2"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        self.rnb_navigationBarBarTintColor = RNBSetting.setted(UIColor.red)
+        let shadowView = self.navigationController?.navigationBar.rnb_shadowView
+        shadowView?.subviews.first?.frame.size.height = 10
+        self.rnb_navigationBarShadowViewHidden = RNBSetting.setted(true)
     }
 
 }

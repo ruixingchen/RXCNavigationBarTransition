@@ -10,25 +10,13 @@ import UIKit
 
 /*
  动作拦截主要分成几个部分：
- 1，push和通过代码调用pop的返回
- 交换push和pop函数即可, 在调用super之前保存bar的样式，简单
+ 1，push和通过代码调用pop
+    交换push和pop相关的四个函数即可, 在调用真正的push和pop之前保存bar的样式，简单
  2， 滑动手势返回
- 监听变化：
- 首先会调用navigationBar delegate 中的shouldPop方法，这里如果coordinator的initiallyInteractive为true，表示是手势滑动返回， 我们需要监听手势交互状态的变化，手指如果在中途离开屏幕，会调用变化closure，将剩余的动画完成
- 如果本次手势交互状态没有变化，则所有的动画都在 _updateInteractiveTransition，当用户滑动的时候，会持续调用这个函数
- 样式保存：当本界面第一次push的时候，为滑动返回手势添加target，点击的时候直接保存样式
+    监听变化: pop方法被调用, 且coordinator的initiallyInteractive为true, 表示开始进行滑动返回, 之后在updateInteractiveTransition中更新导航栏样式即可
+    样式保存: 当pop被调用的时候保存样式即可
  3，点击左上角的返回按钮返回
- 监听变化：当shoudPop被调用，且coordinator的initiallyInteractive为false，表示点击了返回按钮
- 样式保存：在返回之前保存样式即可
-
- 样式保存:
- 1, push和pop方法直接调用:
-    在交换后的方法里面提前调用保存方法
- 2, 滑动手势返回:
-    给滑动手势添加一个target, target接收到消息的时候保存
- 3, 点击左上角返回按钮
-    在navigationBarDelegate接收到shouldPop的时候保存
-
+    系统会自动调用pop, 逻辑和pop保持一致
  */
 
 //MARK: - 存储变量
@@ -38,6 +26,7 @@ extension UINavigationController {
         static var rnb_navigationEnabled = "rnb_navigationEnabled"
         static var rnb_navigationBarDefaultStyle = "rnb_navigationBarDefaultStyle"
         static var rnb_interactivePopGestureRecognizerTargetAdded = "rnb_interactivePopGestureRecognizerTargetAdded"
+        static var updateInteractiveTransitionCoordinator = "updateInteractiveTransitionCoordinator"
     }
 
     public var rnb_navigationEnabled:RNBSetting<Bool> {
@@ -66,37 +55,6 @@ extension UINavigationController {
         set {
             objc_setAssociatedObject(self, &NavKey.rnb_navigationBarDefaultStyle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
-    }
-
-}
-
-extension UINavigationController {
-
-    ///按照当前导航栏的样式生成style对象
-    internal func rnb_currentNavigationBarStyle()->RNBNavigationBarStyle {
-        let style = RNBNavigationBarStyle()
-        let bar = self.navigationBar
-        style.alphaSetting = .setted(bar.alpha)
-        style.backgroundAlphaSetting = .setted(bar.rnb_barBackgroundView?.alpha ?? self.rnb_defaultNavigationBarBackgroundAlpha.value ?? RXCNavigationBarTransition.defaultBackgroundAlpha)
-        if let color = bar.barTintColor {
-            style.barTintColorSetting = .setted(color)
-        }else {
-            style.barTintColorSetting = .notset
-        }
-        style.tintColorSetting = .setted(bar.tintColor)
-        style.titleColorSetting = .setted(bar.rnb_titleLabel?.textColor ?? self.rnb_defaultNavigationBarTitleColor.value ?? RXCNavigationBarTransition.defaultTitleColor)
-        style.shadowViewHiddenSetting = .setted(bar.rnb_shadowView?.alpha ?? 1 == 0)
-        style.statusBarStyleSetting = .setted(UIApplication.shared.statusBarStyle)
-        return style
-    }
-
-    internal func rnb_saveNavigationBarStyleToTopViewController() {
-        rnblog("保存当前导航栏样式到topVC:\(self.topViewController?.title ?? "nil")")
-        guard let vc = self.topViewController else {
-            rnblog("ERROR - 未找到topViewController")
-            return
-        }
-        vc.rnb_navigationBarStyleSavedBeforeTransition = self.rnb_currentNavigationBarStyle()
     }
 
 }
@@ -132,6 +90,19 @@ extension UINavigationController {
     internal func rnbnav_setNavigationBarShadowViewHidden(setting:RNBSetting<Bool>) {
         let value = RNBHelper.chooseSettedValue(setting: setting, setting2: self.rnb_navigationBarDefaultStyle.shadowViewHiddenSetting, defaultValue: RXCNavigationBarTransition.defaultShadowViewHidden)
         self.navigationBar.rnb_setShadowViewHidden(value)
+    }
+
+    internal func rnbnav_setStatusBarStyle() {
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+
+    ///状态栏
+    @objc open override var preferredStatusBarStyle: UIStatusBarStyle {
+        //优先使用topVC的样式
+        if let topVC = self.topViewController, let value = topVC.rnb_statusBarStyle.value {
+            return value
+        }
+        return self.rnb_defaultStatusBarStyle.value ?? RXCNavigationBarTransition.defaultStatusBarStyle
     }
 
 }
@@ -230,7 +201,7 @@ extension UINavigationController {
         self.rnbnav_setNavigationBarTintColor(setting: style.tintColorSetting)
         self.rnbnav_setNavigationBarTitleColor(setting: style.titleColorSetting)
         self.rnbnav_setNavigationBarShadowViewHidden(setting: style.shadowViewHiddenSetting)
-        self.setNeedsStatusBarAppearanceUpdate()
+        self.rnbnav_setStatusBarStyle()
         if applyImmediatelly {
             self.navigationBar.applyBarTintColorImmediatelly()
             self.navigationBar.applyTintColorImmediatelly()
@@ -240,14 +211,18 @@ extension UINavigationController {
 
     ///当没有交互变化的时候调用这个方法来更新导航栏的样式, 只需要关心toVC的样式即可, 无需关心fromVC
     internal func rnb_updateNavigationBarAppearenceUninteractively(coordinator: UIViewControllerTransitionCoordinator) {
-        rnblog("非交互状态下更新导航栏样式")
         guard let toController = coordinator.viewController(forKey: .to) else {return}
+        rnblog("非交互状态下更新导航栏样式, to: \(String(describing: topViewController))")
         if coordinator.isAnimated {
             coordinator.animate(alongsideTransition: { (_) in
                 rnblog("非交互状态下更新导航栏样式动画执行")
                 let style = toController.rnb_navigationBarStyleSavedBeforeTransition ?? toController.rnb_navigationBarStyle
                 self.rnb_updateNavigationBarStyle(style: style, applyImmediatelly: true)
-            }, completion: nil)
+            }) { (_) in
+                rnblog("非交互状态动画完毕, 强制更新样式")
+                let style = toController.rnb_navigationBarStyleSavedBeforeTransition ?? toController.rnb_navigationBarStyle
+                self.rnb_updateNavigationBarStyle(style: style, applyImmediatelly: true)
+            }
         }else {
             rnblog("非交互状态非动画更新导航栏样式")
             let style = toController.rnb_navigationBarStyleSavedBeforeTransition ?? toController.rnb_navigationBarStyle
@@ -306,9 +281,15 @@ extension UINavigationController {
             self.navigationBar.applyTitleColorImmediatelly()
         }
         if true {
-            self.rnbnav_setNavigationBarShadowViewHidden(setting: toStyle.shadowViewHiddenSetting)
+            ///这里采用渐变来实现
+            let fromAlpha:CGFloat = RNBHelper.chooseSettedValue(setting: fromStyle.shadowViewHiddenSetting, setting2: self.rnb_defaultNavigationBarShadowViewHidden, defaultValue: RXCNavigationBarTransition.defaultShadowViewHidden) ? 0 : 1
+            let toAlpha:CGFloat = RNBHelper.chooseSettedValue(setting: toStyle.shadowViewHiddenSetting, setting2: self.rnb_defaultNavigationBarShadowViewHidden, defaultValue: RXCNavigationBarTransition.defaultShadowViewHidden) ? 0 : 1
+            let alpha = RNBHelper.calculateProgressiveAlpha(from: fromAlpha, to: toAlpha, progress: progress)
+            self.navigationBar.rnb_shadowView?.alpha = alpha
         }
-
+        if true {
+            self.rnbnav_setStatusBarStyle()
+        }
     }
 
 }

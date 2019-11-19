@@ -15,7 +15,8 @@ extension UINavigationBar {
     }
 
     internal func rnb_setBackgroundAlpha(_ value: CGFloat) {
-        self.rnb_barBackgroundView?.alpha = value
+        let view = self.rnb_barBackgroundView
+        view?.alpha = value
     }
 
     internal func rnb_setBarTintColor(_ value: UIColor?) {
@@ -33,10 +34,11 @@ extension UINavigationBar {
     }
 
     internal func rnb_setShadowViewHidden(_ value: Bool) {
+        let view = self.rnb_shadowView
         if value {
-            self.rnb_shadowView?.alpha = 0
+            view?.alpha = 0
         }else {
-            self.rnb_shadowView?.alpha = 1
+            view?.alpha = 1
         }
     }
 
@@ -60,6 +62,27 @@ extension UINavigationBar {
             matt.addAttributes(attributes, range: NSRange(location: 0, length: matt.length))
             self.rnb_titleLabel?.attributedText = matt
         }
+    }
+
+}
+
+extension UINavigationBar {
+
+    ///按照当前导航栏的样式生成style对象
+    internal func rnb_currentStyle()->RNBNavigationBarStyle {
+        let style = RNBNavigationBarStyle()
+        style.alphaSetting = .setted(self.alpha)
+        style.backgroundAlphaSetting = .setted(self.rnb_barBackgroundView?.alpha ?? RXCNavigationBarTransition.defaultBackgroundAlpha)
+        if let color = self.barTintColor {
+            style.barTintColorSetting = .setted(color)
+        }else {
+            style.barTintColorSetting = .notset
+        }
+        style.tintColorSetting = .setted(self.tintColor)
+        style.titleColorSetting = .setted(self.rnb_titleLabel?.textColor ?? RXCNavigationBarTransition.defaultTitleColor)
+        style.shadowViewHiddenSetting = .setted(self.rnb_shadowView?.alpha ?? 1 == 0)
+        style.statusBarStyleSetting = .setted(UIApplication.shared.statusBarStyle)
+        return style
     }
 
 }

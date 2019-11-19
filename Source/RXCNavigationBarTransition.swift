@@ -10,13 +10,20 @@ import UIKit
 
 public final class RXCNavigationBarTransition {
 
+    #if (debug || DEBUG)
+    public static var debugMode:Bool = true
+    #else
+    public static var debugMode:Bool = false
+    #endif
+
     ///how we filter controllers
     public enum FilterMode {
         case blackList([String]), whiteList([String]), prefix([String])
         case custom((UIViewController)->Bool)
     }
-
+    ///过滤机制
     public static var filterMode:FilterMode = .blackList([])
+    ///NavController过滤机制
     public static var navigationFilterMode:FilterMode = .blackList([])
 
     //下面的是默认参数, 在didLaunch里面可以设置默认参数
@@ -32,8 +39,7 @@ public final class RXCNavigationBarTransition {
     private static var started:Bool = false
 
     public static func start() {
-        objc_sync_enter(self)
-        defer {objc_sync_exit(self)}
+        //没有做线程安全, 这里由使用者自行保证线程安全😂
         if started {return}
         started = true
 
@@ -45,6 +51,7 @@ public final class RXCNavigationBarTransition {
 
 extension RXCNavigationBarTransition {
 
+    ///是否应该工作在某个NavController上
     internal static func shouldWorkOnNavigationController(_ controller:UINavigationController)->Bool {
         switch controller.rnb_navigationEnabled {
         case .setted(let value):
@@ -66,26 +73,27 @@ extension RXCNavigationBarTransition {
         }
     }
 
-//    internal static func shouldWorkOnViewController(_ controller:UIViewController)->Bool {
-//        switch controller.rnb_enabled {
-//        case .setted(let value):
-//            return value
-//        case .notset:
-//            switch filterMode {
-//            case .blackList(let list):
-//                let controllerClassName = String.init(describing: controller.classForCoder)
-//                return !list.contains(controllerClassName)
-//            case .whiteList(let list):
-//                let controllerClassName = String.init(describing: controller.classForCoder)
-//                return list.contains(controllerClassName)
-//            case .prefix(let list):
-//                let controllerClassName = String.init(describing: controller.classForCoder)
-//                return list.contains(where: {controllerClassName.hasPrefix($0)})
-//            case .custom(let closure):
-//                return closure(controller)
-//            }
-//        }
-//    }
+    ///是否应该工作在某个Controller上, 如果某个Controller不工作, 则会使用导航栏默认样式 ?? 系统默认样式
+    internal static func shouldWorkOnViewController(_ controller:UIViewController)->Bool {
+        switch controller.rnb_enabled {
+        case .setted(let value):
+            return value
+        case .notset:
+            switch filterMode {
+            case .blackList(let list):
+                let controllerClassName = String.init(describing: controller.classForCoder)
+                return !list.contains(controllerClassName)
+            case .whiteList(let list):
+                let controllerClassName = String.init(describing: controller.classForCoder)
+                return list.contains(controllerClassName)
+            case .prefix(let list):
+                let controllerClassName = String.init(describing: controller.classForCoder)
+                return list.contains(where: {controllerClassName.hasPrefix($0)})
+            case .custom(let closure):
+                return closure(controller)
+            }
+        }
+    }
 
 }
 
