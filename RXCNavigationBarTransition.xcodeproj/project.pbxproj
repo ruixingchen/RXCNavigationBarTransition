@@ -19,6 +19,8 @@
 		8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */; };
 		8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */; };
 		8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */; };
+		8089AE042384D57D0084FEAF /* UINavigationController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */; };
+		8089AE06238516D00084FEAF /* UIColor+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
 		8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2_SWIPE.swift"; sourceTree = "<group>"; };
 		8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3_BACK_BUTTON.swift"; sourceTree = "<group>"; };
+		8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RNBExtension.swift"; sourceTree = "<group>"; };
+		8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RNBExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		802F26A12373CAFE00963468 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */,
 				802F26BE23740E8200963468 /* RNBSetting.swift */,
 				802F26A42373E3CD00963468 /* RNBHelper.swift */,
 				802F26A62373E76C00963468 /* RNBNavigationBarStyle.swift */,
@@ -85,6 +90,7 @@
 				802F26AA2373EF9A00963468 /* UINavigationBar+Views.swift */,
 				802F26A82373EF7700963468 /* UINavigationBar+Transition.swift */,
 				802F26BA237409BF00963468 /* UIViewController+Transition.swift */,
+				8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */,
 				802F26BC23740A6100963468 /* UINavigationController+Transition.swift */,
 				8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */,
 				8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */,
@@ -177,10 +183,12 @@
 				802F26A52373E3CD00963468 /* RNBHelper.swift in Sources */,
 				802F26A32373CB2D00963468 /* RXCNavigationBarTransition.swift in Sources */,
 				802F26BF23740E8200963468 /* RNBSetting.swift in Sources */,
+				8089AE06238516D00084FEAF /* UIColor+RNBExtension.swift in Sources */,
 				802F26BB237409BF00963468 /* UIViewController+Transition.swift in Sources */,
 				8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
 				802F26A72373E76C00963468 /* RNBNavigationBarStyle.swift in Sources */,
 				8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
+				8089AE042384D57D0084FEAF /* UINavigationController+RNBExtension.swift in Sources */,
 				802F26AB2373EF9A00963468 /* UINavigationBar+Views.swift in Sources */,
 				802F26BD23740A6100963468 /* UINavigationController+Transition.swift in Sources */,
 				8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */,

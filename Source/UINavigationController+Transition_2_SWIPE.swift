@@ -51,6 +51,8 @@ extension UINavigationController {
                 coordinator.animate(alongsideTransition: nil) { (_) in
                     rnblog("侧滑结束")
                     self.updateInteractiveTransitionCoordinator = nil
+                    //强制应用样式
+                    self.rnb_applyNavigationBarStyle(style: toStyle, applyImmediatelly: false)
                 }
 
                 coordinator.notifyWhenInteractionChanges {[weak self] (context) in
@@ -61,7 +63,7 @@ extension UINavigationController {
                         //退回fromVC
                         UIView.animate(withDuration: coordinator.transitionDuration, animations: {
                             rnblog("侧滑中断 - 取消 - 动画执行")
-                            self?.rnb_updateNavigationBarStyle(style: fromVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
+                            self?.rnb_applyNavigationBarStyle(style: fromVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
                         }) { (_) in
                             self?.updateInteractiveTransitionCoordinator = nil
                         }
@@ -70,14 +72,14 @@ extension UINavigationController {
                         rnblog("侧滑中断 - 继续")
                         UIView.animate(withDuration: coordinator.transitionDuration, animations: {
                             rnblog("侧滑中断 - 继续 - 动画执行")
-                            self?.rnb_updateNavigationBarStyle(style: toVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
+                            self?.rnb_applyNavigationBarStyle(style: toVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true)
                         }) { (_) in
                             self?.updateInteractiveTransitionCoordinator = nil
                         }
                     }
                 }
             }
-            self.rnb_updateNavigationBarStyleInteractively(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete)
+            self.rnb_applyNavigationBarStyleInteractively(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete)
         }
     }
 

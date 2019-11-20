@@ -75,11 +75,23 @@ public struct RNBHelper {
         return nil
     }
 
+    public static func findClosestViewController(for object: UIResponder)->UIViewController? {
+        var current:UIResponder? = object.next
+        while current != nil {
+            if let tab = current as? UIViewController {
+                return tab
+            }
+            current = current?.next
+        }
+        return nil
+    }
+
 }
 
 extension RNBHelper {
 
     internal static func chooseSettedValue<T>(setting:RNBSetting<T>, setting2:RNBSetting<T>?, defaultValue:T)->T {
+        ///为了防止T是可选值, 这里不可以使用 ?? 符号
         switch setting {
         case .setted(let value):
             return value
@@ -120,15 +132,11 @@ public extension RNBHelper {
     //these are system default values
 
     static let systemDefaultNavigationBarAlpha:CGFloat = 1.0
+
     static let systemDefaultNavigationBarBackgroundAlpha:CGFloat = 1.0
-    ///在translucent模式下是没有颜色的, 默认采用透明模式的颜色, 在不透明模式下是systemBackground
-    static var systemDefaultNavigationBarBarTintColor:UIColor = {
-        if #available(iOS 13, *) {
-            return UIColor.systemBackground
-        }else {
-            return UIColor.white
-        }
-    }()
+
+    ///在translucent模式下是没有颜色的, 默认采用透明模式的颜色: nil
+    static var systemDefaultNavigationBarBarTintColor:UIColor? = nil
 
     static var systemDefaultNavigationBarTintColor:UIColor {
         if #available(iOS 13, *) {
@@ -137,6 +145,7 @@ public extension RNBHelper {
             return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1.0)
         }
     }
+
     static var systemDefaultNavigationBarTitleColor:UIColor {
         if #available(iOS 13, *) {
             return UIColor.label
@@ -144,7 +153,9 @@ public extension RNBHelper {
             return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1.0)
         }
     }
+
     static let systemDefaultNavigationBarShadowViewHidden:Bool = false
+
     static let systemDefaultStatusBarStyle:UIStatusBarStyle = {
         guard let text = Bundle.main.object(forInfoDictionaryKey: "UIStatusBarStyle") as? String else {
             return UIStatusBarStyle.default
@@ -165,6 +176,6 @@ public extension RNBHelper {
 internal func rnblog(_ closure:@autoclosure ()->Any, file:StaticString = #file,line:Int = #line,function:StaticString = #function) {
     if RXCNavigationBarTransition.debugMode {
         let fileName = String(describing: file).components(separatedBy: "/").last ?? ""
-        print("\(fileName):\(line) - \(function) : \(closure())")
+        print("-----\(fileName):\(line) - \(function) :\n \(closure())")
     }
 }

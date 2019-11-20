@@ -14,8 +14,6 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.brown
-        self.rnb_navigationBarBarTintColor = .setted(UIColor.blue)
-        self.rnb_navigationBarAlpha = .setted(1)
 
         //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "按钮1", style: .plain, target: nil, action: nil)
         var rightButtons:[UIBarButtonItem] = []

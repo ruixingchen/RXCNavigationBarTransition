@@ -25,7 +25,7 @@ extension UINavigationController {
         self.rnbsw_pushViewController(viewController, animated: animated)
 
         if let coordinator = viewController.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+            self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }
     }
 
@@ -40,9 +40,10 @@ extension UINavigationController {
         if let coordinator = self.transitionCoordinator {
             if coordinator.initiallyInteractive {
                 //手势滑动返回导致的pop调用, 无需处理导航栏样式
+                rnblog("本次pop是侧滑pop")
             }else {
                 //非交互式的pop, 代码返回或者
-                self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+                self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
             }
         }else {
             assertionFailure("pop时无法获取coordinator")
@@ -62,7 +63,7 @@ extension UINavigationController {
         let vcs = self.rnbsw_popToViewController(viewController, animated: animated)
 
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+            self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
             assertionFailure("popTo时无法获取coordinator")
         }
@@ -81,7 +82,7 @@ extension UINavigationController {
         let vcs:[UIViewController]? = self.rnbsw_popToRootViewController(animated: animated)
 
         if let coordinator = self.transitionCoordinator {
-            self.rnb_updateNavigationBarAppearenceUninteractively(coordinator: coordinator)
+            self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
             assertionFailure("popToRoot时无法获取coordinator")
         }

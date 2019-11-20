@@ -30,7 +30,7 @@ public final class RXCNavigationBarTransition {
 
     public static var defaultAlpha:CGFloat = 1.0
     public static var defaultBackgroundAlpha:CGFloat = 1.0
-    public static var defaultBarTintColor:UIColor = RNBHelper.systemDefaultNavigationBarBarTintColor
+    public static var defaultBarTintColor:UIColor? = RNBHelper.systemDefaultNavigationBarBarTintColor
     public static var defaultTintColor:UIColor = RNBHelper.systemDefaultNavigationBarTintColor
     public static var defaultTitleColor:UIColor = RNBHelper.systemDefaultNavigationBarTitleColor
     public static var defaultShadowViewHidden:Bool = RNBHelper.systemDefaultNavigationBarShadowViewHidden

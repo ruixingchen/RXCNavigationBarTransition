@@ -23,16 +23,15 @@ class SimpleTestViewController: UIViewController {
         super.viewWillAppear(animated)
         let shadowView = self.navigationController?.navigationBar.rnb_shadowView
         shadowView?.subviews.first?.frame.size.height = 10
-        self.rnb_navigationBarShadowViewHidden = RNBSetting.setted(false)
-        self.navigationController?.navigationBar.rnb_shadowView?.addObserver(self, forKeyPath: "alpha", options: .new, context: nil)
+
+        self.rnb_setNavigationBarBarTintColor(UIColor.red)
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-
-        if keyPath == "alpha" {
-            print(change?[NSKeyValueChangeKey.newKey])
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            //self.navigationController?.navigationBar.barTintColor = UIColor.blue.withAlphaComponent(0.0)
         }
-
     }
 
     @IBAction func didTapButton(_ sender: Any) {
@@ -58,7 +57,15 @@ class SimpleTestViewController2: UIViewController {
         super.viewWillAppear(animated)
         let shadowView = self.navigationController?.navigationBar.rnb_shadowView
         shadowView?.subviews.first?.frame.size.height = 10
-        self.rnb_navigationBarShadowViewHidden = RNBSetting.setted(true)
+//        self.rnb_setNavigationBarShadowViewHidden(true)
+        self.rnb_setNavigationBarBarTintColor(UIColor.blue)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        //print(self.navigationController?.poppingViewController)
+
     }
 
 }

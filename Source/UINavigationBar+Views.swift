@@ -71,7 +71,11 @@ extension UINavigationBar {
         guard let _backgroundView = self.rnb_barBackgroundView else {return nil}
         if let effectView1 = _backgroundView.subviews.first(where: {$0.isMember(of: UIVisualEffectView.self) && $0.frame == _backgroundView.bounds}) {
             //have a visualEffectView
-            guard let view = effectView1.subviews.first(where: {$0.isMember(of: NSClassFromString("_UIVisualEffectSubview")!) && $0.alpha == 0.85 && $0.frame==effectView1.bounds}) else {return nil}
+            //这里的判断条件不可以精确判断,会判断为false, 用一个范围来替代, alpha的值大约是在0.85
+            guard let view = effectView1.subviews.first(where: {$0.isMember(of: NSClassFromString("_UIVisualEffectSubview")!) && (0.84...0.86).contains($0.alpha) && $0.frame==effectView1.bounds}) else {
+                assertionFailure("无法找到alpha为0.85的显示barTint的view")
+                return nil
+            }
             return view
         }else if let colorAndImageView1 = _backgroundView.subviews.first(where: {$0.frame == _backgroundView.bounds && $0.isMember(of: UIImageView.self)}){
             return colorAndImageView1

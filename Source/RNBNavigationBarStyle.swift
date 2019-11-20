@@ -45,7 +45,7 @@ public final class RNBNavigationBarStyle {
 
     public var alphaSetting:RNBSetting<CGFloat> = RNBSetting.notset
     public var backgroundAlphaSetting:RNBSetting<CGFloat> = RNBSetting.notset
-    public var barTintColorSetting:RNBSetting<UIColor> = RNBSetting.notset
+    public var barTintColorSetting:RNBSetting<UIColor?> = RNBSetting.notset
     public var tintColorSetting:RNBSetting<UIColor> = RNBSetting.notset
     public var titleColorSetting:RNBSetting<UIColor> = RNBSetting.notset
     public var shadowViewHiddenSetting:RNBSetting<Bool> = RNBSetting.notset
