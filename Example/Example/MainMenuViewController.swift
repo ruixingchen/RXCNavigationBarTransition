@@ -10,6 +10,10 @@ import UIKit
 
 class MainMenuViewController: UITableViewController {
 
+    enum Row {
+        case weiboExample
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

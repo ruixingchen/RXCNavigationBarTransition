@@ -19,6 +19,9 @@ extension UINavigationBar {
         var view = objc_getAssociatedObject(self, &Key.rnb_backgroundView) as? UIImageView
         if view == nil {
             view = UIImageView()
+            //强制显示在最深
+            view?.layer.zPosition = CGFloat(-Float.greatestFiniteMagnitude)
+            print(Float.leastNormalMagnitude)
             objc_setAssociatedObject(self, &Key.rnb_backgroundView, view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         return view!
@@ -42,6 +45,7 @@ extension UINavigationBar {
     @objc internal func rnbsw_layoutSubviews() {
         self.rnbsw_layoutSubviews()
         self.addBackgroundViewIfNeeded()
+        print("rnbsw_layoutSubviews")
     }
 
 }

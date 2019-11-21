@@ -29,10 +29,14 @@
 		800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D623867D8800113B6E /* TitleColorTestViewController.swift */; };
 		800926D923867E1700113B6E /* ShadowHiddenTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */; };
 		800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */; };
+		800926DF2386922000113B6E /* WeiboExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926DE2386922000113B6E /* WeiboExampleViewController.swift */; };
+		800926E6238696E400113B6E /* DebugMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926E5238696E400113B6E /* DebugMenuViewController.swift */; };
 		802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F268D2373CAEF00963468 /* AppDelegate.swift */; };
 		802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26912373CAEF00963468 /* AllTestViewController.swift */; };
 		802F26972373CAF000963468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802F26962373CAF000963468 /* Assets.xcassets */; };
 		802F269A2373CAF000963468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802F26982373CAF000963468 /* LaunchScreen.storyboard */; };
+		8047FC8523869D950040314B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC8423869D950040314B /* UIColor+Extension.swift */; };
+		8047FC872386A69E0040314B /* ExampleMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC862386A69E0040314B /* ExampleMenuViewController.swift */; };
 		806DC10023758AC3006DE7D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */; };
 		806DC10423758AC3006DE7D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC10323758AC3006DE7D3 /* ViewController.swift */; };
 		806DC10723758AC3006DE7D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806DC10523758AC3006DE7D3 /* Main.storyboard */; };
@@ -82,12 +86,16 @@
 		800926D623867D8800113B6E /* TitleColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleColorTestViewController.swift; sourceTree = "<group>"; };
 		800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowHiddenTestViewController.swift; sourceTree = "<group>"; };
 		800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarStyleTestViewController.swift; sourceTree = "<group>"; };
+		800926DE2386922000113B6E /* WeiboExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboExampleViewController.swift; sourceTree = "<group>"; };
+		800926E5238696E400113B6E /* DebugMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuViewController.swift; sourceTree = "<group>"; };
 		802F268A2373CAEF00963468 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F268D2373CAEF00963468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802F26912373CAEF00963468 /* AllTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTestViewController.swift; sourceTree = "<group>"; };
 		802F26962373CAF000963468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		802F26992373CAF000963468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		802F269B2373CAF000963468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8047FC8423869D950040314B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8047FC862386A69E0040314B /* ExampleMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMenuViewController.swift; sourceTree = "<group>"; };
 		806DC0FD23758AC3006DE7D3 /* NavigationControllerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationControllerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		806DC10323758AC3006DE7D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +158,31 @@
 			path = ../Source;
 			sourceTree = "<group>";
 		};
+		800926DD238691D900113B6E /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				8047FC862386A69E0040314B /* ExampleMenuViewController.swift */,
+				800926DE2386922000113B6E /* WeiboExampleViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		800926E4238696D800113B6E /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				800926E5238696E400113B6E /* DebugMenuViewController.swift */,
+				800926D22386796C00113B6E /* BaseSingleTestViewController.swift */,
+				800926CC2386722A00113B6E /* AlphaTestViewController.swift */,
+				800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */,
+				800926D02386788800113B6E /* ForegroundColorTestViewController.swift */,
+				800926D423867D2D00113B6E /* TintColorTestViewController.swift */,
+				800926D623867D8800113B6E /* TitleColorTestViewController.swift */,
+				800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */,
+				800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		802F26812373CAEF00963468 = {
 			isa = PBXGroup;
 			children = (
@@ -174,17 +207,12 @@
 		802F268C2373CAEF00963468 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8047FC8423869D950040314B /* UIColor+Extension.swift */,
+				800926DD238691D900113B6E /* Example */,
+				800926E4238696D800113B6E /* Debug */,
 				802F268D2373CAEF00963468 /* AppDelegate.swift */,
 				800926CA23866FD800113B6E /* MainMenuViewController.swift */,
 				802F26912373CAEF00963468 /* AllTestViewController.swift */,
-				800926D22386796C00113B6E /* BaseSingleTestViewController.swift */,
-				800926CC2386722A00113B6E /* AlphaTestViewController.swift */,
-				800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */,
-				800926D02386788800113B6E /* ForegroundColorTestViewController.swift */,
-				800926D423867D2D00113B6E /* TintColorTestViewController.swift */,
-				800926D623867D8800113B6E /* TitleColorTestViewController.swift */,
-				800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */,
-				800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */,
 				802F26962373CAF000963468 /* Assets.xcassets */,
 				802F26982373CAF000963468 /* LaunchScreen.storyboard */,
 				802F269B2373CAF000963468 /* Info.plist */,
@@ -406,10 +434,13 @@
 				800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */,
 				800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */,
 				800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */,
+				800926E6238696E400113B6E /* DebugMenuViewController.swift in Sources */,
 				800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */,
 				800926C523865F7700113B6E /* UIViewController+Transition.swift in Sources */,
 				800926CF238677AD00113B6E /* BackgroundAlphaTestViewController.swift in Sources */,
+				800926DF2386922000113B6E /* WeiboExampleViewController.swift in Sources */,
 				800926C623865F7700113B6E /* UINavigationBar+Views.swift in Sources */,
+				8047FC872386A69E0040314B /* ExampleMenuViewController.swift in Sources */,
 				800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */,
 				802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */,
 				800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */,
@@ -422,6 +453,7 @@
 				800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */,
 				802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */,
 				800926D12386788800113B6E /* ForegroundColorTestViewController.swift in Sources */,
+				8047FC8523869D950040314B /* UIColor+Extension.swift in Sources */,
 				800926BE23865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
 				800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */,
 			);

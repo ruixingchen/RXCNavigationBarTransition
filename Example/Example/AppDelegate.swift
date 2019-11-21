@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RXCNavigationBarTransition.start()
 
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: MainMenuViewController(style: .grouped))
+        let debugVC = UINavigationController(rootViewController: DebugMenuViewController())
+        debugVC.title = "Debug"
+        let exampleVC = UINavigationController(rootViewController: ExampleMenuViewController())
+        exampleVC.title = "Example"
+        let tab = UITabBarController()
+        tab.setViewControllers([exampleVC, debugVC], animated: false)
+        window?.rootViewController = tab
         window?.makeKeyAndVisible()
 
         return true
