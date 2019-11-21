@@ -73,7 +73,7 @@ extension UINavigationBar {
             //have a visualEffectView
             //这里的判断条件不可以精确判断,会判断为false, 用一个范围来替代, alpha的值大约是在0.85
             guard let view = effectView1.subviews.first(where: {$0.isMember(of: NSClassFromString("_UIVisualEffectSubview")!) && (0.84...0.86).contains($0.alpha) && $0.frame==effectView1.bounds}) else {
-                assertionFailure("无法找到alpha为0.85的显示barTint的view")
+                //assertionFailure("无法找到alpha为0.85的显示barTint的view")
                 return nil
             }
             return view

@@ -56,7 +56,22 @@ class ViewController: UIViewController {
     let shadowSwitch: UISwitch = UISwitch()
 
     let statusBarTextLabel: UILabel = UILabel()
-    let statusBarSegment: UISegmentedControl = UISegmentedControl(items: ["default", "light", "dark"])
+    let statusBarSegment: UISegmentedControl = UISegmentedControl(items: ["default", "dark", "light"])
+
+    //第一行
+    let applyButton = UIButton(type: .system)
+
+    //第二行
+    let randomColorButton = UIButton(type: .system)
+    let randomColorAndApplyButton = UIButton(type: .system)
+
+    //第三行
+    let applyAsNavDefaultButton = UIButton(type: .system)
+    let applyAsDefaultButton = UIButton(type: .system)
+
+    //第四行
+    let pushButton = UIButton(type: .system)
+    let pushWithRandomColorButton = UIButton(type: .system)
 
     let scrollView:UIScrollView = UIScrollView()
     let contentView = UIView()
@@ -74,6 +89,7 @@ class ViewController: UIViewController {
         if self.navigationController?.viewControllers.first != self {
             self.navigationItem.leftBarButtonItem = nil
         }
+
     }
 
     override func viewWillLayoutSubviews() {
@@ -233,7 +249,7 @@ class ViewController: UIViewController {
         }
 
         applyTextLabel(label: self.shadowTextLabel, text: "shadow hidden")
-        self.shadowSwitch.addTarget(self, action: #selector(shadowHiddenSwitchAction(_:)), for: .valueChanged)
+        //self.shadowSwitch.addTarget(self, action: #selector(shadowHiddenSwitchAction(_:)), for: .valueChanged)
         self.contentView.addSubview(self.shadowTextLabel)
         self.contentView.addSubview(self.shadowSwitch)
         self.shadowTextLabel.snp.makeConstraints { (make) in
@@ -260,24 +276,83 @@ class ViewController: UIViewController {
             //make.right.equalToSuperview().offset(-8)
         }
 
+        //第一行
+        self.applyButton.setTitle("apply", for: .normal)
+        self.applyButton.addTarget(self, action: #selector(apply(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.applyButton)
+        self.applyButton.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(8)
+            make.top.equalTo(self.statusBarTextLabel.snp.bottom).offset(8)
+        }
+        //第二行
+        self.randomColorButton.setTitle("random color", for: .normal)
+        self.randomColorButton.addTarget(self, action: #selector(randomColor(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.randomColorButton)
+        self.randomColorAndApplyButton.setTitle("| random color and apply", for: .normal)
+        self.randomColorAndApplyButton.addTarget(self, action: #selector(randomColorAndApply(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.randomColorAndApplyButton)
+        self.randomColorButton.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(8)
+            make.top.equalTo(self.applyButton.snp.bottom).offset(8)
+        }
+        self.randomColorAndApplyButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.randomColorButton)
+            make.left.equalTo(self.randomColorButton.snp.right).offset(8)
+        }
+
+        //第三行
+        self.applyAsNavDefaultButton.setTitle("apply as Nav default", for: .normal)
+        self.applyAsNavDefaultButton.addTarget(self, action: #selector(applyAsNavDefault(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.applyAsNavDefaultButton)
+        self.applyAsDefaultButton.setTitle("| apply as default", for: .normal)
+        self.applyAsDefaultButton.addTarget(self, action: #selector(applyAsDefault(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.applyAsDefaultButton)
+        self.applyAsNavDefaultButton.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(8)
+            make.top.equalTo(self.randomColorButton.snp.bottom).offset(8)
+        }
+        self.applyAsDefaultButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.applyAsNavDefaultButton)
+            make.left.equalTo(self.applyAsNavDefaultButton.snp.right).offset(8)
+        }
+
+        self.pushButton.setTitle("push", for: .normal)
+        self.pushButton.addTarget(self, action: #selector(push(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.pushButton)
+        self.pushWithRandomColorButton.setTitle("| push with random color", for: .normal)
+        self.pushWithRandomColorButton.addTarget(self, action: #selector(pushWithRandomColor(_:)), for: .touchUpInside)
+        self.contentView.addSubview(self.pushWithRandomColorButton)
+        self.pushButton.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(8)
+            make.top.equalTo(self.applyAsNavDefaultButton.snp.bottom).offset(8)
+        }
+        self.pushWithRandomColorButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.pushButton)
+            make.left.equalTo(self.pushButton.snp.right).offset(8)
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = self.navigationController?.viewControllers.firstIndex(of: self)?.description
-        if let style = self.outSettedStyle {
-            self.applyStyleToView(style: style)
+        let style:RNBNavigationBarStyle = self.outSettedStyle ?? RNBNavigationBarStyle.systemDefault()
+        self.applyStyleToView(style: style)
+        if !self.viewDidAppear_called {
+            //第一次显示, 强制更新样式
             self.applyStyleToNavigationBar(style: style)
         }
+        self.title = self.navigationController?.viewControllers.firstIndex(of: self)?.description
     }
 
+    var viewDidAppear_called:Bool = false
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.viewDidAppear_called = true
         //self.applyStyleToNavigationBar(style: self.outSettedStyle)
     }
 
     ///当前view设置的style
-    func currentStyle() -> RNBNavigationBarStyle {
+    func styleFromView() -> RNBNavigationBarStyle {
         let style = RNBNavigationBarStyle()
         style.alphaSetting = .setted(CGFloat(self.alphaSlider.value))
         style.backgroundAlphaSetting = .setted(CGFloat(self.backAlphaSlider.value))
@@ -304,10 +379,7 @@ class ViewController: UIViewController {
 
     func applyStyleToView(style:RNBNavigationBarStyle) {
         self.alphaSlider.value = Float(style.alphaSetting.value ?? 1.0)
-        self.alphaSliderAction(self.alphaSlider)
-
         self.backAlphaSlider.value = Float(style.backgroundAlphaSetting.value ?? 1.0)
-        self.backAlphaAction(self.backAlphaSlider)
 
         if true {
             let barTintColor = style.barTintColorSetting.value ?? RNBHelper.systemDefaultNavigationBarBarTintColor
@@ -426,41 +498,36 @@ class ViewController: UIViewController {
         self.titlePreviewView.backgroundColor = color
     }
 
-    @IBAction func shadowHiddenSwitchAction(_ sender: Any?) {
-
-    }
-
-    //MARK: - 第一行
-
     @IBAction func apply(_ sender: Any) {
-        let style = self.currentStyle()
+        let style = self.styleFromView()
         self.applyStyleToNavigationBar(style: style)
     }
 
-    @IBAction func randomAll(_ sender: Any?) {
+    @IBAction func randomColor(_ sender: Any?) {
+        self.barTintColorSlider.setValue(Float.random(in: 0...1), animated: true)
+        self.barTintColorSlider.sendActions(for: .valueChanged)
+        self.barTintAlphaSlider.setValue(1.0, animated: true)
+        self.barTintAlphaSlider.sendActions(for: .valueChanged)
+
+        self.tintColorSlider.setValue(Float.random(in: 0...1), animated: true)
+        self.tintColorSlider.sendActions(for: .valueChanged)
+        self.titleColorSlider.setValue(Float.random(in: 0...1), animated: true)
+        self.titleColorSlider.sendActions(for: .valueChanged)
         self.shadowSwitch.isOn = Bool.random()
         self.statusBarSegment.selectedSegmentIndex = (0...statusBarSegment.numberOfSegments).randomElement()!
     }
 
-    @IBAction func randomAllAndApply(_ sender: Any) {
-        self.randomAll(nil)
-        self.applyStyleToNavigationBar(style: self.currentStyle())
+    @IBAction func randomColorAndApply(_ sender: Any) {
+        self.randomColor(sender)
+        self.apply(sender)
     }
 
-    //MARK: - 第二行
+    @IBAction func applyAsNavDefault(_ sender: Any) {
 
-    @IBAction func systemDefault(_ sender: Any) {
-        let style = RNBNavigationBarStyle.systemDefault()
-        self.applyStyleToView(style: style)
     }
 
-
-    @IBAction func navDefault(_ sender: Any) {
-        self.applyStyleToView(style: .notset())
-    }
-
-    @IBAction func setAsNavDefault(_ sender: Any) {
-        let style = self.currentStyle()
+    @IBAction func applyAsDefault(_ sender: Any) {
+        let style = self.styleFromView()
         self.navigationController?.rnb_defaultNavigationBarAlpha = style.alphaSetting
         self.navigationController?.rnb_defaultNavigationBarBackgroundAlpha = style.backgroundAlphaSetting
         self.navigationController?.rnb_defaultNavigationBarBarTintColor = style.barTintColorSetting
@@ -470,28 +537,16 @@ class ViewController: UIViewController {
         self.navigationController?.rnb_defaultStatusBarStyle = style.statusBarStyleSetting
     }
 
-    //MARK: - 第三行
-
     @IBAction func push(_ sender: Any?) {
-        let style = self.currentStyle()
-        let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let style = self.styleFromView()
+        let vc = ViewController()
         vc.outSettedStyle = style
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
-    @IBAction func randomPush(_ sender: Any) {
-        self.randomAll(nil)
+    @IBAction func pushWithRandomColor(_ sender: Any) {
+        self.randomColor(sender)
         self.push(nil)
-    }
-
-    //MARK: - 第四行
-
-    @IBAction func presentCleanNav(_ sender: Any) {
-        let vc = UITableViewController(style: .grouped)
-        let navigation = UINavigationController(rootViewController: vc)
-        navigation.modalPresentationStyle = .fullScreen
-        self.present(navigation, animated: true, completion: nil)
     }
 
 }

@@ -285,10 +285,12 @@ extension UINavigationController {
                 //这里需要判断有一个为nil的情况, 让颜色过渡更平滑
                 if fromColor == nil && toColor != nil {
                     let toTuple = toColor!.rnb_rgbaTuple()
-                    fromColor = UIColor(red: toTuple.r/255, green: toTuple.g/255, blue: toTuple.b/255, alpha: 0.0)
+//                    fromColor = UIColor(red: toTuple.r, green: toTuple.g, blue: toTuple.b, alpha: -1)
+                    fromColor = UIColor.clear
                 }else if fromColor != nil && toColor == nil {
                     let fromTuple = fromColor!.rnb_rgbaTuple()
-                    toColor = UIColor(red: fromTuple.r/255, green: fromTuple.g/255, blue: fromTuple.b/255, alpha: 0.0)
+                    //toColor = UIColor(red: fromTuple.r, green: fromTuple.g, blue: fromTuple.b, alpha: -1)
+                    toColor = UIColor.clear
                 }
 
                 //到这里fromColor和toColor都确保有颜色了, 开始计算中间色
