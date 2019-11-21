@@ -68,7 +68,7 @@ extension UINavigationBar {
 
     internal func rnb_setTitleColor(_ value: UIColor?) {
         var attributes = self.titleTextAttributes ?? [:]
-        attributes[.backgroundColor] = value
+        attributes[.foregroundColor] = value
         self.titleTextAttributes = attributes
     }
 
