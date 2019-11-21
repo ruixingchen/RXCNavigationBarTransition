@@ -72,9 +72,9 @@ extension UINavigationController {
         self.navigationBar.rnb_setBackgroundAlpha(value)
     }
 
-    internal func rnbnav_setNavigationBarBarTintColor(setting:RNBSetting<UIColor?>) {
-        let value = RNBHelper.chooseSettedValue(setting: setting, setting2: self.rnb_navigationBarDefaultStyle.barTintColorSetting, defaultValue: RXCNavigationBarTransition.defaultBarTintColor)
-        self.navigationBar.rnb_setBarTintColor(value)
+    internal func rnbnav_setNavigationBarBackgroundColor(setting:RNBSetting<UIColor>) {
+        let value = RNBHelper.chooseSettedValue(setting: setting, setting2: self.rnb_navigationBarDefaultStyle.backgroundColorSetting, defaultValue: RXCNavigationBarTransition.defaultBackgroundColor)
+        self.navigationBar.rnb_setBackgroundColor(value)
     }
 
     internal func rnbnav_setNavigationBarTintColor(setting:RNBSetting<UIColor>) {
@@ -138,12 +138,12 @@ extension UINavigationController {
         }
     }
 
-    public var rnb_defaultNavigationBarBarTintColor:RNBSetting<UIColor?> {
+    public var rnb_defaultNavigationBarBackgroundColor:RNBSetting<UIColor> {
         get {
-            return self.rnb_navigationBarDefaultStyle.barTintColorSetting
+            return self.rnb_navigationBarDefaultStyle.backgroundColorSetting
         }
         set {
-            self.rnb_navigationBarDefaultStyle.barTintColorSetting = newValue
+            self.rnb_navigationBarDefaultStyle.backgroundColorSetting = newValue
             self.updateNavigationBarStyleAfterDefaultStyleChanged()
         }
     }
@@ -197,14 +197,13 @@ extension UINavigationController {
         rnblog("开始应用导航栏样式")
         self.rnbnav_setNavigationBarAlpha(setting: style.alphaSetting)
         self.rnbnav_setNavigationBarBackgroundAlpha(setting: style.backgroundAlphaSetting)
-        self.rnbnav_setNavigationBarBarTintColor(setting: style.barTintColorSetting)
+        self.rnbnav_setNavigationBarBackgroundColor(setting: style.backgroundColorSetting)
         self.rnbnav_setNavigationBarTintColor(setting: style.tintColorSetting)
         self.rnbnav_setNavigationBarTitleColor(setting: style.titleColorSetting)
         self.rnbnav_setNavigationBarShadowViewHidden(setting: style.shadowViewHiddenSetting)
         self.rnbnav_setStatusBarStyle()
         if applyImmediatelly {
             rnblog("立刻应用样式")
-            self.navigationBar.applyBarTintColorImmediatelly()
             self.navigationBar.applyTintColorImmediatelly()
             self.navigationBar.applyTitleColorImmediatelly()
         }
@@ -234,8 +233,6 @@ extension UINavigationController {
     ///在交互状态下更新导航栏样式
     internal func rnb_applyNavigationBarStyleInteractively(fromStyle:RNBNavigationBarStyle, toStyle:RNBNavigationBarStyle, progress:CGFloat) {
 
-        rnblog("交互状态下应用导航栏样式")
-
         if true {
             if let fromAlpha = fromStyle.alphaSetting.value {
                 let toAlpha = RNBHelper.chooseSettedValue(setting: toStyle.alphaSetting, setting2: self.rnb_navigationBarDefaultStyle.alphaSetting, defaultValue: RXCNavigationBarTransition.defaultAlpha)
@@ -256,47 +253,41 @@ extension UINavigationController {
         }
         if true {
             var fromColor:UIColor?
-            if case let .setted(value) = fromStyle.barTintColorSetting {
+            if case let .setted(value) = fromStyle.backgroundColorSetting {
                 fromColor = value
             }else {
                 //没有设置, 取默认颜色
-                if case let .setted(navSetted) = self.rnb_defaultNavigationBarBarTintColor {
+                if case let .setted(navSetted) = self.rnb_defaultNavigationBarBackgroundColor {
                     fromColor = navSetted
                 }else {
-                    fromColor = RXCNavigationBarTransition.defaultBarTintColor
+                    fromColor = RXCNavigationBarTransition.defaultBackgroundColor
                 }
             }
             var toColor:UIColor?
-            if case let .setted(value) = toStyle.barTintColorSetting {
+            if case let .setted(value) = toStyle.backgroundColorSetting {
                 toColor = value
             }else {
                 //没有设置, 取默认颜色
-                if case let .setted(navSetted) = self.rnb_defaultNavigationBarBarTintColor {
+                if case let .setted(navSetted) = self.rnb_defaultNavigationBarBackgroundColor {
                     toColor = navSetted
                 }else {
-                    toColor = RXCNavigationBarTransition.defaultBarTintColor
+                    toColor = RXCNavigationBarTransition.defaultBackgroundColor
                 }
             }
             if fromColor == nil && toColor == nil {
                 //至少要有一个设置了颜色, 否则不用计算
-                self.rnbnav_setNavigationBarBarTintColor(setting: toStyle.barTintColorSetting)
-                self.navigationBar.applyBarTintColorImmediatelly()
+                self.rnbnav_setNavigationBarBackgroundColor(setting: toStyle.backgroundColorSetting)
             }else {
                 //这里需要判断有一个为nil的情况, 让颜色过渡更平滑
                 if fromColor == nil && toColor != nil {
-                    let toTuple = toColor!.rnb_rgbaTuple()
-//                    fromColor = UIColor(red: toTuple.r, green: toTuple.g, blue: toTuple.b, alpha: -1)
                     fromColor = UIColor.clear
                 }else if fromColor != nil && toColor == nil {
-                    let fromTuple = fromColor!.rnb_rgbaTuple()
-                    //toColor = UIColor(red: fromTuple.r, green: fromTuple.g, blue: fromTuple.b, alpha: -1)
                     toColor = UIColor.clear
                 }
 
                 //到这里fromColor和toColor都确保有颜色了, 开始计算中间色
                 let color = RNBHelper.calculateProgressiveColor(from: fromColor!, to: toColor!, progress: progress)
-                self.rnbnav_setNavigationBarBarTintColor(setting: .setted(color))
-                self.navigationBar.applyBarTintColorImmediatelly()
+                self.rnbnav_setNavigationBarBackgroundColor(setting: .setted(color))
             }
         }
         if true {

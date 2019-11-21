@@ -48,11 +48,19 @@ extension UINavigationController {
                 rnblog("第一次执行updateInteractiveTransition")
                 self.updateInteractiveTransitionCoordinator = coordinator
 
-                coordinator.animate(alongsideTransition: nil) { (_) in
+                coordinator.animate(alongsideTransition: nil) { (context) in
                     rnblog("侧滑结束")
                     self.updateInteractiveTransitionCoordinator = nil
                     //强制应用样式
-                    self.rnb_applyNavigationBarStyle(style: toStyle, applyImmediatelly: false)
+                    let style:RNBNavigationBarStyle
+                    if context.isCancelled {
+                        style = fromStyle
+                    }else {
+                        style = toStyle
+                    }
+                    DispatchQueue.main.async {
+                        self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                    }
                 }
 
                 coordinator.notifyWhenInteractionChanges {[weak self] (context) in

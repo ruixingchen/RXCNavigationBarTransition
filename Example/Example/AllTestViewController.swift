@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RXCNavigationBarTransition
+import SnapKit
 
 internal func chooseSettedValue<T>(setting:RNBSetting<T>, setting2:RNBSetting<T>?, defaultValue:T)->T {
     switch setting {
@@ -27,7 +27,7 @@ internal func chooseSettedValue<T>(setting:RNBSetting<T>, setting2:RNBSetting<T>
     }
 }
 
-class ViewController: UIViewController {
+class AllTestViewController: UIViewController {
 
     let alphaTextLabel = UILabel()
     let alphaNumLabel: UILabel = UILabel()
@@ -37,10 +37,10 @@ class ViewController: UIViewController {
     let backAlphaNumLabel: UILabel = UILabel()
     let backAlphaSlider: UISlider = UISlider()
 
-    let barTintTextLabel: UILabel = UILabel()
+    let backgroundColorTextLabel: UILabel = UILabel()
     let barTintPreviewView: UIView = UIView()
-    let barTintColorSlider: UISlider = UISlider()
-    let barTintAlphaSlider: UISlider = UISlider()
+    let backgroundColorSlider: UISlider = UISlider()
+    let backgroundColorAlphaSlider: UISlider = UISlider()
 
     let tintTextLabel: UILabel = UILabel()
     let tintPreviewView: UIView = UIView()
@@ -86,10 +86,9 @@ class ViewController: UIViewController {
         self.scrollView.bounces = true
         self.scrollView.alwaysBounceVertical = true
         self.arrangeSubviews()
-        if self.navigationController?.viewControllers.first != self {
-            self.navigationItem.leftBarButtonItem = nil
+        if self.navigationController?.viewControllers.first == self {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDone(_:)))
         }
-
     }
 
     override func viewWillLayoutSubviews() {
@@ -161,33 +160,33 @@ class ViewController: UIViewController {
             make.right.equalToSuperview().offset(-8)
         }
 
-        applyTextLabel(label: self.barTintTextLabel, text: "barTint color")
-        applySlider(self.barTintColorSlider, action: #selector(barTintColorAction(_:)))
-        applySlider(self.barTintAlphaSlider, action: #selector(barTintAlphaAction(_:)))
-        self.contentView.addSubview(self.barTintTextLabel)
+        applyTextLabel(label: self.backgroundColorTextLabel, text: "background color")
+        applySlider(self.backgroundColorSlider, action: #selector(backgroundColorAction(_:)))
+        applySlider(self.backgroundColorAlphaSlider, action: #selector(barTintAlphaAction(_:)))
+        self.contentView.addSubview(self.backgroundColorTextLabel)
         self.contentView.addSubview(self.barTintPreviewView)
-        self.contentView.addSubview(self.barTintColorSlider)
-        self.contentView.addSubview(self.barTintAlphaSlider)
-        self.barTintTextLabel.snp.makeConstraints { (make) in
+        self.contentView.addSubview(self.backgroundColorSlider)
+        self.contentView.addSubview(self.backgroundColorAlphaSlider)
+        self.backgroundColorTextLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
             make.top.equalTo(self.backAlphaTextLabel.snp.bottom).offset(24)
             make.width.equalTo(100)
         }
         self.barTintPreviewView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.barTintTextLabel)
-            make.left.equalTo(self.barTintTextLabel.snp.right).offset(8)
-            make.height.equalTo(self.barTintTextLabel)
+            make.centerY.equalTo(self.backgroundColorTextLabel)
+            make.left.equalTo(self.backgroundColorTextLabel.snp.right).offset(8)
+            make.height.equalTo(self.backgroundColorTextLabel)
             make.width.equalTo(50)
         }
-        self.barTintColorSlider.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.barTintTextLabel)
+        self.backgroundColorSlider.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.backgroundColorTextLabel)
             make.left.equalTo(self.barTintPreviewView.snp.right).offset(8)
         }
-        self.barTintAlphaSlider.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.barTintTextLabel)
-            make.left.equalTo(self.barTintColorSlider.snp.right).offset(8)
+        self.backgroundColorAlphaSlider.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.backgroundColorTextLabel)
+            make.left.equalTo(self.backgroundColorSlider.snp.right).offset(8)
             make.right.equalToSuperview().offset(-8)
-            make.width.equalTo(self.barTintColorSlider)
+            make.width.equalTo(self.backgroundColorSlider)
         }
 
         applyTextLabel(label: self.tintTextLabel, text: "tint color")
@@ -199,7 +198,7 @@ class ViewController: UIViewController {
         self.contentView.addSubview(self.tintAlphaSlider)
         self.tintTextLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
-            make.top.equalTo(self.barTintTextLabel.snp.bottom).offset(24)
+            make.top.equalTo(self.backgroundColorTextLabel.snp.bottom).offset(24)
             make.width.equalTo(100)
         }
         self.tintPreviewView.snp.makeConstraints { (make) in
@@ -335,11 +334,16 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let style:RNBNavigationBarStyle = self.outSettedStyle ?? RNBNavigationBarStyle.systemDefault()
-        self.applyStyleToView(style: style)
-        if !self.viewDidAppear_called {
-            //第一次显示, 强制更新样式
+        if self.navigationController?.viewControllers.count == 1 && self.navigationController?.viewControllers.first == self && !self.viewDidAppear_called {
+            //初始化第一次显示
+            let style = RNBNavigationBarStyle.systemDefault()
+            self.applyStyleToView(style: style)
             self.applyStyleToNavigationBar(style: style)
+        }
+        if let style = self.outSettedStyle {
+            self.applyStyleToView(style: style)
+            self.applyStyleToNavigationBar(style: style)
+            self.outSettedStyle = nil
         }
         self.title = self.navigationController?.viewControllers.firstIndex(of: self)?.description
     }
@@ -356,7 +360,7 @@ class ViewController: UIViewController {
         let style = RNBNavigationBarStyle()
         style.alphaSetting = .setted(CGFloat(self.alphaSlider.value))
         style.backgroundAlphaSetting = .setted(CGFloat(self.backAlphaSlider.value))
-        style.barTintColorSetting = .setted(self.barTintPreviewView.backgroundColor)
+        style.backgroundColorSetting = .setted(self.barTintPreviewView.backgroundColor!)
         style.tintColorSetting = .setted(self.tintPreviewView.backgroundColor!)
         style.titleColorSetting = .setted(titlePreviewView.backgroundColor!)
         style.shadowViewHiddenSetting = .setted(self.shadowSwitch.isOn)
@@ -382,21 +386,15 @@ class ViewController: UIViewController {
         self.backAlphaSlider.value = Float(style.backgroundAlphaSetting.value ?? 1.0)
 
         if true {
-            let barTintColor = style.barTintColorSetting.value ?? RNBHelper.systemDefaultNavigationBarBarTintColor
-            if barTintColor == nil {
-                self.barTintColorSlider.value = 0
-                self.barTintAlphaSlider.value = 0
-                self.barTintPreviewView.backgroundColor = nil
-            }else {
-                var hue:CGFloat = 0
-                var saturation:CGFloat = 0
-                var brightness:CGFloat = 0
-                var alpha:CGFloat = 0
-                barTintColor!.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-                self.barTintColorSlider.value = Float(hue)
-                self.barTintAlphaSlider.value = Float(alpha)
-                self.barTintPreviewView.backgroundColor = barTintColor
-            }
+            let backgroundColor = style.backgroundColorSetting.value ?? RNBHelper.systemDefaultNavigationBarBackgroundColor
+            var hue:CGFloat = 0
+            var saturation:CGFloat = 0
+            var brightness:CGFloat = 0
+            var alpha:CGFloat = 0
+            backgroundColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+            self.backgroundColorSlider.value = Float(hue)
+            self.backgroundColorAlphaSlider.value = Float(alpha)
+            self.barTintPreviewView.backgroundColor = backgroundColor
         }
         if true {
             let tintColor = style.tintColorSetting.value ?? RNBHelper.systemDefaultNavigationBarTintColor
@@ -436,7 +434,7 @@ class ViewController: UIViewController {
     func applyStyleToNavigationBar(style:RNBNavigationBarStyle) {
         self.rnb_setNavigationBarAlpha(style.alphaSetting.value!)
         self.rnb_setNavigationBarBackgroundAlpha(style.backgroundAlphaSetting.value!)
-        self.rnb_setNavigationBarBarTintColor(style.barTintColorSetting.value!)
+        self.rnb_setNavigationBarBackgroundColor(style.backgroundColorSetting.value!)
         self.rnb_setNavigationBarTintColor(style.tintColorSetting.value!)
         self.rnb_setNavigationBarTitleColor(style.titleColorSetting.value!)
         self.rnb_setNavigationBarShadowViewHidden(style.shadowViewHiddenSetting.value!)
@@ -459,15 +457,15 @@ class ViewController: UIViewController {
         self.backAlphaNumLabel.text = String.init(format: "%.2f", value)
     }
 
-    @IBAction func barTintColorAction(_ sender: Any?) {
-        let hue = CGFloat(self.barTintColorSlider.value)
-        let alpha = CGFloat(self.barTintAlphaSlider.value)
+    @IBAction func backgroundColorAction(_ sender: Any?) {
+        let hue = CGFloat(self.backgroundColorSlider.value)
+        let alpha = CGFloat(self.backgroundColorAlphaSlider.value)
         let color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: alpha)
         self.barTintPreviewView.backgroundColor = color
     }
     @IBAction func barTintAlphaAction(_ sender: Any?) {
-        let hue = CGFloat(self.barTintColorSlider.value)
-        let alpha = CGFloat(self.barTintAlphaSlider.value)
+        let hue = CGFloat(self.backgroundColorSlider.value)
+        let alpha = CGFloat(self.backgroundColorAlphaSlider.value)
         let color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: alpha)
         self.barTintPreviewView.backgroundColor = color
     }
@@ -504,10 +502,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func randomColor(_ sender: Any?) {
-        self.barTintColorSlider.setValue(Float.random(in: 0...1), animated: true)
-        self.barTintColorSlider.sendActions(for: .valueChanged)
-        self.barTintAlphaSlider.setValue(1.0, animated: true)
-        self.barTintAlphaSlider.sendActions(for: .valueChanged)
+        self.backgroundColorSlider.setValue(Float.random(in: 0...1), animated: true)
+        self.backgroundColorSlider.sendActions(for: .valueChanged)
+        self.backgroundColorAlphaSlider.setValue(1.0, animated: true)
+        self.backgroundColorAlphaSlider.sendActions(for: .valueChanged)
 
         self.tintColorSlider.setValue(Float.random(in: 0...1), animated: true)
         self.tintColorSlider.sendActions(for: .valueChanged)
@@ -530,7 +528,7 @@ class ViewController: UIViewController {
         let style = self.styleFromView()
         self.navigationController?.rnb_defaultNavigationBarAlpha = style.alphaSetting
         self.navigationController?.rnb_defaultNavigationBarBackgroundAlpha = style.backgroundAlphaSetting
-        self.navigationController?.rnb_defaultNavigationBarBarTintColor = style.barTintColorSetting
+        self.navigationController?.rnb_defaultNavigationBarBackgroundColor = style.backgroundColorSetting
         self.navigationController?.rnb_defaultNavigationBarTintColor = style.tintColorSetting
         self.navigationController?.rnb_defaultNavigationBarTitleColor = style.titleColorSetting
         self.navigationController?.rnb_defaultNavigationBarShadowViewHidden = style.shadowViewHiddenSetting
@@ -539,7 +537,7 @@ class ViewController: UIViewController {
 
     @IBAction func push(_ sender: Any?) {
         let style = self.styleFromView()
-        let vc = ViewController()
+        let vc = AllTestViewController()
         vc.outSettedStyle = style
         self.navigationController?.pushViewController(vc, animated: true)
     }

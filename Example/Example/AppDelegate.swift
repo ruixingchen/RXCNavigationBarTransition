@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RXCNavigationBarTransition
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RXCNavigationBarTransition.start()
 
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        window?.rootViewController = UINavigationController(rootViewController: MainMenuViewController(style: .grouped))
         window?.makeKeyAndVisible()
 
         return true

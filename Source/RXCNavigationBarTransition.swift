@@ -30,7 +30,7 @@ public final class RXCNavigationBarTransition {
 
     public static var defaultAlpha:CGFloat = 1.0
     public static var defaultBackgroundAlpha:CGFloat = 1.0
-    public static var defaultBarTintColor:UIColor? = RNBHelper.systemDefaultNavigationBarBarTintColor
+    public static var defaultBackgroundColor:UIColor = RNBHelper.systemDefaultNavigationBarBackgroundColor
     public static var defaultTintColor:UIColor = RNBHelper.systemDefaultNavigationBarTintColor
     public static var defaultTitleColor:UIColor = RNBHelper.systemDefaultNavigationBarTitleColor
     public static var defaultShadowViewHidden:Bool = RNBHelper.systemDefaultNavigationBarShadowViewHidden
@@ -43,6 +43,7 @@ public final class RXCNavigationBarTransition {
         if started {return}
         started = true
 
+        UINavigationBar.rnb_rnb_startMethodExchange()
         UINavigationController.rnb_startMethodExchange_navigationController()
         UIViewController.rnb_startMethodExchange_viewController()
     }
@@ -92,6 +93,30 @@ extension RXCNavigationBarTransition {
             case .custom(let closure):
                 return closure(controller)
             }
+        }
+    }
+
+}
+
+fileprivate extension UINavigationBar {
+
+    static func rnb_rnb_startMethodExchange() {
+        let needSwizzleSelectors:[Selector] = [
+            #selector(layoutSubviews)
+        ]
+        let newSelectors:[Selector] = [
+            #selector(rnbsw_layoutSubviews)
+        ]
+        for i in needSwizzleSelectors.enumerated() {
+            guard let originalMethod = class_getInstanceMethod(self, i.element) else {
+                assertionFailure("method exchange failed, origin selector not found:\(i.element)")
+                continue
+            }
+            guard let newSelector = class_getInstanceMethod(self, newSelectors[i.offset]) else {
+                assertionFailure("method exchange failed, new selector not found:\(newSelectors[i.offset])")
+                continue
+            }
+            method_exchangeImplementations(originalMethod, newSelector)
         }
     }
 

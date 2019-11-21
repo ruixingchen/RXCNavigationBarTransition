@@ -10,6 +10,7 @@ import UIKit
 
 extension UINavigationController {
 
+    /*
     ///正在进行pop的VC, 通过正常的API是获取不到的, 只能采用土办法
     public var poppingViewController:UIViewController? {
         guard let UINavigationTransitionView = NSClassFromString("UINavigationTransitionView") else {
@@ -56,5 +57,6 @@ extension UINavigationController {
         }
         return nil
     }
+     */
 
 }

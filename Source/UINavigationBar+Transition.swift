@@ -10,6 +10,44 @@ import UIKit
 
 extension UINavigationBar {
 
+    internal struct Key {
+        static var rnb_backgroundView:String = "rnb_backgroundView"
+    }
+
+    ///背景颜色View, 这里使用UIImageView是为了以后能支持背景图片
+    internal var rnb_backgroundView:UIImageView {
+        var view = objc_getAssociatedObject(self, &Key.rnb_backgroundView) as? UIImageView
+        if view == nil {
+            view = UIImageView()
+            objc_setAssociatedObject(self, &Key.rnb_backgroundView, view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        return view!
+    }
+
+    internal func addBackgroundViewIfNeeded() {
+        if self.rnb_backgroundView.superview == nil {
+            self.rnb_barBackgroundView?.insertSubview(self.rnb_backgroundView, at: 0)
+        }else if self.rnb_barBackgroundView?.subviews.first != self.rnb_backgroundView {
+            #if (debug || DEBUG)
+            rnblog("背景色View的index被改变了: \(self.rnb_barBackgroundView?.subviews.map({$0.description}).joined(separator: "///") ?? "no subviews")")
+            #endif
+            //self.rnb_barBackgroundView?.bringSubviewToFront(self.rnb_backgroundView)
+            self.rnb_barBackgroundView?.sendSubviewToBack(self.rnb_backgroundView)
+        }
+        if self.rnb_backgroundView.frame != self.rnb_barBackgroundView?.bounds {
+            self.rnb_backgroundView.frame = self.rnb_barBackgroundView?.bounds ?? self.rnb_backgroundView.frame
+        }
+    }
+
+    @objc internal func rnbsw_layoutSubviews() {
+        self.rnbsw_layoutSubviews()
+        self.addBackgroundViewIfNeeded()
+    }
+
+}
+
+extension UINavigationBar {
+
     internal func rnb_setAlpha(_ value: CGFloat) {
         self.alpha = value
     }
@@ -19,8 +57,9 @@ extension UINavigationBar {
         view?.alpha = value
     }
 
-    internal func rnb_setBarTintColor(_ value: UIColor?) {
-        self.barTintColor = value
+    internal func rnb_setBackgroundColor(_ value: UIColor) {
+        self.addBackgroundViewIfNeeded()
+        self.rnb_backgroundView.backgroundColor = value
     }
 
     internal func rnb_setTintColor(_ value: UIColor?) {
@@ -29,7 +68,7 @@ extension UINavigationBar {
 
     internal func rnb_setTitleColor(_ value: UIColor?) {
         var attributes = self.titleTextAttributes ?? [:]
-        attributes[.foregroundColor] = value
+        attributes[.backgroundColor] = value
         self.titleTextAttributes = attributes
     }
 
@@ -46,14 +85,9 @@ extension UINavigationBar {
 
 extension UINavigationBar {
 
-    internal func applyBarTintColorImmediatelly() {
-        let color = self.barTintColor
-        self.rnb_barTintColorView?.backgroundColor = color
-    }
-
     internal func applyTintColorImmediatelly() {
-        let color = self.tintColor
-        self.rnb_stackButtons.forEach({$0.tintColor = color})
+        //let color = self.tintColor
+        //self.rnb_stackButtons.forEach({$0.tintColor = color})
     }
 
     internal func applyTitleColorImmediatelly() {
@@ -73,11 +107,7 @@ extension UINavigationBar {
         let style = RNBNavigationBarStyle()
         style.alphaSetting = .setted(self.alpha)
         style.backgroundAlphaSetting = .setted(self.rnb_barBackgroundView?.alpha ?? RXCNavigationBarTransition.defaultBackgroundAlpha)
-        if let color = self.barTintColor {
-            style.barTintColorSetting = .setted(color)
-        }else {
-            style.barTintColorSetting = .notset
-        }
+        style.backgroundColorSetting = .setted(self.rnb_backgroundView.backgroundColor ?? UIColor.clear)
         style.tintColorSetting = .setted(self.tintColor)
         style.titleColorSetting = .setted(self.rnb_titleLabel?.textColor ?? RXCNavigationBarTransition.defaultTitleColor)
         style.shadowViewHiddenSetting = .setted(self.rnb_shadowView?.alpha ?? 1 == 0)

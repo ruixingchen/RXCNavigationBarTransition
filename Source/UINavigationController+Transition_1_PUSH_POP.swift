@@ -26,6 +26,21 @@ extension UINavigationController {
 
         if let coordinator = viewController.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
+        }else {
+            //非animated
+            //这里必须async, 让push方法完全执行
+            DispatchQueue.main.async {
+                if self.viewControllers.count == 1 {
+                    //push之后只有一个VC, 表示这是初始化时候的push, 这个时候navBar尚未初始化, 我们无须处理
+                    return
+                }
+                if let vc = self.topViewController {
+                    let style = vc.rnb_navigationBarStyleForTransition()
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                }else {
+                    assertionFailure("无法获取到topViewController")
+                }
+            }
         }
     }
 
@@ -46,7 +61,16 @@ extension UINavigationController {
                 self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
             }
         }else {
-            assertionFailure("pop时无法获取coordinator")
+            //无法获取coordinator, 可能是非animated, 直接应用样式
+            //这里必须async, 让pop方法完全执行
+            DispatchQueue.main.async {
+                if let vc = self.topViewController {
+                    let style = vc.rnb_navigationBarStyleForTransition()
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                }else {
+                    assertionFailure("无法获取到topViewController")
+                }
+            }
         }
 
         return popVC
@@ -65,7 +89,15 @@ extension UINavigationController {
         if let coordinator = self.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
-            assertionFailure("popTo时无法获取coordinator")
+            //这里必须async, 让pop方法完全执行
+            DispatchQueue.main.async {
+                if let vc = self.topViewController {
+                    let style = vc.rnb_navigationBarStyleForTransition()
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                }else {
+                    assertionFailure("无法获取到topViewController")
+                }
+            }
         }
 
         return vcs
@@ -84,7 +116,15 @@ extension UINavigationController {
         if let coordinator = self.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
-            assertionFailure("popToRoot时无法获取coordinator")
+            //这里必须async, 让pop方法完全执行
+            DispatchQueue.main.async {
+                if let vc = self.topViewController {
+                    let style = vc.rnb_navigationBarStyleForTransition()
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                }else {
+                    assertionFailure("无法获取到topViewController")
+                }
+            }
         }
 
         return vcs

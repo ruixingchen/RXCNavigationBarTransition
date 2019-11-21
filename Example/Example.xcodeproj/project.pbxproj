@@ -8,14 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		35F690F473D45E7CD958B7FC /* Pods_NavigationControllerTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829AC3F45F949AF4281A4B2 /* Pods_NavigationControllerTest.framework */; };
-		80059A872382841D007517C1 /* SimpleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80059A862382841D007517C1 /* SimpleTestViewController.swift */; };
-		80059A8823828FA5007517C1 /* RXCNavigationBarTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80059A8523828278007517C1 /* RXCNavigationBarTransition.framework */; };
-		80059A8923828FA5007517C1 /* RXCNavigationBarTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80059A8523828278007517C1 /* RXCNavigationBarTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B023865F7700113B6E /* RXCNavigationBarTransition.swift */; };
+		800926BE23865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B123865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift */; };
+		800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B223865F7700113B6E /* RNBNavigationBarStyle.swift */; };
+		800926C023865F7700113B6E /* RNBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B323865F7700113B6E /* RNBHelper.swift */; };
+		800926C123865F7700113B6E /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B423865F7700113B6E /* UINavigationController+Transition.swift */; };
+		800926C223865F7700113B6E /* RNBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B523865F7700113B6E /* RNBSetting.swift */; };
+		800926C423865F7700113B6E /* UIColor+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B723865F7700113B6E /* UIColor+RNBExtension.swift */; };
+		800926C523865F7700113B6E /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B823865F7700113B6E /* UIViewController+Transition.swift */; };
+		800926C623865F7700113B6E /* UINavigationBar+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B923865F7700113B6E /* UINavigationBar+Views.swift */; };
+		800926C723865F7700113B6E /* UINavigationController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */; };
+		800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */; };
+		800926C923865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */; };
+		800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CA23866FD800113B6E /* MainMenuViewController.swift */; };
+		800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CC2386722A00113B6E /* AlphaTestViewController.swift */; };
+		800926CF238677AD00113B6E /* BackgroundAlphaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */; };
+		800926D12386788800113B6E /* ForegroundColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D02386788800113B6E /* ForegroundColorTestViewController.swift */; };
+		800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D22386796C00113B6E /* BaseSingleTestViewController.swift */; };
+		800926D523867D2D00113B6E /* TintColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D423867D2D00113B6E /* TintColorTestViewController.swift */; };
+		800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D623867D8800113B6E /* TitleColorTestViewController.swift */; };
+		800926D923867E1700113B6E /* ShadowHiddenTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */; };
+		800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */; };
 		802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F268D2373CAEF00963468 /* AppDelegate.swift */; };
-		802F26922373CAEF00963468 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26912373CAEF00963468 /* ViewController.swift */; };
+		802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26912373CAEF00963468 /* AllTestViewController.swift */; };
 		802F26972373CAF000963468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802F26962373CAF000963468 /* Assets.xcassets */; };
 		802F269A2373CAF000963468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802F26982373CAF000963468 /* LaunchScreen.storyboard */; };
-		802F26B82373FB1200963468 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26B72373FB1200963468 /* SecondViewController.swift */; };
 		806DC10023758AC3006DE7D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */; };
 		806DC10423758AC3006DE7D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC10323758AC3006DE7D3 /* ViewController.swift */; };
 		806DC10723758AC3006DE7D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806DC10523758AC3006DE7D3 /* Main.storyboard */; };
@@ -24,16 +41,6 @@
 		8564A8DAC9D3C2D6B4A65F5B /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F61CA174020D1286620A48 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		80059A8423828278007517C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80059A8023828277007517C1 /* RXCNavigationBarTransition.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 802F26762373CABF00963468;
-			remoteInfo = RXCNavigationBarTransition;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		802F26B52373F44100963468 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -41,7 +48,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80059A8923828FA5007517C1 /* RXCNavigationBarTransition.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,15 +60,34 @@
 		15C4E9BDFAFB5D5E3A731C46 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		593250B0CC2B4D5588B3F2C8 /* Pods-NavigationControllerTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationControllerTest.debug.xcconfig"; path = "Target Support Files/Pods-NavigationControllerTest/Pods-NavigationControllerTest.debug.xcconfig"; sourceTree = "<group>"; };
 		7829AC3F45F949AF4281A4B2 /* Pods_NavigationControllerTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavigationControllerTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80059A8023828277007517C1 /* RXCNavigationBarTransition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RXCNavigationBarTransition.xcodeproj; path = ../RXCNavigationBarTransition.xcodeproj; sourceTree = "<group>"; };
-		80059A862382841D007517C1 /* SimpleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTestViewController.swift; sourceTree = "<group>"; };
+		800926B023865F7700113B6E /* RXCNavigationBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXCNavigationBarTransition.swift; sourceTree = "<group>"; };
+		800926B123865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2_SWIPE.swift"; sourceTree = "<group>"; };
+		800926B223865F7700113B6E /* RNBNavigationBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBNavigationBarStyle.swift; sourceTree = "<group>"; };
+		800926B323865F7700113B6E /* RNBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBHelper.swift; sourceTree = "<group>"; };
+		800926B423865F7700113B6E /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
+		800926B523865F7700113B6E /* RNBSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBSetting.swift; sourceTree = "<group>"; };
+		800926B623865F7700113B6E /* UINavigationController+Transition_3_BACK_BUTTON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3_BACK_BUTTON.swift"; sourceTree = "<group>"; };
+		800926B723865F7700113B6E /* UIColor+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RNBExtension.swift"; sourceTree = "<group>"; };
+		800926B823865F7700113B6E /* UIViewController+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
+		800926B923865F7700113B6E /* UINavigationBar+Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Views.swift"; sourceTree = "<group>"; };
+		800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RNBExtension.swift"; sourceTree = "<group>"; };
+		800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Transition.swift"; sourceTree = "<group>"; };
+		800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
+		800926CA23866FD800113B6E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		800926CC2386722A00113B6E /* AlphaTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaTestViewController.swift; sourceTree = "<group>"; };
+		800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAlphaTestViewController.swift; sourceTree = "<group>"; };
+		800926D02386788800113B6E /* ForegroundColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundColorTestViewController.swift; sourceTree = "<group>"; };
+		800926D22386796C00113B6E /* BaseSingleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleTestViewController.swift; sourceTree = "<group>"; };
+		800926D423867D2D00113B6E /* TintColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintColorTestViewController.swift; sourceTree = "<group>"; };
+		800926D623867D8800113B6E /* TitleColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleColorTestViewController.swift; sourceTree = "<group>"; };
+		800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowHiddenTestViewController.swift; sourceTree = "<group>"; };
+		800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarStyleTestViewController.swift; sourceTree = "<group>"; };
 		802F268A2373CAEF00963468 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F268D2373CAEF00963468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		802F26912373CAEF00963468 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		802F26912373CAEF00963468 /* AllTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTestViewController.swift; sourceTree = "<group>"; };
 		802F26962373CAF000963468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		802F26992373CAF000963468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		802F269B2373CAF000963468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		802F26B72373FB1200963468 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		806DC0FD23758AC3006DE7D3 /* NavigationControllerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationControllerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		806DC10323758AC3006DE7D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8564A8DAC9D3C2D6B4A65F5B /* Pods_Example.framework in Frameworks */,
-				80059A8823828FA5007517C1 /* RXCNavigationBarTransition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,18 +129,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		80059A8123828277007517C1 /* Products */ = {
+		800926AF23865F7700113B6E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				80059A8523828278007517C1 /* RXCNavigationBarTransition.framework */,
+				800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */,
+				800926B723865F7700113B6E /* UIColor+RNBExtension.swift */,
+				800926B323865F7700113B6E /* RNBHelper.swift */,
+				800926B523865F7700113B6E /* RNBSetting.swift */,
+				800926B223865F7700113B6E /* RNBNavigationBarStyle.swift */,
+				800926B023865F7700113B6E /* RXCNavigationBarTransition.swift */,
+				800926B923865F7700113B6E /* UINavigationBar+Views.swift */,
+				800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */,
+				800926B823865F7700113B6E /* UIViewController+Transition.swift */,
+				800926B423865F7700113B6E /* UINavigationController+Transition.swift */,
+				800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */,
+				800926B123865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift */,
+				800926B623865F7700113B6E /* UINavigationController+Transition_3_BACK_BUTTON.swift */,
 			);
-			name = Products;
+			name = Source;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 		802F26812373CAEF00963468 = {
 			isa = PBXGroup;
 			children = (
-				80059A8023828277007517C1 /* RXCNavigationBarTransition.xcodeproj */,
+				800926AF23865F7700113B6E /* Source */,
 				802F268C2373CAEF00963468 /* Example */,
 				806DC0FE23758AC3006DE7D3 /* NavigationControllerTest */,
 				802F268B2373CAEF00963468 /* Products */,
@@ -138,9 +175,16 @@
 			isa = PBXGroup;
 			children = (
 				802F268D2373CAEF00963468 /* AppDelegate.swift */,
-				802F26912373CAEF00963468 /* ViewController.swift */,
-				802F26B72373FB1200963468 /* SecondViewController.swift */,
-				80059A862382841D007517C1 /* SimpleTestViewController.swift */,
+				800926CA23866FD800113B6E /* MainMenuViewController.swift */,
+				802F26912373CAEF00963468 /* AllTestViewController.swift */,
+				800926D22386796C00113B6E /* BaseSingleTestViewController.swift */,
+				800926CC2386722A00113B6E /* AlphaTestViewController.swift */,
+				800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */,
+				800926D02386788800113B6E /* ForegroundColorTestViewController.swift */,
+				800926D423867D2D00113B6E /* TintColorTestViewController.swift */,
+				800926D623867D8800113B6E /* TitleColorTestViewController.swift */,
+				800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */,
+				800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */,
 				802F26962373CAF000963468 /* Assets.xcassets */,
 				802F26982373CAF000963468 /* LaunchScreen.storyboard */,
 				802F269B2373CAF000963468 /* Info.plist */,
@@ -241,12 +285,6 @@
 			mainGroup = 802F26812373CAEF00963468;
 			productRefGroup = 802F268B2373CAEF00963468 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 80059A8123828277007517C1 /* Products */;
-					ProjectRef = 80059A8023828277007517C1 /* RXCNavigationBarTransition.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				802F26892373CAEF00963468 /* Example */,
@@ -254,16 +292,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		80059A8523828278007517C1 /* RXCNavigationBarTransition.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RXCNavigationBarTransition.framework;
-			remoteRef = 80059A8423828278007517C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		802F26882373CAEF00963468 /* Resources */ = {
@@ -373,10 +401,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				802F26B82373FB1200963468 /* SecondViewController.swift in Sources */,
-				802F26922373CAEF00963468 /* ViewController.swift in Sources */,
+				800926C123865F7700113B6E /* UINavigationController+Transition.swift in Sources */,
+				800926D523867D2D00113B6E /* TintColorTestViewController.swift in Sources */,
+				800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */,
+				800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */,
+				800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */,
+				800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */,
+				800926C523865F7700113B6E /* UIViewController+Transition.swift in Sources */,
+				800926CF238677AD00113B6E /* BackgroundAlphaTestViewController.swift in Sources */,
+				800926C623865F7700113B6E /* UINavigationBar+Views.swift in Sources */,
+				800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */,
+				802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */,
+				800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */,
+				800926C723865F7700113B6E /* UINavigationController+RNBExtension.swift in Sources */,
+				800926C223865F7700113B6E /* RNBSetting.swift in Sources */,
+				800926C923865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
+				800926D923867E1700113B6E /* ShadowHiddenTestViewController.swift in Sources */,
+				800926C023865F7700113B6E /* RNBHelper.swift in Sources */,
+				800926C423865F7700113B6E /* UIColor+RNBExtension.swift in Sources */,
+				800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */,
 				802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */,
-				80059A872382841D007517C1 /* SimpleTestViewController.swift in Sources */,
+				800926D12386788800113B6E /* ForegroundColorTestViewController.swift in Sources */,
+				800926BE23865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
+				800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

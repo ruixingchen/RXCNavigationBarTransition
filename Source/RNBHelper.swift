@@ -135,8 +135,7 @@ public extension RNBHelper {
 
     static let systemDefaultNavigationBarBackgroundAlpha:CGFloat = 1.0
 
-    ///在translucent模式下是没有颜色的, 默认采用透明模式的颜色: nil
-    static var systemDefaultNavigationBarBarTintColor:UIColor? = nil
+    static var systemDefaultNavigationBarBackgroundColor:UIColor = UIColor.clear
 
     static var systemDefaultNavigationBarTintColor:UIColor {
         if #available(iOS 13, *) {

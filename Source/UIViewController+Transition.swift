@@ -178,7 +178,8 @@ extension UIViewController {
         self.rnb_visibility = .didAppear
         self.rnb_didAppear = true
         rnblog("viewDidAppear: \(self.title ?? "no title") @ \(self.description)")
-        if let nav = self as? UINavigationController, nav.navigationController == nil {
+        if let nav = self as? UINavigationController {
+            nav.navigationBar.addBackgroundViewIfNeeded()
             ///如果是一个NavController, 给侧滑返回手势添加一个target来追踪他的状态
             if RXCNavigationBarTransition.debugMode {
                 if let g = nav.interactivePopGestureRecognizer, !nav.rnb_interactivePopGestureRecognizerTargetAdded {
@@ -255,30 +256,22 @@ extension UIViewController {
         return self.rnb_navigationBarStyle.backgroundAlphaSetting
     }
 
-    internal func rnb_setNavigationBarBarTintColor(_ setting:RNBSetting<UIColor?>) {
-        self.rnb_navigationBarStyle.barTintColorSetting = setting
-        self.rnb_navigationBarStyleSavedBeforeTransition?.barTintColorSetting = self.rnb_navigationBarStyle.barTintColorSetting
+    internal func rnb_setNavigationBarBackgroundColor(_ setting:RNBSetting<UIColor>) {
+        self.rnb_navigationBarStyle.backgroundColorSetting = setting
+        self.rnb_navigationBarStyleSavedBeforeTransition?.backgroundColorSetting = self.rnb_navigationBarStyle.backgroundColorSetting
         if self.canUpdateNavigationBarStyle() {
-            self.navigationController?.rnbnav_setNavigationBarBarTintColor(setting: self.rnb_navigationBarStyle.barTintColorSetting)
+            self.navigationController?.rnbnav_setNavigationBarBackgroundColor(setting: self.rnb_navigationBarStyle.backgroundColorSetting)
         }
     }
-    public func rnb_setNavigationBarBarTintColor(_ value:UIColor?) {
+    public func rnb_setNavigationBarBackgroundColor(_ value:UIColor) {
         let setting = RNBSetting.setted(value)
-        self.rnb_setNavigationBarBarTintColor(setting)
-        #if (debug || DEBUG)
-        if let color = value {
-            let tuple = color.rnb_rgbaTuple()
-            if tuple.a == 0 {
-                print("使用了alpha为0的颜色可能会导致未知的动画效果, 慎为之")
-            }
-        }
-        #endif
+        self.rnb_setNavigationBarBackgroundColor(setting)
     }
-    public func rnb_clearNavigationBarBarTintColorSetting() {
-        self.rnb_setNavigationBarBarTintColor(.notset)
+    public func rnb_clearNavigationBarBackgroundColorSetting() {
+        self.rnb_setNavigationBarBackgroundColor(.notset)
     }
-    public func rnb_settedNavigationBarBarTintColorSetting()->RNBSetting<UIColor?> {
-        return self.rnb_navigationBarStyle.barTintColorSetting
+    public func rnb_settedNavigationBarBackgroundColorSetting()->RNBSetting<UIColor> {
+        return self.rnb_navigationBarStyle.backgroundColorSetting
     }
 
     internal func rnb_setNavigationBarTintColor(_ setting:RNBSetting<UIColor>) {

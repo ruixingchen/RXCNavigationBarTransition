@@ -30,7 +30,13 @@ extension UINavigationBar {
             let _frame = i.frame
             return i.isMember(of: classs) && _frame.origin.x == 0 && _frame.origin.y == backgroundView.bounds.height && _frame.width == backgroundView.bounds.width && _frame.height <= 1
         }
-        assert(view != nil, "无法获取NavBar底部分割线")
+        #if (debug || DEBUG)
+        if view == nil {
+            backgroundView.subviews.forEach({print($0)})
+            assertionFailure("无法获取NavBar底部分割线")
+        }
+        #endif
+
         return view
     }
 
@@ -40,7 +46,7 @@ extension UINavigationBar {
             return nil
         }
         guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {
-            assertionFailure("无法获取到subviews中是 _UIBarBackground 的view")
+            //assertionFailure("无法获取到subviews中是 _UIBarBackground 的view")
             return nil
         }
         return view
@@ -52,19 +58,22 @@ extension UINavigationBar {
             return nil
         }
         guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {
-            assertionFailure("无法获取到subviews中是 _UINavigationBarContentView 的view")
+            //assertionFailure("无法获取到subviews中是 _UINavigationBarContentView 的view")
             return nil
         }
         return view
     }
 
-//    public var rnb_promptView:UIView? {
-//        guard let classs = NSClassFromString("_UINavigationBarModernPromptView") else {return nil}
-//        let _view = self.subviews.first(where: {$0.isMember(of: classs)})
-//        return _view
-//    }
+    /*
+    public var rnb_promptView:UIView? {
+        guard let classs = NSClassFromString("_UINavigationBarModernPromptView") else {return nil}
+        let _view = self.subviews.first(where: {$0.isMember(of: classs)})
+        return _view
+    }
+     */
 
-    public var rnb_barTintColorView:UIView? {
+    /*
+    private var rnb_barTintColorView:UIView? {
         //when translucent, the barTintColor is on a visualEffect view that alpha == 0.85
         //when not translucent, it is on a UIImageView which size equals to barBackgroundView
         //check visualEffectView first
@@ -83,6 +92,7 @@ extension UINavigationBar {
         assertionFailure("无法获取到 barTintColorView")
         return nil
     }
+     */
 
     ///获取title的View
     public var rnb_titleLabel:UILabel? {

@@ -13,13 +13,11 @@ class ViewController1: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = UIColor.clear
+        //self.navigationController?.navigationBar.barTintColor = UIColor.clear
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
