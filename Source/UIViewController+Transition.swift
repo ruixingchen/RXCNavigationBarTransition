@@ -10,22 +10,22 @@ import UIKit
 
 extension UIViewController {
 
-    internal func rnb_isNavRootViewController()->Bool {
+    public func rnb_isNavRootViewController()->Bool {
         guard let nav = self.navigationController else {return false}
         return nav.viewControllers.first === self
     }
 
-    internal func rnb_isNavTopViewController()->Bool {
+    public func rnb_isNavTopViewController()->Bool {
         guard let nav = self.navigationController else {return false}
         return nav.topViewController === self
     }
 
-    internal func rnb_isNavOnlyViewController()->Bool {
+    public func rnb_isNavOnlyViewController()->Bool {
         guard let nav = self.navigationController else {return false}
         return nav.viewControllers.count == 1 && nav.viewControllers.first == self
     }
 
-    internal func isEmbededInNavigationController()->Bool {
+    public func rnb_isEmbededInNavigationController()->Bool {
         return self.navigationController != nil
     }
 
@@ -38,8 +38,7 @@ extension UIViewController {
         static var rnb_navigationBarStyle:String = "rnb_navigationBarStyle"
         static var rnb_navigationBarStyleSavedBeforeTransition:String = "rnb_navigationBarStyleSavedBeforeTransition"
         static var rnb_visibility:String = "rnb_visibility"
-        //static var rnb_lifeCycle:String = "rnb_lifeCycle"
-        static var rnb_didAppear:String = "rnb_didAppear"
+        static var rnb_didAppearCalled:String = "rnb_didAppearCalled"
     }
 
     ///可见性
@@ -54,19 +53,6 @@ extension UIViewController {
             return self == .willAppear || self == .didAppear
         }
     }
-
-    ///生命周期, 主要用于记录当前VC是否已经调用过某些生命周期方法
-    /*
-    internal enum RNBLifeCycle:Int {
-        case inited = 0
-        case loadView
-        case viewDidLoad
-        case willAppear
-        case willLayoutSubviews
-        case didLayoutSubviews
-        case didAppear
-    }
-     */
 
     ///当前VC的可见性
     internal var rnb_visibility:RNBVisibility {
@@ -83,41 +69,21 @@ extension UIViewController {
         }
     }
 
+    //TODO: - 考虑记录所有生命周期方法的调用情况
     ///这个VC是否已经调用过了didAppear
-    internal var rnb_didAppear:Bool {
+    internal var rnb_didAppearCalled:Bool {
         get {
-            return objc_getAssociatedObject(self, &Key.rnb_didAppear) as? Bool ?? false
+            return objc_getAssociatedObject(self, &Key.rnb_didAppearCalled) as? Bool ?? false
         }
         set {
-            objc_setAssociatedObject(self, &Key.rnb_didAppear, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &Key.rnb_didAppearCalled, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-
-    /*
-    ///当前VC的生命周期
-    internal var rnb_lifeCycle:RNBLifeCycle {
-        get {
-            var value:RNBLifeCycle! = objc_getAssociatedObject(self, &Key.rnb_lifeCycle) as? RNBLifeCycle
-            if value == nil {
-                value = RNBLifeCycle.inited
-                self.rnb_lifeCycle = value
-            }
-            return value
-        }
-        set {
-            objc_setAssociatedObject(self, &Key.rnb_lifeCycle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-     */
 
     ///是否对当前VC启用(仅在当前VC作为一个NavController的子VC时)
-    public var rnb_enabled:RNBSetting<Bool> {
+    public var rnb_enabled:Bool? {
         get {
-            if let value = objc_getAssociatedObject(self, &Key.rnb_enabled) as? RNBSetting<Bool> {
-                return value
-            }else {
-                return RNBSetting.notset
-            }
+            return objc_getAssociatedObject(self, &Key.rnb_enabled) as? Bool
         }
         set {
             objc_setAssociatedObject(self, &Key.rnb_enabled, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -139,7 +105,7 @@ extension UIViewController {
         }
     }
 
-    ///进行变换之前, 将当前的导航栏样式存储到这个变量中, 下次切换回来的时候可以继续显示
+    ///进行transition之前, 将当前的导航栏样式存储到这个变量中, 下次切换回来的时候可以继续显示, 这样即使用户手动修改了navBar的一些样式, 我们下次回来的时候仍然可以正确显示
     internal var rnb_navigationBarStyleSavedBeforeTransition: RNBNavigationBarStyle? {
         get {
             return objc_getAssociatedObject(self, &Key.rnb_navigationBarStyleSavedBeforeTransition) as? RNBNavigationBarStyle
@@ -168,18 +134,15 @@ extension UIViewController {
     @objc func rnbsw_viewWillAppear(_ animated: Bool) {
         self.rnb_visibility = .willAppear
         rnblog("viewWillAppear: \(self.title ?? "no title") @ \(self.description)")
-//        let style = self.rnb_navigationBarStyleForTransition()
-//        self.navigationController?.updateNavigationBarStyle(style: style, animatable: false)
-
         self.rnbsw_viewWillAppear(animated)
     }
 
     @objc func rnbsw_viewDidAppear(_ animated: Bool) {
         self.rnb_visibility = .didAppear
-        self.rnb_didAppear = true
+        self.rnb_didAppearCalled = true
         rnblog("viewDidAppear: \(self.title ?? "no title") @ \(self.description)")
         if let nav = self as? UINavigationController {
-            nav.navigationBar.addBackgroundViewIfNeeded()
+            nav.navigationBar.addBackgroundAndForegroundViewIfNeeded()
             ///如果是一个NavController, 给侧滑返回手势添加一个target来追踪他的状态
             if RXCNavigationBarTransition.debugMode {
                 if let g = nav.interactivePopGestureRecognizer, !nav.rnb_interactivePopGestureRecognizerTargetAdded {
@@ -206,16 +169,17 @@ extension UIViewController {
 }
 
 //MARK: - Public Interface
+
 extension UIViewController {
 
     //设置样式的时候
     //1, 如果这个VC是当前正在显示的VC, 那么直接修改样式
-    //2, 如果这个VC是唯一的VC, 且这个VC尚未进入didAppear流程, 那么直接修改样式, 对应初始化时候的场景, 同时也解决了当Nav有两个VC, 进行pop的时候会首先将第二个VC移出栈, 导致第一个VC认为自己是唯一的VC而强制修改样式的问题
+    //2, 如果这个VC是唯一的VC, 且这个VC尚未进入didAppear流程, 那么直接修改样式, 对应初始化时候的场景; 同时也解决了当Nav有两个VC, 进行pop的时候会首先将第二个VC移出栈, 导致第一个VC认为自己是唯一的VC而强制修改样式的问题
     //其他情况下则只记录不修改, 当这个VC被显示的时候会自动将保存的样式应用到navBar上
 
     ///当前是否可以更新NavBar的样式, 只有两种情况下可以立刻更新样式, 1: 正在显示, 2: Root页初始化
     internal func canUpdateNavigationBarStyle()->Bool {
-        let initialPage = (self.rnb_isNavOnlyViewController() && !self.rnb_didAppear)
+        let initialPage = (self.rnb_isNavOnlyViewController() && !self.rnb_didAppearCalled)
         let visiblePage = (self.rnb_isNavTopViewController() && self.rnb_visibility == .didAppear)
         return initialPage || visiblePage
     }
@@ -272,6 +236,24 @@ extension UIViewController {
     }
     public func rnb_settedNavigationBarBackgroundColorSetting()->RNBSetting<UIColor> {
         return self.rnb_navigationBarStyle.backgroundColorSetting
+    }
+
+    internal func rnb_setNavigationBarForegroundColor(_ setting:RNBSetting<UIColor>) {
+        self.rnb_navigationBarStyle.foregroundColorSetting = setting
+        self.rnb_navigationBarStyleSavedBeforeTransition?.foregroundColorSetting = self.rnb_navigationBarStyle.foregroundColorSetting
+        if self.canUpdateNavigationBarStyle() {
+            self.navigationController?.rnbnav_setNavigationBarForegroundColor(setting: self.rnb_navigationBarStyle.foregroundColorSetting)
+        }
+    }
+    public func rnb_setNavigationBarForegroundColor(_ value:UIColor) {
+        let setting = RNBSetting.setted(value)
+        self.rnb_setNavigationBarForegroundColor(setting)
+    }
+    public func rnb_clearNavigationBarForegroundColorSetting() {
+        self.rnb_setNavigationBarForegroundColor(.notset)
+    }
+    public func rnb_settedNavigationBarForegroundColorSetting()->RNBSetting<UIColor> {
+        return self.rnb_navigationBarStyle.foregroundColorSetting
     }
 
     internal func rnb_setNavigationBarTintColor(_ setting:RNBSetting<UIColor>) {

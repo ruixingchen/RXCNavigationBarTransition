@@ -14,6 +14,7 @@ class DebugMenuViewController: UITableViewController {
         case alpha = 0
         case backgroundAlpha
         case backgroundColor
+        case foregroundColor
         case tintColor
         case titleColor
         case shadowHidden
@@ -56,6 +57,8 @@ class DebugMenuViewController: UITableViewController {
             vc = BackgroundAlphaTestViewController()
         case .backgroundColor:
             vc = BackgroundColorTestViewController()
+        case .foregroundColor:
+            vc = ForegroundColorTestViewController()
         case .tintColor:
             vc = TintColorTestViewController()
         case .titleColor:
@@ -64,7 +67,7 @@ class DebugMenuViewController: UITableViewController {
             vc = ShadowHiddenTestViewController()
         case .statusBarStyle:
             vc = StatusBarStyleTestViewController()
-        default:
+        case .count:
             return
         }
         //vc.hidesBottomBarWhenPushed = true

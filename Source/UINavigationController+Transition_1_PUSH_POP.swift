@@ -36,9 +36,11 @@ extension UINavigationController {
                 }
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
-                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
                 }else {
-                    assertionFailure("无法获取到topViewController")
+                    if RXCNavigationBarTransition.debugMode {
+                        assertionFailure("无法获取到topViewController")
+                    }
                 }
             }
         }
@@ -46,6 +48,15 @@ extension UINavigationController {
 
     @objc func rnbsw_popViewController(animated:Bool)->UIViewController? {
         rnblog("导航pop")
+        print(self.topViewController?.title)
+        switch UIApplication.shared.statusBarStyle {
+        case .darkContent:
+            print("darkContent")
+        case .lightContent:
+            print("light")
+        case .default:
+            print("deffault")
+        }
         self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             let vc = self.rnbsw_popViewController(animated: animated)
@@ -66,9 +77,11 @@ extension UINavigationController {
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
-                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
                 }else {
-                    assertionFailure("无法获取到topViewController")
+                    if RXCNavigationBarTransition.debugMode {
+                        assertionFailure("无法获取到topViewController")
+                    }
                 }
             }
         }
@@ -93,9 +106,11 @@ extension UINavigationController {
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
-                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
                 }else {
-                    assertionFailure("无法获取到topViewController")
+                    if RXCNavigationBarTransition.debugMode {
+                        assertionFailure("无法获取到topViewController")
+                    }
                 }
             }
         }
@@ -120,9 +135,11 @@ extension UINavigationController {
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
-                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false)
+                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
                 }else {
-                    assertionFailure("无法获取到topViewController")
+                    if RXCNavigationBarTransition.debugMode {
+                        assertionFailure("无法获取到topViewController")
+                    }
                 }
             }
         }

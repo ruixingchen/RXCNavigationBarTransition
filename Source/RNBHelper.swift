@@ -11,11 +11,12 @@ import UIKit
 public struct RNBHelper {
 
     ///is current OS version >= a specific version
-    public static func isOperatingSystemAtLeast(_ version:OperatingSystemVersion)->Bool {
-        return ProcessInfo.processInfo.isOperatingSystemAtLeast(version)
+    public static func isOperatingSystemAtLeast(_ majorVersion: Int, _ minorVersion: Int, _ patchVersion: Int)->Bool {
+        return ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: majorVersion, minorVersion: minorVersion, patchVersion: patchVersion))
     }
 
     ///as the name says
+    @available(iOS 11, *)
     public static func isRoundCornerScreen()->Bool {
         let insets:UIEdgeInsets = UIApplication.shared.windows.first!.safeAreaInsets
         return insets.top > 0 || insets.right > 0 || insets.bottom > 0 || insets.left > 0
@@ -52,7 +53,7 @@ public struct RNBHelper {
     }
 
     ///as the name says, but self is excluded
-    public static func findClosestNavigationController(for object:UIResponder)->UINavigationController? {
+    internal static func findClosestNavigationController(for object:UIResponder)->UINavigationController? {
         var current:UIResponder? = object.next
         while current != nil {
             if let nav = current as? UINavigationController {
@@ -64,7 +65,7 @@ public struct RNBHelper {
     }
 
     ///as the name says, but self is excluded
-    public static func findClosestTabBarController(for object:UIResponder)->UITabBarController? {
+    internal static func findClosestTabBarController(for object:UIResponder)->UITabBarController? {
         var current:UIResponder? = object.next
         while current != nil {
             if let tab = current as? UITabBarController {
@@ -75,7 +76,7 @@ public struct RNBHelper {
         return nil
     }
 
-    public static func findClosestViewController(for object: UIResponder)->UIViewController? {
+    internal static func findClosestViewController(for object: UIResponder)->UIViewController? {
         var current:UIResponder? = object.next
         while current != nil {
             if let tab = current as? UIViewController {
@@ -90,23 +91,22 @@ public struct RNBHelper {
 
 extension RNBHelper {
 
-    internal static func chooseSettedValue<T>(setting:RNBSetting<T>, setting2:RNBSetting<T>?, defaultValue:T)->T {
-        ///为了防止T是可选值, 这里不可以使用 ?? 符号
-        switch setting {
-        case .setted(let value):
-            return value
-        case .notset:
-            if let setting2 = setting2 {
-                switch setting2 {
-                case .setted(let value2):
-                    return value2
+    internal static func chooseSetted<T>(defaultValue:T, settings:RNBSetting<T>?...)->T {
+        return chooseSetted(settings: settings, defaultValue: defaultValue)
+    }
+
+    internal static func chooseSetted<T>(settings:[RNBSetting<T>?], defaultValue:T)->T {
+        for i in settings {
+            if let setting = i {
+                switch setting {
+                case .setted(let value):
+                    return value
                 case .notset:
-                    return defaultValue
+                    break
                 }
-            }else {
-                return defaultValue
             }
         }
+        return defaultValue
     }
 
     ///as the name says
@@ -136,12 +136,20 @@ public extension RNBHelper {
     static let systemDefaultNavigationBarBackgroundAlpha:CGFloat = 1.0
 
     static var systemDefaultNavigationBarBackgroundColor:UIColor = UIColor.clear
+    static var systemDefaultNavigationBarForegroundColor:UIColor = UIColor.clear
 
     static var systemDefaultNavigationBarTintColor:UIColor {
         if #available(iOS 13, *) {
-            return UIColor.systemBlue
+            return UIColor { (trait) -> UIColor in
+                switch trait.userInterfaceStyle {
+                case .dark:
+                    return UIColor(red: 0.0392156862745098, green: 0.5176470588235295, blue: 1, alpha: 1.0)
+                default:
+                    return UIColor(red: 0, green: 0.47843137254901963, blue: 1, alpha: 1.0)
+                }
+            }
         }else {
-            return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1.0)
+            return UIColor(red: 0, green: 0.47843137254901963, blue: 1, alpha: 1.0)
         }
     }
 
@@ -149,7 +157,7 @@ public extension RNBHelper {
         if #available(iOS 13, *) {
             return UIColor.label
         }else {
-            return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1.0)
+            return UIColor.black
         }
     }
 

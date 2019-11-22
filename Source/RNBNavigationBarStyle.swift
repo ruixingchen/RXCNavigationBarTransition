@@ -24,6 +24,7 @@ public final class RNBNavigationBarStyle {
         style.alphaSetting = .setted(RXCNavigationBarTransition.defaultAlpha)
         style.backgroundAlphaSetting = .setted(RXCNavigationBarTransition.defaultBackgroundAlpha)
         style.backgroundColorSetting = .setted(RXCNavigationBarTransition.defaultBackgroundColor)
+        style.foregroundColorSetting = .setted(RXCNavigationBarTransition.defaultForegroundColor)
         style.tintColorSetting = .setted(RXCNavigationBarTransition.defaultTintColor)
         style.titleColorSetting = .setted(RXCNavigationBarTransition.defaultTitleColor)
         style.shadowViewHiddenSetting = .setted(RXCNavigationBarTransition.defaultShadowViewHidden)
@@ -36,6 +37,7 @@ public final class RNBNavigationBarStyle {
         style.alphaSetting = self.alphaSetting
         style.backgroundAlphaSetting = self.backgroundAlphaSetting
         style.backgroundColorSetting = self.backgroundColorSetting
+        style.foregroundColorSetting = self.foregroundColorSetting
         style.tintColorSetting = self.tintColorSetting
         style.titleColorSetting = self.titleColorSetting
         style.shadowViewHiddenSetting = self.shadowViewHiddenSetting
@@ -46,6 +48,7 @@ public final class RNBNavigationBarStyle {
     public var alphaSetting:RNBSetting<CGFloat> = RNBSetting.notset
     public var backgroundAlphaSetting:RNBSetting<CGFloat> = RNBSetting.notset
     public var backgroundColorSetting:RNBSetting<UIColor> = RNBSetting.notset
+    public var foregroundColorSetting:RNBSetting<UIColor> = RNBSetting.notset
     public var tintColorSetting:RNBSetting<UIColor> = RNBSetting.notset
     public var titleColorSetting:RNBSetting<UIColor> = RNBSetting.notset
     public var shadowViewHiddenSetting:RNBSetting<Bool> = RNBSetting.notset

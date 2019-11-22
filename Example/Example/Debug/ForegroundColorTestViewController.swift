@@ -1,24 +1,22 @@
 //
-//  BackgroundColorTestViewController.swift
+//  ForegroundColorTestViewController.swift
 //  Example
 //
-//  Created by ruixingchen on 11/21/19.
+//  Created by ruixingchen on 11/22/19.
 //  Copyright © 2019 ruixingchen. All rights reserved.
 //
 
 import UIKit
 
-import UIKit
-
-class BackgroundColorTestViewController: BaseSingleTestViewController {
+class ForegroundColorTestViewController: BaseSingleTestViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.rnb_setNavigationBarBackgroundColor(UIColor.random())
+        self.rnb_setNavigationBarForegroundColor(UIColor.random())
     }
 
     override func nextViewController() -> UIViewController {
-        return BackgroundColorTestViewController()
+        return ForegroundColorTestViewController()
     }
 
 }

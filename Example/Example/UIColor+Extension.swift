@@ -15,3 +15,20 @@ extension UIColor {
     }
 
 }
+
+extension UIStatusBarStyle: CustomStringConvertible {
+
+    public var description: String {
+        switch self {
+        case .darkContent:
+            return "darkContent"
+        case .default:
+            return "default"
+        case .lightContent:
+            return "lightContent"
+        @unknown default:
+            fatalError()
+        }
+    }
+
+}

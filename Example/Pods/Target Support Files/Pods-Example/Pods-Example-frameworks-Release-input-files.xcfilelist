@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh
-${BUILT_PRODUCTS_DIR}/SnapKit-iOS11.0/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/RXCFirstTimeViewController/RXCFirstTimeViewController.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35F690F473D45E7CD958B7FC /* Pods_NavigationControllerTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829AC3F45F949AF4281A4B2 /* Pods_NavigationControllerTest.framework */; };
 		800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B023865F7700113B6E /* RXCNavigationBarTransition.swift */; };
 		800926BE23865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B123865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift */; };
 		800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B223865F7700113B6E /* RNBNavigationBarStyle.swift */; };
@@ -23,7 +22,7 @@
 		800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CA23866FD800113B6E /* MainMenuViewController.swift */; };
 		800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CC2386722A00113B6E /* AlphaTestViewController.swift */; };
 		800926CF238677AD00113B6E /* BackgroundAlphaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */; };
-		800926D12386788800113B6E /* ForegroundColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D02386788800113B6E /* ForegroundColorTestViewController.swift */; };
+		800926D12386788800113B6E /* BackgroundColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D02386788800113B6E /* BackgroundColorTestViewController.swift */; };
 		800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D22386796C00113B6E /* BaseSingleTestViewController.swift */; };
 		800926D523867D2D00113B6E /* TintColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D423867D2D00113B6E /* TintColorTestViewController.swift */; };
 		800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926D623867D8800113B6E /* TitleColorTestViewController.swift */; };
@@ -31,17 +30,15 @@
 		800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */; };
 		800926DF2386922000113B6E /* WeiboExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926DE2386922000113B6E /* WeiboExampleViewController.swift */; };
 		800926E6238696E400113B6E /* DebugMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926E5238696E400113B6E /* DebugMenuViewController.swift */; };
+		801D792823877D97001E2076 /* QQApplicationExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D792723877D97001E2076 /* QQApplicationExampleViewController.swift */; };
+		801D792A2387C0A5001E2076 /* AntExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D79292387C0A5001E2076 /* AntExampleViewController.swift */; };
+		801D792C2387CF8E001E2076 /* ForegroundColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D792B2387CF8E001E2076 /* ForegroundColorTestViewController.swift */; };
 		802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F268D2373CAEF00963468 /* AppDelegate.swift */; };
 		802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26912373CAEF00963468 /* AllTestViewController.swift */; };
 		802F26972373CAF000963468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802F26962373CAF000963468 /* Assets.xcassets */; };
 		802F269A2373CAF000963468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802F26982373CAF000963468 /* LaunchScreen.storyboard */; };
 		8047FC8523869D950040314B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC8423869D950040314B /* UIColor+Extension.swift */; };
 		8047FC872386A69E0040314B /* ExampleMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC862386A69E0040314B /* ExampleMenuViewController.swift */; };
-		806DC10023758AC3006DE7D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */; };
-		806DC10423758AC3006DE7D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806DC10323758AC3006DE7D3 /* ViewController.swift */; };
-		806DC10723758AC3006DE7D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806DC10523758AC3006DE7D3 /* Main.storyboard */; };
-		806DC10923758AC4006DE7D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 806DC10823758AC4006DE7D3 /* Assets.xcassets */; };
-		806DC10C23758AC4006DE7D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806DC10A23758AC4006DE7D3 /* LaunchScreen.storyboard */; };
 		8564A8DAC9D3C2D6B4A65F5B /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F61CA174020D1286620A48 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +77,7 @@
 		800926CA23866FD800113B6E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		800926CC2386722A00113B6E /* AlphaTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaTestViewController.swift; sourceTree = "<group>"; };
 		800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAlphaTestViewController.swift; sourceTree = "<group>"; };
-		800926D02386788800113B6E /* ForegroundColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundColorTestViewController.swift; sourceTree = "<group>"; };
+		800926D02386788800113B6E /* BackgroundColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorTestViewController.swift; sourceTree = "<group>"; };
 		800926D22386796C00113B6E /* BaseSingleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleTestViewController.swift; sourceTree = "<group>"; };
 		800926D423867D2D00113B6E /* TintColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintColorTestViewController.swift; sourceTree = "<group>"; };
 		800926D623867D8800113B6E /* TitleColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleColorTestViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +85,9 @@
 		800926DA238682C700113B6E /* StatusBarStyleTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarStyleTestViewController.swift; sourceTree = "<group>"; };
 		800926DE2386922000113B6E /* WeiboExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboExampleViewController.swift; sourceTree = "<group>"; };
 		800926E5238696E400113B6E /* DebugMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuViewController.swift; sourceTree = "<group>"; };
+		801D792723877D97001E2076 /* QQApplicationExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQApplicationExampleViewController.swift; sourceTree = "<group>"; };
+		801D79292387C0A5001E2076 /* AntExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntExampleViewController.swift; sourceTree = "<group>"; };
+		801D792B2387CF8E001E2076 /* ForegroundColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundColorTestViewController.swift; sourceTree = "<group>"; };
 		802F268A2373CAEF00963468 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F268D2373CAEF00963468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802F26912373CAEF00963468 /* AllTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTestViewController.swift; sourceTree = "<group>"; };
@@ -96,13 +96,6 @@
 		802F269B2373CAF000963468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8047FC8423869D950040314B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8047FC862386A69E0040314B /* ExampleMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMenuViewController.swift; sourceTree = "<group>"; };
-		806DC0FD23758AC3006DE7D3 /* NavigationControllerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationControllerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		806DC10323758AC3006DE7D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		806DC10623758AC3006DE7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		806DC10823758AC4006DE7D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		806DC10B23758AC4006DE7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		806DC10D23758AC4006DE7D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F61CA174020D1286620A48 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,14 +105,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8564A8DAC9D3C2D6B4A65F5B /* Pods_Example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		806DC0FA23758AC3006DE7D3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35F690F473D45E7CD958B7FC /* Pods_NavigationControllerTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +148,8 @@
 			children = (
 				8047FC862386A69E0040314B /* ExampleMenuViewController.swift */,
 				800926DE2386922000113B6E /* WeiboExampleViewController.swift */,
+				801D792723877D97001E2076 /* QQApplicationExampleViewController.swift */,
+				801D79292387C0A5001E2076 /* AntExampleViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -174,7 +161,8 @@
 				800926D22386796C00113B6E /* BaseSingleTestViewController.swift */,
 				800926CC2386722A00113B6E /* AlphaTestViewController.swift */,
 				800926CE238677AD00113B6E /* BackgroundAlphaTestViewController.swift */,
-				800926D02386788800113B6E /* ForegroundColorTestViewController.swift */,
+				800926D02386788800113B6E /* BackgroundColorTestViewController.swift */,
+				801D792B2387CF8E001E2076 /* ForegroundColorTestViewController.swift */,
 				800926D423867D2D00113B6E /* TintColorTestViewController.swift */,
 				800926D623867D8800113B6E /* TitleColorTestViewController.swift */,
 				800926D823867E1700113B6E /* ShadowHiddenTestViewController.swift */,
@@ -188,7 +176,6 @@
 			children = (
 				800926AF23865F7700113B6E /* Source */,
 				802F268C2373CAEF00963468 /* Example */,
-				806DC0FE23758AC3006DE7D3 /* NavigationControllerTest */,
 				802F268B2373CAEF00963468 /* Products */,
 				802F26B22373F44100963468 /* Frameworks */,
 				5A15CC5BE03309DDC6F651AF /* Pods */,
@@ -199,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				802F268A2373CAEF00963468 /* Example.app */,
-				806DC0FD23758AC3006DE7D3 /* NavigationControllerTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,19 +215,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		806DC0FE23758AC3006DE7D3 /* NavigationControllerTest */ = {
-			isa = PBXGroup;
-			children = (
-				806DC0FF23758AC3006DE7D3 /* AppDelegate.swift */,
-				806DC10323758AC3006DE7D3 /* ViewController.swift */,
-				806DC10523758AC3006DE7D3 /* Main.storyboard */,
-				806DC10823758AC4006DE7D3 /* Assets.xcassets */,
-				806DC10A23758AC4006DE7D3 /* LaunchScreen.storyboard */,
-				806DC10D23758AC4006DE7D3 /* Info.plist */,
-			);
-			path = NavigationControllerTest;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,25 +238,6 @@
 			productReference = 802F268A2373CAEF00963468 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		806DC0FC23758AC3006DE7D3 /* NavigationControllerTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 806DC11123758AC4006DE7D3 /* Build configuration list for PBXNativeTarget "NavigationControllerTest" */;
-			buildPhases = (
-				A175EA11CE507878937AFB63 /* [CP] Check Pods Manifest.lock */,
-				806DC0F923758AC3006DE7D3 /* Sources */,
-				806DC0FA23758AC3006DE7D3 /* Frameworks */,
-				806DC0FB23758AC3006DE7D3 /* Resources */,
-				BBB692C8EED1C6102F376721 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NavigationControllerTest;
-			productName = NavigationControllerTest;
-			productReference = 806DC0FD23758AC3006DE7D3 /* NavigationControllerTest.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -295,9 +249,6 @@
 				ORGANIZATIONNAME = ruixingchen;
 				TargetAttributes = {
 					802F26892373CAEF00963468 = {
-						CreatedOnToolsVersion = 11.2;
-					};
-					806DC0FC23758AC3006DE7D3 = {
 						CreatedOnToolsVersion = 11.2;
 					};
 				};
@@ -316,7 +267,6 @@
 			projectRoot = "";
 			targets = (
 				802F26892373CAEF00963468 /* Example */,
-				806DC0FC23758AC3006DE7D3 /* NavigationControllerTest */,
 			);
 		};
 /* End PBXProject section */
@@ -328,16 +278,6 @@
 			files = (
 				802F269A2373CAF000963468 /* LaunchScreen.storyboard in Resources */,
 				802F26972373CAF000963468 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		806DC0FB23758AC3006DE7D3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				806DC10C23758AC4006DE7D3 /* LaunchScreen.storyboard in Resources */,
-				806DC10923758AC4006DE7D3 /* Assets.xcassets in Resources */,
-				806DC10723758AC3006DE7D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,45 +323,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A175EA11CE507878937AFB63 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NavigationControllerTest-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBB692C8EED1C6102F376721 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NavigationControllerTest/Pods-NavigationControllerTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NavigationControllerTest/Pods-NavigationControllerTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NavigationControllerTest/Pods-NavigationControllerTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -433,15 +334,18 @@
 				800926D523867D2D00113B6E /* TintColorTestViewController.swift in Sources */,
 				800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */,
 				800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */,
+				801D792823877D97001E2076 /* QQApplicationExampleViewController.swift in Sources */,
 				800926D723867D8800113B6E /* TitleColorTestViewController.swift in Sources */,
 				800926E6238696E400113B6E /* DebugMenuViewController.swift in Sources */,
 				800926DB238682C700113B6E /* StatusBarStyleTestViewController.swift in Sources */,
 				800926C523865F7700113B6E /* UIViewController+Transition.swift in Sources */,
 				800926CF238677AD00113B6E /* BackgroundAlphaTestViewController.swift in Sources */,
+				801D792A2387C0A5001E2076 /* AntExampleViewController.swift in Sources */,
 				800926DF2386922000113B6E /* WeiboExampleViewController.swift in Sources */,
 				800926C623865F7700113B6E /* UINavigationBar+Views.swift in Sources */,
 				8047FC872386A69E0040314B /* ExampleMenuViewController.swift in Sources */,
 				800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */,
+				801D792C2387CF8E001E2076 /* ForegroundColorTestViewController.swift in Sources */,
 				802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */,
 				800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */,
 				800926C723865F7700113B6E /* UINavigationController+RNBExtension.swift in Sources */,
@@ -452,19 +356,10 @@
 				800926C423865F7700113B6E /* UIColor+RNBExtension.swift in Sources */,
 				800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */,
 				802F268E2373CAEF00963468 /* AppDelegate.swift in Sources */,
-				800926D12386788800113B6E /* ForegroundColorTestViewController.swift in Sources */,
+				800926D12386788800113B6E /* BackgroundColorTestViewController.swift in Sources */,
 				8047FC8523869D950040314B /* UIColor+Extension.swift in Sources */,
 				800926BE23865F7700113B6E /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
 				800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		806DC0F923758AC3006DE7D3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				806DC10423758AC3006DE7D3 /* ViewController.swift in Sources */,
-				806DC10023758AC3006DE7D3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,22 +370,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				802F26992373CAF000963468 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		806DC10523758AC3006DE7D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				806DC10623758AC3006DE7D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		806DC10A23758AC4006DE7D3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				806DC10B23758AC4006DE7D3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -652,44 +531,6 @@
 			};
 			name = Release;
 		};
-		806DC10E23758AC4006DE7D3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 593250B0CC2B4D5588B3F2C8 /* Pods-NavigationControllerTest.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 977G6XM9PF;
-				INFOPLIST_FILE = NavigationControllerTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruixingchen.NavigationControllerTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		806DC10F23758AC4006DE7D3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ACB76D13F57DA4BF077BA06 /* Pods-NavigationControllerTest.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 977G6XM9PF;
-				INFOPLIST_FILE = NavigationControllerTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruixingchen.NavigationControllerTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -707,15 +548,6 @@
 			buildConfigurations = (
 				802F269F2373CAF000963468 /* Debug */,
 				802F26A02373CAF000963468 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		806DC11123758AC4006DE7D3 /* Build configuration list for PBXNativeTarget "NavigationControllerTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				806DC10E23758AC4006DE7D3 /* Debug */,
-				806DC10F23758AC4006DE7D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

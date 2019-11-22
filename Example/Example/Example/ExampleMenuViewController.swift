@@ -10,9 +10,24 @@ import UIKit
 
 class ExampleMenuViewController: UITableViewController {
 
-    enum Row: Int {
+    enum Row: Int, CustomStringConvertible {
         case weibo = 0
+        case qq_app
+        case ant
         case count
+
+        var description: String {
+            switch self {
+            case .weibo:
+                return "微博个人中心"
+            case .qq_app:
+                return "QQ应用中心"
+            case .ant:
+                return "蚂蚁森林"
+            case .count:
+                return "ERROR"
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -36,7 +51,7 @@ class ExampleMenuViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let row = Row.init(rawValue: indexPath.row)!
-        cell.textLabel?.text = "\(row)"
+        cell.textLabel?.text = row.description
         return cell
     }
 
@@ -46,6 +61,10 @@ class ExampleMenuViewController: UITableViewController {
         switch row {
         case .weibo:
             vc = WeiboExampleViewController()
+        case .qq_app:
+            vc = QQApplicationExampleViewController()
+        case .ant:
+            vc = AntExampleViewController()
         default:
             return
         }

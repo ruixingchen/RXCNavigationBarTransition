@@ -9,24 +9,6 @@
 import UIKit
 import SnapKit
 
-internal func chooseSettedValue<T>(setting:RNBSetting<T>, setting2:RNBSetting<T>?, defaultValue:T)->T {
-    switch setting {
-    case .setted(let value):
-        return value
-    case .notset:
-        if let setting2 = setting2 {
-            switch setting2 {
-            case .setted(let value2):
-                return value2
-            case .notset:
-                return defaultValue
-            }
-        }else {
-            return defaultValue
-        }
-    }
-}
-
 class AllTestViewController: UIViewController {
 
     let alphaTextLabel = UILabel()
