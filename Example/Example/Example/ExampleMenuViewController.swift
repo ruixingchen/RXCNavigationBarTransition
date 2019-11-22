@@ -33,11 +33,16 @@ class ExampleMenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Example"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.rnb_setNavigationBarForegroundColor(UIColor.orange)
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

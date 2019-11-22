@@ -12,14 +12,18 @@ class StatusBarStyleTestViewController: BaseSingleTestViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self.navigationController?.viewControllers.firstIndex(of: self)?.isMultiple(of: 2) ?? false {
+
+        switch self.navigationController?.viewControllers.firstIndex(of: self) ?? 0 % 2 {
+        case 1:
+            self.rnb_setStatusBarStyle(.lightContent)
+        case 0:
             if #available(iOS 13, *) {
                 self.rnb_setStatusBarStyle(.darkContent)
             }else {
                 self.rnb_setStatusBarStyle(.default)
             }
-        }else {
-            self.rnb_setStatusBarStyle(.lightContent)
+        default:
+            break
         }
 
     }

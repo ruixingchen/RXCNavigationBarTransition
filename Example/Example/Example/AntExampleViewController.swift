@@ -38,6 +38,7 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
     override func rxc_viewWillAppear_first(_ animated: Bool) {
         super.rxc_viewWillAppear_first(animated)
         self.rnb_setNavigationBarBackgroundAlpha(0)
+        self.rnb_setNavigationBarShadowViewHidden(true)
         self.rnb_setNavigationBarTintColor(UIColor.white)
         self.rnb_setNavigationBarTitleColor(UIColor.white)
         self.rnb_setStatusBarStyle(.lightContent)
@@ -101,12 +102,13 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
             }else {
                 self.rnb_setStatusBarStyle(.default)
             }
+            self.rnb_setNavigationBarShadowViewHidden(false)
         }else {
             self.rnb_setNavigationBarTintColor(UIColor.white)
             self.rnb_setNavigationBarTitleColor(UIColor.white)
             self.rnb_setStatusBarStyle(.lightContent)
+            self.rnb_setNavigationBarShadowViewHidden(true)
         }
-        print(UIApplication.shared.statusBarStyle)
 
         let offsetLimitation =  -self.scrollDownLimit-self.headerHeight
         if offset < offsetLimitation {

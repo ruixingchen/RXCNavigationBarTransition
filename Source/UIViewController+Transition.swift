@@ -142,7 +142,6 @@ extension UIViewController {
         self.rnb_didAppearCalled = true
         rnblog("viewDidAppear: \(self.title ?? "no title") @ \(self.description)")
         if let nav = self as? UINavigationController {
-            nav.navigationBar.addBackgroundAndForegroundViewIfNeeded()
             ///如果是一个NavController, 给侧滑返回手势添加一个target来追踪他的状态
             if RXCNavigationBarTransition.debugMode {
                 if let g = nav.interactivePopGestureRecognizer, !nav.rnb_interactivePopGestureRecognizerTargetAdded {

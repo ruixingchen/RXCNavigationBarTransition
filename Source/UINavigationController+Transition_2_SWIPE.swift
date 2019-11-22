@@ -48,48 +48,27 @@ extension UINavigationController {
                 rnblog("第一次执行updateInteractiveTransition")
                 self.updateInteractiveTransitionCoordinator = coordinator
 
-                coordinator.animate(alongsideTransition: nil) { (context) in
-                    rnblog("侧滑结束")
-                    self.updateInteractiveTransitionCoordinator = nil
-                    //强制应用样式
-                    let style:RNBNavigationBarStyle
-                    if context.isCancelled {
-                        style = fromStyle
-                    }else {
-                        style = toStyle
-                    }
-                    DispatchQueue.main.async {
-                        self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
-                    }
-                }
-
                 coordinator.notifyWhenInteractionChanges {[weak self] (context) in
                     //当交互状态发生变化的时候, 表示用户在侧滑过程中抬起了手指, 需要根据context的状态判断是继续前进还是返回原VC
-                    //这里使用coordinator.animate不会生效, 自己用动画实现过渡
+                    let vc:UIViewController
                     if context.isCancelled {
                         rnblog("侧滑中断 - 取消")
-                        //退回fromVC
-                        self?.rnb_applyNavigationBarStyle(style: fromVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true, animatedOnly: false)
-                        UIView.animate(withDuration: coordinator.transitionDuration, animations: {
-                            rnblog("侧滑中断 - 取消 - 动画执行")
-                            self?.rnb_applyNavigationBarStyle(style: fromVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true, animatedOnly: true)
-                        }) { (_) in
-                            self?.updateInteractiveTransitionCoordinator = nil
-                        }
+                        vc = fromVC
                     }else {
-                        //继续变换到toVC
                         rnblog("侧滑中断 - 继续")
-                        self?.rnb_applyNavigationBarStyle(style: toVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true, animatedOnly: false)
-                        UIView.animate(withDuration: coordinator.transitionDuration, animations: {
-                            rnblog("侧滑中断 - 继续 - 动画执行")
-                            self?.rnb_applyNavigationBarStyle(style: toVC.rnb_navigationBarStyleForTransition(), applyImmediatelly: true, animatedOnly: nil)
-                        }) { (_) in
-                            self?.updateInteractiveTransitionCoordinator = nil
-                        }
+                        vc = toVC
+                    }
+                    UIView.animate(withDuration: coordinator.transitionDuration, animations: {
+                        rnblog("侧滑中断 - 动画执行")
+                        self?.rnb_applyNavigationBarStyle(style: vc.rnb_navigationBarStyleForTransition(), applyImmediatelly: true, animatedOnly: nil)
+                    }) { (_) in
+                        rnblog("侧滑中断动画结束")
+                        self?.updateInteractiveTransitionCoordinator = nil
+                        self?.rnb_applyNavigationBarStyle(style: vc.rnb_navigationBarStyleForTransition(), applyImmediatelly: false, animatedOnly: nil)
                     }
                 }
             }
-            self.rnb_applyNavigationBarStyleInteractively(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete, animatedOnly: nil)
+            self.rnb_applyNavigationBarStyleInteractively(fromStyle: fromStyle, toStyle: toStyle, progress: percentComplete)
         }
     }
 

@@ -15,6 +15,15 @@ public struct RNBHelper {
         return ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: majorVersion, minorVersion: minorVersion, patchVersion: patchVersion))
     }
 
+    ///OS版本是否匹配, 传入nil表示忽略
+    public static func isOperatingSystemMatch(_ majorVersion: Int?, _ minorVersion: Int?, _ patchVersion: Int?)->Bool {
+        let os = ProcessInfo.processInfo.operatingSystemVersion
+        let major:Bool = majorVersion == nil ? true : majorVersion == os.majorVersion
+        let minor = minorVersion == nil ? true : minorVersion == os.minorVersion
+        let patch = patchVersion == nil ? true : patchVersion == os.patchVersion
+        return major && minor && patch
+    }
+
     ///as the name says
     @available(iOS 11, *)
     public static func isRoundCornerScreen()->Bool {

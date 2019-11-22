@@ -9,7 +9,8 @@
 import UIKit
 
 extension UINavigationBar {
-
+    
+    /*
     ///获取底部的分割线
     public var rnb_shadowView:UIView? {
         guard let backgroundView = self.rnb_barBackgroundView else {
@@ -39,6 +40,7 @@ extension UINavigationBar {
 
         return view
     }
+     */
 
     public var rnb_barBackgroundView:UIView? {
         guard let classs = NSClassFromString("_UIBarBackground") else {

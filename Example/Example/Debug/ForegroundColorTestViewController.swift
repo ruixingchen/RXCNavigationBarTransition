@@ -12,7 +12,16 @@ class ForegroundColorTestViewController: BaseSingleTestViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.rnb_setNavigationBarForegroundColor(UIColor.random())
+        switch self.navigationController?.viewControllers.firstIndex(of: self) ?? 0 % 3 {
+        case 1:
+            self.rnb_setNavigationBarForegroundColor(UIColor.orange)
+        case 2:
+            self.rnb_setNavigationBarForegroundColor(UIColor.clear)
+        case 0:
+            self.rnb_setNavigationBarForegroundColor(UIColor.random())
+        default:
+            break
+        }
     }
 
     override func nextViewController() -> UIViewController {

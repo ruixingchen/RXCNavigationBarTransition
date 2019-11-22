@@ -49,14 +49,7 @@ extension UINavigationController {
     @objc func rnbsw_popViewController(animated:Bool)->UIViewController? {
         rnblog("导航pop")
         print(self.topViewController?.title)
-        switch UIApplication.shared.statusBarStyle {
-        case .darkContent:
-            print("darkContent")
-        case .lightContent:
-            print("light")
-        case .default:
-            print("deffault")
-        }
+        print(UIApplication.shared.statusBarStyle.description)
         self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             let vc = self.rnbsw_popViewController(animated: animated)

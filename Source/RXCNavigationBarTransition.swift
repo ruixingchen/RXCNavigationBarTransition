@@ -97,9 +97,19 @@ extension RXCNavigationBarTransition {
 fileprivate extension UINavigationBar {
 
     static func rnb_startMethodExchange() {
-        let needSwizzleSelectors:[Selector] = [
-            #selector(layoutSubviews)
+        var needSwizzleSelectors:[Selector] = [
+            #selector(layoutSubviews),
+            #selector(getter: UINavigationBar.shadowImage)
         ]
+        if RNBHelper.isOperatingSystemAtLeast(13, 0, 0) {
+            //在iOS12和之前的系统里, 交换下面的方法会导致崩溃, 虽然下面两个方法其实也可以不交换, 但为了保证效果, 在iOS13的情况下还是交换吧
+            let selectors:[Selector] = [
+                #selector(addSubview(_:)),
+                #selector(willRemoveSubview(_:))
+            ]
+            needSwizzleSelectors.append(contentsOf: selectors)
+        }
+
         for i in needSwizzleSelectors.enumerated() {
             guard let originalMethod = class_getInstanceMethod(self, i.element) else {
                 assertionFailure("method exchange failed, origin selector not found:\(i.element)")
