@@ -1,5 +1,5 @@
 framework module SnapKit {
-  umbrella header "SnapKit-iOS13.2-umbrella.h"
+  umbrella header "SnapKit-umbrella.h"
 
   export *
   module * { export * }
