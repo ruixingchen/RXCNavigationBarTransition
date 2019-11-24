@@ -42,6 +42,7 @@ class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableVie
         super.rxc_viewWillAppear_first(animated)
         self.rnb_setNavigationBarBackgroundAlpha(0)
         self.rnb_setNavigationBarTintColor(UIColor.white)
+        self.rnb_setStatusBarStyle(.lightContent)
     }
 
     override func rxc_viewDidAppear_first(_ animated: Bool) {

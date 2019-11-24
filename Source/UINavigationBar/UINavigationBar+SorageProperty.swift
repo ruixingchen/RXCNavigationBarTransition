@@ -66,12 +66,6 @@ extension UINavigationBar {
         }
         set {
             objc_setAssociatedObject(self, &Key.rnb_barBackgroundAlphaObserverContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            #if (debug || DEBUG)
-            if var object = newValue {
-                let pointer = Unmanaged.passUnretained(object).toOpaque()
-                rnblog("设置了barBackgroundAlphaObserverContext:\(pointer)")
-            }
-            #endif
         }
     }
 

@@ -38,7 +38,10 @@ class ExampleMenuViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.rnb_setNavigationBarForegroundColor(UIColor.orange)
+        self.rnb_setNavigationBarForegroundColor(UIColor(red: 50.0/255, green: 164.0/255, blue: 232.0/255, alpha: 1.0))
+        self.rnb_setStatusBarStyle(.lightContent)
+        self.rnb_setNavigationBarTitleColor(UIColor.white)
+        self.rnb_setNavigationBarTintColor(UIColor.white)
     }
 
     override func viewDidAppear(_ animated: Bool) {
