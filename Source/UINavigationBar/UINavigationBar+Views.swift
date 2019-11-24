@@ -55,10 +55,24 @@ extension UINavigationBar {
     }
 
     public var rnb_barContentView:UIView? {
-        guard let classs = NSClassFromString("_UINavigationBarContentView") else {
-            assertionFailure("无法获取到 _UINavigationBarContentView 类")
+        //UINavigationItemView
+        let classs:AnyClass
+        if RNBHelper.isOperatingSystemAtLeast(11, 0, 0) {
+            guard let _classs = NSClassFromString("_UINavigationBarContentView") else {
+                assertionFailure("无法获取到 _UINavigationBarContentView 类")
+                return nil
+            }
+            classs = _classs
+        }else if RNBHelper.isOperatingSystemAtLeast(10, 0, 0) {
+            guard let _classs = NSClassFromString("UINavigationItemView") else {
+                assertionFailure("无法获取到 UINavigationItemView 类")
+                return nil
+            }
+            classs = _classs
+        } else {
             return nil
         }
+
         guard let view = self.subviews.first(where: {$0.isMember(of: classs)}) else {
             //assertionFailure("无法获取到subviews中是 _UINavigationBarContentView 的view")
             return nil

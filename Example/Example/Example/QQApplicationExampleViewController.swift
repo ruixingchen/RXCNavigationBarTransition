@@ -22,7 +22,11 @@ class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableVie
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.view.addSubview(self.tableView)
         self.tableView.snp.makeConstraints { (make) in
             make.size.equalToSuperview()
@@ -75,6 +79,10 @@ class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableVie
         let cell = UITableViewCell()
         cell.textLabel?.text = "RXCNavigationBar \(indexPath.row)"
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 52
     }
 
     ///刚好完全不透明的offset

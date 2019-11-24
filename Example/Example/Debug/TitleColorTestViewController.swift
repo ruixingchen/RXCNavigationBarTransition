@@ -12,7 +12,7 @@ class TitleColorTestViewController: BaseSingleTestViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switch self.navigationController?.viewControllers.firstIndex(of: self) ?? 0 % 3 {
+        switch (self.navigationController?.viewControllers.firstIndex(of: self) ?? 0) % 3 {
         case 1:
             self.rnb_setNavigationBarTitleColor(UIColor.orange)
         case 2:

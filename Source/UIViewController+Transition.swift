@@ -190,6 +190,7 @@ extension UIViewController {
             self.navigationController?.rnbnav_setNavigationBarAlpha(setting: self.rnb_navigationBarStyle.alphaSetting)
         }
     }
+    @available(iOS, introduced: 8, deprecated, message: "has an animation problem with 0 alpha")
     public func rnb_setNavigationBarAlpha(_ value:CGFloat) {
         let setting = RNBSetting.setted(value)
         self.rnb_setNavigationBarAlpha(setting)

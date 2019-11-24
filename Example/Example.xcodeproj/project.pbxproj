@@ -17,7 +17,7 @@
 		800926C523865F7700113B6E /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B823865F7700113B6E /* UIViewController+Transition.swift */; };
 		800926C623865F7700113B6E /* UINavigationBar+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926B923865F7700113B6E /* UINavigationBar+Views.swift */; };
 		800926C723865F7700113B6E /* UINavigationController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */; };
-		800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */; };
+		800926C823865F7700113B6E /* UINavigationBar+SorageProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BB23865F7700113B6E /* UINavigationBar+SorageProperty.swift */; };
 		800926C923865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */; };
 		800926CB23866FD800113B6E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CA23866FD800113B6E /* MainMenuViewController.swift */; };
 		800926CD2386722A00113B6E /* AlphaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800926CC2386722A00113B6E /* AlphaTestViewController.swift */; };
@@ -45,6 +45,9 @@
 		802F269A2373CAF000963468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802F26982373CAF000963468 /* LaunchScreen.storyboard */; };
 		8047FC8523869D950040314B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC8423869D950040314B /* UIColor+Extension.swift */; };
 		8047FC872386A69E0040314B /* ExampleMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047FC862386A69E0040314B /* ExampleMenuViewController.swift */; };
+		80BDF625238A4D2C0097DD42 /* UINavigationBar+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BDF624238A4D2C0097DD42 /* UINavigationBar+Style.swift */; };
+		80BDF627238A4D680097DD42 /* UINavigationBar+MethodSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BDF626238A4D680097DD42 /* UINavigationBar+MethodSwitch.swift */; };
+		80BDF629238A4E040097DD42 /* UINavigationBar+Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BDF628238A4E040097DD42 /* UINavigationBar+Misc.swift */; };
 		8564A8DAC9D3C2D6B4A65F5B /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F61CA174020D1286620A48 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +81,7 @@
 		800926B823865F7700113B6E /* UIViewController+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
 		800926B923865F7700113B6E /* UINavigationBar+Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Views.swift"; sourceTree = "<group>"; };
 		800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RNBExtension.swift"; sourceTree = "<group>"; };
-		800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Transition.swift"; sourceTree = "<group>"; };
+		800926BB23865F7700113B6E /* UINavigationBar+SorageProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+SorageProperty.swift"; sourceTree = "<group>"; };
 		800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
 		800926CA23866FD800113B6E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		800926CC2386722A00113B6E /* AlphaTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaTestViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +113,9 @@
 		802F269B2373CAF000963468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8047FC8423869D950040314B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8047FC862386A69E0040314B /* ExampleMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMenuViewController.swift; sourceTree = "<group>"; };
+		80BDF624238A4D2C0097DD42 /* UINavigationBar+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Style.swift"; sourceTree = "<group>"; };
+		80BDF626238A4D680097DD42 /* UINavigationBar+MethodSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+MethodSwitch.swift"; sourceTree = "<group>"; };
+		80BDF628238A4E040097DD42 /* UINavigationBar+Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Misc.swift"; sourceTree = "<group>"; };
 		A0F61CA174020D1286620A48 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,14 +152,13 @@
 		800926AF23865F7700113B6E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				80BDF623238A4D0B0097DD42 /* UINavigationBar */,
 				800926BA23865F7700113B6E /* UINavigationController+RNBExtension.swift */,
 				800926B723865F7700113B6E /* UIColor+RNBExtension.swift */,
 				800926B323865F7700113B6E /* RNBHelper.swift */,
 				800926B523865F7700113B6E /* RNBSetting.swift */,
 				800926B223865F7700113B6E /* RNBNavigationBarStyle.swift */,
 				800926B023865F7700113B6E /* RXCNavigationBarTransition.swift */,
-				800926B923865F7700113B6E /* UINavigationBar+Views.swift */,
-				800926BB23865F7700113B6E /* UINavigationBar+Transition.swift */,
 				800926B823865F7700113B6E /* UIViewController+Transition.swift */,
 				800926B423865F7700113B6E /* UINavigationController+Transition.swift */,
 				800926BC23865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift */,
@@ -250,6 +255,18 @@
 				7829AC3F45F949AF4281A4B2 /* Pods_NavigationControllerTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80BDF623238A4D0B0097DD42 /* UINavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				800926B923865F7700113B6E /* UINavigationBar+Views.swift */,
+				800926BB23865F7700113B6E /* UINavigationBar+SorageProperty.swift */,
+				80BDF624238A4D2C0097DD42 /* UINavigationBar+Style.swift */,
+				80BDF626238A4D680097DD42 /* UINavigationBar+MethodSwitch.swift */,
+				80BDF628238A4E040097DD42 /* UINavigationBar+Misc.swift */,
+			);
+			path = UINavigationBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +427,7 @@
 			files = (
 				800926C123865F7700113B6E /* UINavigationController+Transition.swift in Sources */,
 				800926D523867D2D00113B6E /* TintColorTestViewController.swift in Sources */,
+				80BDF629238A4E040097DD42 /* UINavigationBar+Misc.swift in Sources */,
 				800926D32386796C00113B6E /* BaseSingleTestViewController.swift in Sources */,
 				800926BD23865F7700113B6E /* RXCNavigationBarTransition.swift in Sources */,
 				801D792823877D97001E2076 /* QQApplicationExampleViewController.swift in Sources */,
@@ -425,10 +443,12 @@
 				800926BF23865F7700113B6E /* RNBNavigationBarStyle.swift in Sources */,
 				801D792C2387CF8E001E2076 /* ForegroundColorTestViewController.swift in Sources */,
 				802F26922373CAEF00963468 /* AllTestViewController.swift in Sources */,
-				800926C823865F7700113B6E /* UINavigationBar+Transition.swift in Sources */,
+				800926C823865F7700113B6E /* UINavigationBar+SorageProperty.swift in Sources */,
 				800926C723865F7700113B6E /* UINavigationController+RNBExtension.swift in Sources */,
+				80BDF625238A4D2C0097DD42 /* UINavigationBar+Style.swift in Sources */,
 				800926C223865F7700113B6E /* RNBSetting.swift in Sources */,
 				800926C923865F7700113B6E /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
+				80BDF627238A4D680097DD42 /* UINavigationBar+MethodSwitch.swift in Sources */,
 				800926D923867E1700113B6E /* ShadowHiddenTestViewController.swift in Sources */,
 				800926C023865F7700113B6E /* RNBHelper.swift in Sources */,
 				800926C423865F7700113B6E /* UIColor+RNBExtension.swift in Sources */,

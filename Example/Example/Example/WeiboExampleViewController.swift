@@ -25,7 +25,11 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
             make.center.equalToSuperview()
         }
 
-        self.tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.tableHeaderView = headerView
         headerView.snp.makeConstraints { (make) in
@@ -74,6 +78,10 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
         return cell
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 52
+    }
+
     ///刚好完全不透明的offset
     var opaqueCriticalOffset:CGFloat {
         guard let bar = self.navigationController?.navigationBar else {return 0}
@@ -95,6 +103,7 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
         var alpha:CGFloat = 1 - (offset - opaqueCriticalOffset) / (transparentCriticalOffset-opaqueCriticalOffset)
         alpha = max(0, alpha)
         alpha = min(1, alpha)
+        print("设置alpha:\(alpha)")
         self.rnb_setNavigationBarBackgroundAlpha(alpha)
         if alpha > 0.5 {
             self.title = "ruixingchen"

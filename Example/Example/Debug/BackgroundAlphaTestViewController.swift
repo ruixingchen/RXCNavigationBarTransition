@@ -12,7 +12,7 @@ class BackgroundAlphaTestViewController: BaseSingleTestViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switch self.navigationController?.viewControllers.firstIndex(of: self) ?? 0 % 3 {
+        switch (self.navigationController?.viewControllers.firstIndex(of: self) ?? 0) % 3 {
         case 1:
             self.rnb_setNavigationBarBackgroundAlpha(0.0)
         case 2:

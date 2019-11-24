@@ -13,7 +13,7 @@ class StatusBarStyleTestViewController: BaseSingleTestViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        switch self.navigationController?.viewControllers.firstIndex(of: self) ?? 0 % 2 {
+        switch (self.navigationController?.viewControllers.firstIndex(of: self) ?? 0) % 2 {
         case 1:
             self.rnb_setStatusBarStyle(.lightContent)
         case 0:

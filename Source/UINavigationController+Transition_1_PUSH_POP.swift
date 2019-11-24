@@ -48,8 +48,6 @@ extension UINavigationController {
 
     @objc func rnbsw_popViewController(animated:Bool)->UIViewController? {
         rnblog("导航pop")
-        print(self.topViewController?.title)
-        print(UIApplication.shared.statusBarStyle.description)
         self.topViewController?.rnb_navigationBarStyleSavedBeforeTransition = self.navigationBar.rnb_currentStyle()
         guard RXCNavigationBarTransition.shouldWorkOnNavigationController(self) else {
             let vc = self.rnbsw_popViewController(animated: animated)
@@ -66,7 +64,7 @@ extension UINavigationController {
             }
         }else {
             //无法获取coordinator, 可能是非animated, 直接应用样式
-            //这里必须async, 让pop方法完全执行
+            //async, 让pop方法完全执行
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
@@ -95,7 +93,7 @@ extension UINavigationController {
         if let coordinator = self.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
-            //这里必须async, 让pop方法完全执行
+            //async, 让pop方法完全执行
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
@@ -124,7 +122,7 @@ extension UINavigationController {
         if let coordinator = self.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)
         }else {
-            //这里必须async, 让pop方法完全执行
+            //async, 让pop方法完全执行
             DispatchQueue.main.async {
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()

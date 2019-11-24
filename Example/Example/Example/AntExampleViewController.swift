@@ -22,7 +22,11 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.view.addSubview(self.tableView)
         self.tableView.snp.makeConstraints { (make) in
             make.size.equalToSuperview()
@@ -58,6 +62,7 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
             bottom = self.bottomLayoutGuide.length
         }
         self.tableView.contentInset = UIEdgeInsets(top: self.headerHeight, left: 0, bottom: bottom, right: 0)
+
         if true {
             var frame = self.headerView.frame
             frame.size.width = self.tableView.frame.width
@@ -79,6 +84,10 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
         let cell = UITableViewCell()
         cell.textLabel?.text = "RXCNavigationBar \(indexPath.row)"
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 52
     }
 
     ///刚好完全不透明的offset
