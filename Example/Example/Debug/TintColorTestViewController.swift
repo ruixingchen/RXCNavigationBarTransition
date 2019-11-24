@@ -16,7 +16,7 @@ class TintColorTestViewController: BaseSingleTestViewController {
         case 1:
             self.rnb_setNavigationBarTintColor(UIColor.orange)
         case 2:
-            self.rnb_setNavigationBarTintColor(UIColor.clear)
+            self.rnb_setNavigationBarTintColor(UIColor.random())
         case 0:
             self.rnb_setNavigationBarTintColor(UIColor.random())
         default:

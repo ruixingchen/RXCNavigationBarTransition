@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tab.setViewControllers([exampleVC, debugVC], animated: false)
         window?.rootViewController = tab
         window?.makeKeyAndVisible()
-        window?.layer.speed = 0.5
+        //window?.layer.speed = 0.5
 
         return true
     }

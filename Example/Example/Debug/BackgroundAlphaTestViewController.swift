@@ -10,6 +10,15 @@ import UIKit
 
 class BackgroundAlphaTestViewController: BaseSingleTestViewController {
 
+    let headerView = UIView()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        headerView.backgroundColor = UIColor.orange
+        self.tableView.addSubview(self.headerView)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch (self.navigationController?.viewControllers.firstIndex(of: self) ?? 0) % 3 {
@@ -22,6 +31,12 @@ class BackgroundAlphaTestViewController: BaseSingleTestViewController {
         default:
             break
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let offset = self.tableView.contentOffset.y
+        self.headerView.frame = CGRect(x: 0, y: offset, width: self.view.bounds.width, height: max(0, -offset))
     }
 
     override func nextViewController() -> UIViewController {

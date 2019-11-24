@@ -283,14 +283,6 @@ extension UINavigationController {
         guard let toController = coordinator.viewController(forKey: .to) else {return}
         rnblog("非交互状态下应用导航栏样式, to: \(String(describing: topViewController))")
         if coordinator.isAnimated {
-            /*
-            DispatchQueue.main.async {
-                rnblog("先更新不可动画的属性")
-             //这里获取到的toStyle可能不正确, toController的willAppear可能尚未被调用
-                let toStyle = toController.rnb_navigationBarStyleForTransition()
-                self.rnb_applyNavigationBarStyle(style: toStyle, applyImmediatelly: true, animatedOnly: false)
-            }
-             */
             coordinator.animate(alongsideTransition: { (_) in
                 rnblog("非交互状态下应用导航栏样式动画执行")
                 let toStyle = toController.rnb_navigationBarStyleForTransition()

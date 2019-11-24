@@ -124,13 +124,12 @@ extension UINavigationBar {
     }
 
     ///获取显示按钮的所有stackView
-    internal var rnb_buttonBarStackViews:[UIView] {
+    public var rnb_buttonBarStackViews:[UIView] {
         guard let _UIButtonBarStackView = NSClassFromString("_UIButtonBarStackView") else {return []}
         guard let stackViews = self.rnb_barContentView?.subviews.filter({$0.isMember(of: _UIButtonBarStackView)}) else {return []}
         return stackViews
     }
 
-    /*
     ///may not be the left stack in some specific situations
     public var rnb_leftButtonStackView:UIView? {
         let stackViews = self.rnb_buttonBarStackViews
@@ -156,7 +155,6 @@ extension UINavigationBar {
             return stackViews.first(where: {(self.bounds.width - ($0.frame.origin.x+$0.frame.width) < 16)})
         }
     }
-     */
 
     ///all buttons including backButton
     public var rnb_stackButtons:[UIView] {

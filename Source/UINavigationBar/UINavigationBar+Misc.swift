@@ -79,7 +79,7 @@ extension UINavigationBar {
             #if (debug || DEBUG)
             //让高度更明显, 便于判断
             if RXCNavigationBarTransition.debugMode {
-                scale = 0.25
+                //scale = 0.25
             }
             #endif
             self.rnb_shadowView1.frame = CGRect(x: 0, y: _bounds.origin.y+_bounds.height, width: _bounds.width, height: 1/scale)
