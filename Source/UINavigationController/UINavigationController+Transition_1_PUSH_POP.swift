@@ -22,7 +22,9 @@ extension UINavigationController {
             return
         }
 
+        //push的时候会立刻更新状态栏样式, 此时viewController的viewDidLoad尚未调用, 导致状态栏发生变化, 我们需要在这里提前手动调用一下viewDidLoad
         self.rnbsw_pushViewController(viewController, animated: animated)
+        let _ = viewController.view
 
         if let coordinator = viewController.transitionCoordinator {
             self.rnb_applyNavigationBarStyleUninteractively(coordinator: coordinator)

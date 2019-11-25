@@ -508,13 +508,13 @@ class AllTestViewController: UIViewController {
 
     @IBAction func applyAsDefault(_ sender: Any) {
         let style = self.styleFromView()
-        self.navigationController?.rnb_defaultNavigationBarAlpha = style.alphaSetting
-        self.navigationController?.rnb_defaultNavigationBarBackgroundAlpha = style.backgroundAlphaSetting
-        self.navigationController?.rnb_defaultNavigationBarBackgroundColor = style.backgroundColorSetting
-        self.navigationController?.rnb_defaultNavigationBarTintColor = style.tintColorSetting
-        self.navigationController?.rnb_defaultNavigationBarTitleColor = style.titleColorSetting
-        self.navigationController?.rnb_defaultNavigationBarShadowViewHidden = style.shadowViewHiddenSetting
-        self.navigationController?.rnb_defaultStatusBarStyle = style.statusBarStyleSetting
+        self.navigationController?.rnb_defaultNavigationBarAlphaSetting = style.alphaSetting
+        self.navigationController?.rnb_defaultNavigationBarBackgroundAlphaSetting = style.backgroundAlphaSetting
+        self.navigationController?.rnb_defaultNavigationBarBackgroundColorSetting = style.backgroundColorSetting
+        self.navigationController?.rnb_defaultNavigationBarTintColorSetting = style.tintColorSetting
+        self.navigationController?.rnb_defaultNavigationBarTitleColorSetting = style.titleColorSetting
+        self.navigationController?.rnb_defaultNavigationBarShadowViewHiddenSetting = style.shadowViewHiddenSetting
+        self.navigationController?.rnb_defaultStatusBarStyleSetting = style.statusBarStyleSetting
     }
 
     @IBAction func push(_ sender: Any?) {

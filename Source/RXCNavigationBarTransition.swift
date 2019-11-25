@@ -96,27 +96,23 @@ extension RXCNavigationBarTransition {
 
 fileprivate extension UINavigationBar {
 
-    static func rnb_startMethodExchange() {
-        var needSwizzleSelectors:[Selector] = [
-            #selector(layoutSubviews),
+    class func rnb_startMethodExchange() {
+        let needSwizzleSelectors:[Selector] = [
+            #selector(UINavigationBar.layoutSubviews),
             #selector(getter: UINavigationBar.shadowImage)
         ]
-        if RNBHelper.isOperatingSystemAtLeast(13, 0, 0) {
-            //在iOS12和之前的系统里, 交换下面的方法会导致崩溃, 虽然下面两个方法其实也可以不交换, 但为了保证效果, 在iOS13的情况下还是交换吧
-            let selectors:[Selector] = [
-                #selector(addSubview(_:)),
-                #selector(willRemoveSubview(_:))
-            ]
-            needSwizzleSelectors.append(contentsOf: selectors)
-        }
+        let newSelectors:[Selector] = [
+            #selector(UINavigationBar.rnbsw_layoutSubviews),
+            #selector(UINavigationBar.rnbsw_shadowImage)
+        ]
 
         for i in needSwizzleSelectors.enumerated() {
-            guard let originalMethod = class_getInstanceMethod(self, i.element) else {
+            guard let originalMethod = class_getInstanceMethod(UINavigationBar.self, i.element) else {
                 assertionFailure("method exchange failed, origin selector not found:\(i.element)")
                 continue
             }
-            guard let newSelector = class_getInstanceMethod(self, Selector("rnbsw_\(i.element.description)")) else {
-                assertionFailure("method exchange failed, new selector not found: rnbsw_\(i.element.description)")
+            guard let newSelector = class_getInstanceMethod(UINavigationBar.self, newSelectors[i.offset]) else {
+                assertionFailure("method exchange failed, new selector not found:\(newSelectors[i.offset])")
                 continue
             }
             method_exchangeImplementations(originalMethod, newSelector)
@@ -126,20 +122,29 @@ fileprivate extension UINavigationBar {
 }
 
 fileprivate extension UIViewController {
-    static func rnb_startMethodExchange_viewController() {
+    class func rnb_startMethodExchange_viewController() {
         let needSwizzleSelectors:[Selector] = [
-            #selector(viewWillAppear(_:)),
-            #selector(viewDidAppear(_:)),
-            #selector(viewWillDisappear(_:)),
-            #selector(viewDidDisappear(_:))
+            #selector(UIViewController.viewDidLoad),
+            #selector(UIViewController.viewWillAppear(_:)),
+            #selector(UIViewController.viewDidAppear(_:)),
+            #selector(UIViewController.viewWillDisappear(_:)),
+            #selector(UIViewController.viewDidDisappear(_:))
         ]
+        let newSelectors:[Selector] = [
+            #selector(UIViewController.rnbsw_viewDidLoad),
+            #selector(UIViewController.rnbsw_viewWillAppear(_:)),
+            #selector(UIViewController.rnbsw_viewDidAppear(_:)),
+            #selector(UIViewController.rnbsw_viewWillDisappear(_:)),
+            #selector(UIViewController.rnbsw_viewDidDisappear(_:))
+        ]
+
         for i in needSwizzleSelectors.enumerated() {
-            guard let originalMethod = class_getInstanceMethod(self, i.element) else {
+            guard let originalMethod = class_getInstanceMethod(UIViewController.self, i.element) else {
                 assertionFailure("method exchange failed, origin selector not found:\(i.element)")
                 continue
             }
-            guard let newSelector = class_getInstanceMethod(self, Selector("rnbsw_\(i.element.description)")) else {
-                assertionFailure("method exchange failed, new selector not found: rnbsw_\(i.element.description)")
+            guard let newSelector = class_getInstanceMethod(UIViewController.self, newSelectors[i.offset]) else {
+                assertionFailure("method exchange failed, new selector not found:\(newSelectors[i.offset])")
                 continue
             }
             method_exchangeImplementations(originalMethod, newSelector)
@@ -148,7 +153,7 @@ fileprivate extension UIViewController {
 }
 
 extension UINavigationController {
-    internal static func rnb_startMethodExchange_navigationController() {
+    internal class func rnb_startMethodExchange_navigationController() {
         let needSwizzleSelectors:[Selector] = [
             NSSelectorFromString("_updateInteractiveTransition:"),
             #selector(UINavigationController.pushViewController(_:animated:)),
@@ -166,11 +171,11 @@ extension UINavigationController {
         ]
 
         for i in needSwizzleSelectors.enumerated() {
-            guard let originalMethod = class_getInstanceMethod(self, i.element) else {
+            guard let originalMethod = class_getInstanceMethod(UINavigationController.self, i.element) else {
                 assertionFailure("method exchange failed, origin selector not found:\(i.element)")
                 continue
             }
-            guard let newSelector = class_getInstanceMethod(self, newSelectors[i.offset]) else {
+            guard let newSelector = class_getInstanceMethod(UINavigationController.self, newSelectors[i.offset]) else {
                 assertionFailure("method exchange failed, new selector not found:\(newSelectors[i.offset])")
                 continue
             }

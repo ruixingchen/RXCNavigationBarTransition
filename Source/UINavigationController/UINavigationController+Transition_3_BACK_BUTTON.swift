@@ -16,7 +16,7 @@ import UIKit
 extension UINavigationController: UINavigationBarDelegate {
 
     @objc public func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool {
-        if RNBHelper.isOperatingSystemAtLeast(OperatingSystemVersion.init(majorVersion: 13, minorVersion: 0, patchVersion: 0)) {
+        if RNBHelper.isOperatingSystemAtLeast(13,0,0) {
             rnblog("点击返回按钮 - iOS13")
             //在iOS13下, 只有点击左上角的时候会走这个方法, 返回true, 会自动执行pop方法, 相关的逻辑会在pop方法内执行
             return true

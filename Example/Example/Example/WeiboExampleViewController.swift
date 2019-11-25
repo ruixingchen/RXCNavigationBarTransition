@@ -9,7 +9,7 @@
 import UIKit
 import RXCFirstTimeViewController
 
-class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSource, UITableViewDelegate {
+class WeiboExampleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let headerView = HeaderView()
 
@@ -38,15 +38,7 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
             make.width.equalToSuperview()
         }
         self.tableView.tableHeaderView = headerView
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-
-    override func rxc_viewWillAppear_first(_ animated: Bool) {
-        super.rxc_viewWillAppear_first(animated)
         self.rnb_setNavigationBarBackgroundAlpha(0)
         self.rnb_setNavigationBarTintColor(UIColor.white)
         self.rnb_setStatusBarStyle(.lightContent)
@@ -67,6 +59,11 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
             bottom = self.bottomLayoutGuide.length
         }
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+    }
+
+    override func ftv_viewDidAppear_first(_ animated: Bool) {
+        super.ftv_viewDidAppear_first(animated)
+        self.rnb_setNavigationBarForegroundColor(UIColor.white)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,13 +101,16 @@ class WeiboExampleViewController: RXCFirstTimeViewController, UITableViewDataSou
         var alpha:CGFloat = 1 - (offset - opaqueCriticalOffset) / (transparentCriticalOffset-opaqueCriticalOffset)
         alpha = max(0, alpha)
         alpha = min(1, alpha)
-        print("设置alpha:\(alpha)")
         self.rnb_setNavigationBarBackgroundAlpha(alpha)
         if alpha > 0.5 {
             self.title = "ruixingchen"
             self.rnb_setNavigationBarTintColor(UIColor.black)
             self.rnb_setNavigationBarTitleColor(UIColor.black)
-            self.rnb_setStatusBarStyle(.default)
+            if #available(iOS 13, *) {
+                self.rnb_setStatusBarStyle(.darkContent)
+            }else {
+                self.rnb_setStatusBarStyle(.default)
+            }
         }else {
             self.title = nil
             self.rnb_setNavigationBarTintColor(UIColor.white)

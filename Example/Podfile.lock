@@ -1,11 +1,11 @@
 PODS:
   - LookinServer (1.0.0)
-  - RXCFirstTimeViewController (1.0)
+  - RXCFirstTimeViewController (1.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - LookinServer (~> 1.0)
-  - RXCFirstTimeViewController
+  - RXCFirstTimeViewController (~> 1.1)
   - SnapKit
 
 SPEC REPOS:
@@ -16,9 +16,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
-  RXCFirstTimeViewController: 4721b253def2d845454ab5dee086e525fc838a16
+  RXCFirstTimeViewController: 307e181e0fce2e6c60fddcd0994ae319ab4c55c8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 8746f09cfc4e1d8b9bc55c466c481c497d2d5c96
+PODFILE CHECKSUM: 119021b9e413ee158f47f78e2c7fff71e5811fd5
 
 COCOAPODS: 1.8.4

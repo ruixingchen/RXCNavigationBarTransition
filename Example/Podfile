@@ -7,6 +7,6 @@ target 'Example' do
 
   pod 'LookinServer', '~> 1.0', :configurations => ['Debug']
   pod 'SnapKit'
-  pod 'RXCFirstTimeViewController'
+  pod 'RXCFirstTimeViewController', '~> 1.1'
 
 end

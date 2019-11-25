@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import RXCFirstTimeViewController
 
-class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableViewDataSource, UITableViewDelegate {
+class QQApplicationExampleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let headerView = UIImageView()
 
@@ -36,17 +35,14 @@ class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableVie
         self.headerView.contentMode = .scaleAspectFill
         headerView.image = UIImage(named: "qq_app_header")
         self.tableView.addSubview(self.headerView)
-    }
 
-    override func rxc_viewWillAppear_first(_ animated: Bool) {
-        super.rxc_viewWillAppear_first(animated)
         self.rnb_setNavigationBarBackgroundAlpha(0)
         self.rnb_setNavigationBarTintColor(UIColor.white)
         self.rnb_setStatusBarStyle(.lightContent)
     }
 
-    override func rxc_viewDidAppear_first(_ animated: Bool) {
-        super.rxc_viewDidAppear_first(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.rnb_setNavigationBarForegroundColor(UIColor(red: 50.0/255, green: 164.0/255, blue: 232.0/255, alpha: 1.0))
     }
 
@@ -59,15 +55,7 @@ class QQApplicationExampleViewController: RXCFirstTimeViewController, UITableVie
             bottom = self.bottomLayoutGuide.length
         }
         self.tableView.contentInset = UIEdgeInsets(top: self.headerHeight, left: 0, bottom: bottom, right: 0)
-        if true {
-            var frame = self.headerView.frame
-            frame.size.width = self.tableView.frame.width
-            self.headerView.frame = frame
-        }
-    }
 
-    override func rxc_viewDidLayoutSubviews_first() {
-        super.rxc_viewDidLayoutSubviews_first()
         self.headerView.frame = CGRect(x: 0, y: -self.headerHeight, width: self.view.bounds.width, height: self.headerHeight)
         self.tableView.setContentOffset(CGPoint(x: 0, y: -self.headerHeight), animated: false)
     }

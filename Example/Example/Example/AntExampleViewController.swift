@@ -9,7 +9,7 @@
 import UIKit
 import RXCFirstTimeViewController
 
-class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSource, UITableViewDelegate {
+class AntExampleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let headerView = UIImageView()
 
@@ -37,10 +37,7 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
         headerView.image = UIImage(named: "ant_header")
         self.tableView.addSubview(self.headerView)
         self.title = "蚂蚁森林"
-    }
 
-    override func rxc_viewWillAppear_first(_ animated: Bool) {
-        super.rxc_viewWillAppear_first(animated)
         self.rnb_setNavigationBarBackgroundAlpha(0)
         self.rnb_setNavigationBarShadowViewHidden(true)
         self.rnb_setNavigationBarTintColor(UIColor.white)
@@ -48,8 +45,8 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
         self.rnb_setStatusBarStyle(.lightContent)
     }
 
-    override func rxc_viewDidAppear_first(_ animated: Bool) {
-        super.rxc_viewDidAppear_first(animated)
+    override func ftv_viewDidAppear_first(_ animated: Bool) {
+        super.ftv_viewDidAppear_first(animated)
         self.rnb_setNavigationBarForegroundColor(UIColor.white)
     }
 
@@ -63,15 +60,6 @@ class AntExampleViewController: RXCFirstTimeViewController, UITableViewDataSourc
         }
         self.tableView.contentInset = UIEdgeInsets(top: self.headerHeight, left: 0, bottom: bottom, right: 0)
 
-        if true {
-            var frame = self.headerView.frame
-            frame.size.width = self.tableView.frame.width
-            self.headerView.frame = frame
-        }
-    }
-
-    override func rxc_viewDidLayoutSubviews_first() {
-        super.rxc_viewDidLayoutSubviews_first()
         self.headerView.frame = CGRect(x: 0, y: -self.headerHeight, width: self.view.bounds.width, height: self.headerHeight)
         self.tableView.setContentOffset(CGPoint(x: 0, y: -self.headerHeight), animated: false)
     }

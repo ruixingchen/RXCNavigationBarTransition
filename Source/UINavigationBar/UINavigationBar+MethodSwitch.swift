@@ -28,7 +28,7 @@ extension UINavigationBar {
         }
     }
 
-    ///只在iOS13上会被调用
+    /*
     @objc func rnbsw_addSubview(_ view: UIView) {
         self.rnbsw_addSubview(view)
         self.rnb_rearrangeSubviews()
@@ -39,6 +39,7 @@ extension UINavigationBar {
         self.rnbsw_willRemoveSubview(subview)
         self.rnb_rearrangeSubviews()
     }
+     */
 
     ///强制返回一个空图片, 让系统自带的shadowView不显示
     @objc func rnbsw_shadowImage()->UIImage? {
