@@ -10,11 +10,7 @@ import UIKit
 
 public final class RXCNavigationBarTransition {
 
-    #if (debug || DEBUG)
-    public static var debugMode:Bool = true
-    #else
     public static var debugMode:Bool = false
-    #endif
 
     public enum WorkingMode {
         case blackList([String]), whiteList([String]), prefix([String])
