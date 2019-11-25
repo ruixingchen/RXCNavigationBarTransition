@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RXCNavigationBarTransition"
-  spec.version      = "1.0"
+  spec.version      = "1.1"
   spec.summary      = "UINavigationBar black magic to dance"
   spec.description  = "UINavigationBar black magic to dance."
 
