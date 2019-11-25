@@ -8,38 +8,52 @@
 
 /* Begin PBXBuildFile section */
 		802F267B2373CABF00963468 /* RXCNavigationBarTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 802F26792373CABF00963468 /* RXCNavigationBarTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		802F26A32373CB2D00963468 /* RXCNavigationBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26A22373CB2D00963468 /* RXCNavigationBarTransition.swift */; };
-		802F26A52373E3CD00963468 /* RNBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26A42373E3CD00963468 /* RNBHelper.swift */; };
-		802F26A72373E76C00963468 /* RNBNavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26A62373E76C00963468 /* RNBNavigationBarStyle.swift */; };
-		802F26A92373EF7700963468 /* UINavigationBar+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26A82373EF7700963468 /* UINavigationBar+Transition.swift */; };
-		802F26AB2373EF9A00963468 /* UINavigationBar+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26AA2373EF9A00963468 /* UINavigationBar+Views.swift */; };
-		802F26BB237409BF00963468 /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BA237409BF00963468 /* UIViewController+Transition.swift */; };
-		802F26BD23740A6100963468 /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BC23740A6100963468 /* UINavigationController+Transition.swift */; };
-		802F26BF23740E8200963468 /* RNBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F26BE23740E8200963468 /* RNBSetting.swift */; };
-		8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */; };
-		8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */; };
-		8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */; };
-		8089AE042384D57D0084FEAF /* UINavigationController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */; };
-		8089AE06238516D00084FEAF /* UIColor+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */; };
+		8088832E238BE46600C15CC1 /* RXCNavigationBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888317238BE46600C15CC1 /* RXCNavigationBarTransition.swift */; };
+		8088832F238BE46600C15CC1 /* RNBNavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888318238BE46600C15CC1 /* RNBNavigationBarStyle.swift */; };
+		80888330238BE46600C15CC1 /* RNBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888319238BE46600C15CC1 /* RNBHelper.swift */; };
+		80888331238BE46600C15CC1 /* RNBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088831A238BE46600C15CC1 /* RNBSetting.swift */; };
+		80888332238BE46600C15CC1 /* UINavigationBar+SorageProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088831C238BE46600C15CC1 /* UINavigationBar+SorageProperty.swift */; };
+		80888333238BE46600C15CC1 /* UINavigationBar+Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088831D238BE46600C15CC1 /* UINavigationBar+Misc.swift */; };
+		80888334238BE46600C15CC1 /* UINavigationBar+MethodSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088831E238BE46600C15CC1 /* UINavigationBar+MethodSwitch.swift */; };
+		80888335238BE46600C15CC1 /* UINavigationBar+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088831F238BE46600C15CC1 /* UINavigationBar+Views.swift */; };
+		80888336238BE46600C15CC1 /* UINavigationBar+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888320238BE46600C15CC1 /* UINavigationBar+Style.swift */; };
+		80888337238BE46600C15CC1 /* UIViewController+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888322238BE46600C15CC1 /* UIViewController+Storage.swift */; };
+		80888338238BE46600C15CC1 /* UIViewController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888323238BE46600C15CC1 /* UIViewController+RNBExtension.swift */; };
+		80888339238BE46600C15CC1 /* UIViewController+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888324238BE46600C15CC1 /* UIViewController+Style.swift */; };
+		8088833A238BE46600C15CC1 /* UIViewController+MethodExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888325238BE46600C15CC1 /* UIViewController+MethodExchange.swift */; };
+		8088833B238BE46600C15CC1 /* UINavigationController+Transition_2_SWIPE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888327238BE46600C15CC1 /* UINavigationController+Transition_2_SWIPE.swift */; };
+		8088833C238BE46600C15CC1 /* UINavigationController+DefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888328238BE46600C15CC1 /* UINavigationController+DefaultStyle.swift */; };
+		8088833D238BE46600C15CC1 /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80888329238BE46600C15CC1 /* UINavigationController+Transition.swift */; };
+		8088833E238BE46600C15CC1 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088832A238BE46600C15CC1 /* UINavigationController+Transition_3_BACK_BUTTON.swift */; };
+		8088833F238BE46600C15CC1 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088832B238BE46600C15CC1 /* UINavigationController+Transition_1_PUSH_POP.swift */; };
+		80888340238BE46600C15CC1 /* UIColor+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088832C238BE46600C15CC1 /* UIColor+RNBExtension.swift */; };
+		80888341238BE46600C15CC1 /* UINavigationController+RNBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088832D238BE46600C15CC1 /* UINavigationController+RNBExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		802F26762373CABF00963468 /* RXCNavigationBarTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RXCNavigationBarTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F26792373CABF00963468 /* RXCNavigationBarTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RXCNavigationBarTransition.h; sourceTree = "<group>"; };
 		802F267A2373CABF00963468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		802F26A22373CB2D00963468 /* RXCNavigationBarTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXCNavigationBarTransition.swift; sourceTree = "<group>"; };
-		802F26A42373E3CD00963468 /* RNBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBHelper.swift; sourceTree = "<group>"; };
-		802F26A62373E76C00963468 /* RNBNavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBNavigationBarStyle.swift; sourceTree = "<group>"; };
-		802F26A82373EF7700963468 /* UINavigationBar+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Transition.swift"; sourceTree = "<group>"; };
-		802F26AA2373EF9A00963468 /* UINavigationBar+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Views.swift"; sourceTree = "<group>"; };
-		802F26BA237409BF00963468 /* UIViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
-		802F26BC23740A6100963468 /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
-		802F26BE23740E8200963468 /* RNBSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBSetting.swift; sourceTree = "<group>"; };
-		8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
-		8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2_SWIPE.swift"; sourceTree = "<group>"; };
-		8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3_BACK_BUTTON.swift"; sourceTree = "<group>"; };
-		8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RNBExtension.swift"; sourceTree = "<group>"; };
-		8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RNBExtension.swift"; sourceTree = "<group>"; };
+		80888317238BE46600C15CC1 /* RXCNavigationBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXCNavigationBarTransition.swift; sourceTree = "<group>"; };
+		80888318238BE46600C15CC1 /* RNBNavigationBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBNavigationBarStyle.swift; sourceTree = "<group>"; };
+		80888319238BE46600C15CC1 /* RNBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBHelper.swift; sourceTree = "<group>"; };
+		8088831A238BE46600C15CC1 /* RNBSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBSetting.swift; sourceTree = "<group>"; };
+		8088831C238BE46600C15CC1 /* UINavigationBar+SorageProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+SorageProperty.swift"; sourceTree = "<group>"; };
+		8088831D238BE46600C15CC1 /* UINavigationBar+Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Misc.swift"; sourceTree = "<group>"; };
+		8088831E238BE46600C15CC1 /* UINavigationBar+MethodSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+MethodSwitch.swift"; sourceTree = "<group>"; };
+		8088831F238BE46600C15CC1 /* UINavigationBar+Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Views.swift"; sourceTree = "<group>"; };
+		80888320238BE46600C15CC1 /* UINavigationBar+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Style.swift"; sourceTree = "<group>"; };
+		80888322238BE46600C15CC1 /* UIViewController+Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storage.swift"; sourceTree = "<group>"; };
+		80888323238BE46600C15CC1 /* UIViewController+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+RNBExtension.swift"; sourceTree = "<group>"; };
+		80888324238BE46600C15CC1 /* UIViewController+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Style.swift"; sourceTree = "<group>"; };
+		80888325238BE46600C15CC1 /* UIViewController+MethodExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MethodExchange.swift"; sourceTree = "<group>"; };
+		80888327238BE46600C15CC1 /* UINavigationController+Transition_2_SWIPE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_2_SWIPE.swift"; sourceTree = "<group>"; };
+		80888328238BE46600C15CC1 /* UINavigationController+DefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+DefaultStyle.swift"; sourceTree = "<group>"; };
+		80888329238BE46600C15CC1 /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
+		8088832A238BE46600C15CC1 /* UINavigationController+Transition_3_BACK_BUTTON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_3_BACK_BUTTON.swift"; sourceTree = "<group>"; };
+		8088832B238BE46600C15CC1 /* UINavigationController+Transition_1_PUSH_POP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition_1_PUSH_POP.swift"; sourceTree = "<group>"; };
+		8088832C238BE46600C15CC1 /* UIColor+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RNBExtension.swift"; sourceTree = "<group>"; };
+		8088832D238BE46600C15CC1 /* UINavigationController+RNBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RNBExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +70,7 @@
 		802F266C2373CABF00963468 = {
 			isa = PBXGroup;
 			children = (
-				802F26A12373CAFE00963468 /* Source */,
+				80888316238BE46600C15CC1 /* Source */,
 				802F26782373CABF00963468 /* RXCNavigationBarTransition */,
 				802F26772373CABF00963468 /* Products */,
 			);
@@ -79,24 +93,55 @@
 			path = RXCNavigationBarTransition;
 			sourceTree = "<group>";
 		};
-		802F26A12373CAFE00963468 /* Source */ = {
+		80888316238BE46600C15CC1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8089AE05238516D00084FEAF /* UIColor+RNBExtension.swift */,
-				802F26BE23740E8200963468 /* RNBSetting.swift */,
-				802F26A42373E3CD00963468 /* RNBHelper.swift */,
-				802F26A62373E76C00963468 /* RNBNavigationBarStyle.swift */,
-				802F26A22373CB2D00963468 /* RXCNavigationBarTransition.swift */,
-				802F26AA2373EF9A00963468 /* UINavigationBar+Views.swift */,
-				802F26A82373EF7700963468 /* UINavigationBar+Transition.swift */,
-				802F26BA237409BF00963468 /* UIViewController+Transition.swift */,
-				8089AE032384D57D0084FEAF /* UINavigationController+RNBExtension.swift */,
-				802F26BC23740A6100963468 /* UINavigationController+Transition.swift */,
-				8058AD7F2374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift */,
-				8058AD812374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift */,
-				8058AD852375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift */,
+				8088831B238BE46600C15CC1 /* UINavigationBar */,
+				80888321238BE46600C15CC1 /* UIViewController */,
+				80888326238BE46600C15CC1 /* UINavigationController */,
+				80888317238BE46600C15CC1 /* RXCNavigationBarTransition.swift */,
+				80888318238BE46600C15CC1 /* RNBNavigationBarStyle.swift */,
+				80888319238BE46600C15CC1 /* RNBHelper.swift */,
+				8088831A238BE46600C15CC1 /* RNBSetting.swift */,
+				8088832C238BE46600C15CC1 /* UIColor+RNBExtension.swift */,
+				8088832D238BE46600C15CC1 /* UINavigationController+RNBExtension.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		8088831B238BE46600C15CC1 /* UINavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				8088831C238BE46600C15CC1 /* UINavigationBar+SorageProperty.swift */,
+				8088831D238BE46600C15CC1 /* UINavigationBar+Misc.swift */,
+				8088831E238BE46600C15CC1 /* UINavigationBar+MethodSwitch.swift */,
+				8088831F238BE46600C15CC1 /* UINavigationBar+Views.swift */,
+				80888320238BE46600C15CC1 /* UINavigationBar+Style.swift */,
+			);
+			path = UINavigationBar;
+			sourceTree = "<group>";
+		};
+		80888321238BE46600C15CC1 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80888322238BE46600C15CC1 /* UIViewController+Storage.swift */,
+				80888323238BE46600C15CC1 /* UIViewController+RNBExtension.swift */,
+				80888324238BE46600C15CC1 /* UIViewController+Style.swift */,
+				80888325238BE46600C15CC1 /* UIViewController+MethodExchange.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		80888326238BE46600C15CC1 /* UINavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				80888327238BE46600C15CC1 /* UINavigationController+Transition_2_SWIPE.swift */,
+				80888328238BE46600C15CC1 /* UINavigationController+DefaultStyle.swift */,
+				80888329238BE46600C15CC1 /* UINavigationController+Transition.swift */,
+				8088832A238BE46600C15CC1 /* UINavigationController+Transition_3_BACK_BUTTON.swift */,
+				8088832B238BE46600C15CC1 /* UINavigationController+Transition_1_PUSH_POP.swift */,
+			);
+			path = UINavigationController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,19 +224,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				802F26A92373EF7700963468 /* UINavigationBar+Transition.swift in Sources */,
-				802F26A52373E3CD00963468 /* RNBHelper.swift in Sources */,
-				802F26A32373CB2D00963468 /* RXCNavigationBarTransition.swift in Sources */,
-				802F26BF23740E8200963468 /* RNBSetting.swift in Sources */,
-				8089AE06238516D00084FEAF /* UIColor+RNBExtension.swift in Sources */,
-				802F26BB237409BF00963468 /* UIViewController+Transition.swift in Sources */,
-				8058AD822374FBA300445753 /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
-				802F26A72373E76C00963468 /* RNBNavigationBarStyle.swift in Sources */,
-				8058AD802374FB7100445753 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
-				8089AE042384D57D0084FEAF /* UINavigationController+RNBExtension.swift in Sources */,
-				802F26AB2373EF9A00963468 /* UINavigationBar+Views.swift in Sources */,
-				802F26BD23740A6100963468 /* UINavigationController+Transition.swift in Sources */,
-				8058AD862375125C00445753 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */,
+				80888339238BE46600C15CC1 /* UIViewController+Style.swift in Sources */,
+				8088832F238BE46600C15CC1 /* RNBNavigationBarStyle.swift in Sources */,
+				80888330238BE46600C15CC1 /* RNBHelper.swift in Sources */,
+				80888338238BE46600C15CC1 /* UIViewController+RNBExtension.swift in Sources */,
+				80888335238BE46600C15CC1 /* UINavigationBar+Views.swift in Sources */,
+				80888336238BE46600C15CC1 /* UINavigationBar+Style.swift in Sources */,
+				8088833B238BE46600C15CC1 /* UINavigationController+Transition_2_SWIPE.swift in Sources */,
+				8088833A238BE46600C15CC1 /* UIViewController+MethodExchange.swift in Sources */,
+				80888341238BE46600C15CC1 /* UINavigationController+RNBExtension.swift in Sources */,
+				80888334238BE46600C15CC1 /* UINavigationBar+MethodSwitch.swift in Sources */,
+				8088832E238BE46600C15CC1 /* RXCNavigationBarTransition.swift in Sources */,
+				8088833D238BE46600C15CC1 /* UINavigationController+Transition.swift in Sources */,
+				80888337238BE46600C15CC1 /* UIViewController+Storage.swift in Sources */,
+				80888332238BE46600C15CC1 /* UINavigationBar+SorageProperty.swift in Sources */,
+				80888331238BE46600C15CC1 /* RNBSetting.swift in Sources */,
+				8088833F238BE46600C15CC1 /* UINavigationController+Transition_1_PUSH_POP.swift in Sources */,
+				80888333238BE46600C15CC1 /* UINavigationBar+Misc.swift in Sources */,
+				80888340238BE46600C15CC1 /* UIColor+RNBExtension.swift in Sources */,
+				8088833C238BE46600C15CC1 /* UINavigationController+DefaultStyle.swift in Sources */,
+				8088833E238BE46600C15CC1 /* UINavigationController+Transition_3_BACK_BUTTON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
