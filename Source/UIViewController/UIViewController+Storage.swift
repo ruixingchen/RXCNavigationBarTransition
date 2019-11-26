@@ -96,7 +96,9 @@ extension UIViewController {
     ///进行transition之前, 将当前的导航栏样式存储到这个变量中, 下次切换回来的时候可以继续显示, 这样即使用户手动修改了navBar的一些样式, 我们下次回来的时候仍然可以正确显示
     internal var rnb_navigationBarStyleSavedBeforeTransition: RNBNavigationBarStyle? {
         get {
-            return objc_getAssociatedObject(self, &Key.rnb_navigationBarStyleSavedBeforeTransition) as? RNBNavigationBarStyle
+            //return objc_getAssociatedObject(self, &Key.rnb_navigationBarStyleSavedBeforeTransition) as? RNBNavigationBarStyle
+            //iOS 13 切换深浅色模式后, 会导致已经保存的样式不同步的问题, 这里直接返回nil, 不从保存的样式里面取值
+            return nil
         }
         set {
             objc_setAssociatedObject(self, &Key.rnb_navigationBarStyleSavedBeforeTransition, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
