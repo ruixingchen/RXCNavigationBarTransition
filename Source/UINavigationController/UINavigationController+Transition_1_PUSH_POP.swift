@@ -32,10 +32,12 @@ extension UINavigationController {
             //非animated
             //这里必须async, 让push方法完全执行
             DispatchQueue.main.async {
-                if self.viewControllers.count == 1 {
-                    //push之后只有一个VC, 表示这是初始化时候的push, 这个时候navBar尚未初始化, 我们无须处理
-                    return
-                }
+//                if self.viewControllers.count == 1 {
+//                    //push之后只有一个VC, 表示这是初始化时候的push
+//                    let style = self.viewControllers[0].rnb_navigationBarStyleForTransition()
+//                    self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)
+//                    return
+//                }
                 if let vc = self.topViewController {
                     let style = vc.rnb_navigationBarStyleForTransition()
                     self.rnb_applyNavigationBarStyle(style: style, applyImmediatelly: false, animatedOnly: nil)

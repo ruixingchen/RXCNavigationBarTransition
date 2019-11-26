@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        RXCNavigationBarTransition.defaultForegroundColor = UIColor.cyan
+        RXCNavigationBarTransition.defaultStatusBarStyle = .lightContent
+        RXCNavigationBarTransition.defaultShadowViewHidden = false
+        RXCNavigationBarTransition.defaultTitleColor = UIColor.white
+        RXCNavigationBarTransition.defaultTintColor = UIColor.white
         RXCNavigationBarTransition.start()
         UIViewController.ftv_start()
 
